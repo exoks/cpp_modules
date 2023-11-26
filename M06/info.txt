@@ -1,0 +1,26 @@
+we know that casting from low-rank to hight-rank is safe, otherwise it get's interpreted ()
+1 => understand how type-casting or type-converting works in c ?
+	- that includes understand the safty of each type converting(float => int, underflow..., 
+	- understand that diagram (rank levels)
+We have to central problems in Integer conversion:
+	1|_Conversion from wider range (more bits) to smaller range (less bits) (case of intrepretion)
+
+	2|_Conversino form signed (negative value) to unsigned value (positive value)
+which cannot represent signs, to compare signed and unsigned types, the c compiler performs some interpretaion of the value,
+which can lead to surprising results.
+
+2 => type-converting in c++ we know that this type has came with some benifites (show the real intetity behind the casting, giving a chance for the compiler to detect some errors)
+	(i guress one of these casting operators related to Vtable: and i need to understand this one)
+
+
+Notice: in c++ style we have 4 casting operators:
+
+
+static_cast<type>(expression): this cast provides more security to casting process, and this casting only cast between all the built-in types and compatible pointers, and allow the compiler to check if there is any possiblty to cast,
+
+const_cast<type>(expression); this type of casting change the const-ness and volabilty-ness of the variable and does not cast to any other built-in type.
+
+dynamic_cast(type)(expression): the most used and the safed, we use this casting to handling at least ploymorphism casting between based and direved cless,
+
+
+reinterpret_cast<type>(expression): this an evil cast, is not safe at all, we can say this casting as c_style casting but this one can't hange const-ness of expression.
