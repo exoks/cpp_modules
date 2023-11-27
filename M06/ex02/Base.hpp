@@ -22,8 +22,14 @@ class	C : public Base
 {
 };
 
-std::ostream& operator<<(std::ostream& stream, const A& a);
-std::ostream& operator<<(std::ostream& stream, const B& b);
-std::ostream& operator<<(std::ostream& stream, const C& c);
+
+
+std::ostream&	operator<<(std::ostream& stream, const A& a);
+std::ostream&	operator<<(std::ostream& stream, const B& b);
+std::ostream&	operator<<(std::ostream& stream, const C& c);
+
+Base			*generate(void);
+void			identify(Base *p);
+void			identify(Base& p);
 
 #endif /*__BASE__HPP__*/

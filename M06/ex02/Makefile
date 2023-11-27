@@ -6,25 +6,25 @@
 #    By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 19:48:44 by oezzaou           #+#    #+#              #
-#    Updated: 2023/11/25 23:41:25 by oezzaou          ###   ########.fr        #
+#    Updated: 2023/11/26 09:27:39 by oezzaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #====< Variables >==============================================================
 NAME		:= program
-CC		:= c++
+CC			:= c++
 CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
-SRC		:= $(wildcard *.cpp)
-OBJ		:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
-RM		:= rm -rf
+SRC			:= $(wildcard *.cpp)
+OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
+RM			:= rm -rf
 
 #====< Colors >=================================================================
-RED		:= \033[0;31m
+RED			:= \033[0;31m
 GREEN		:= \033[0;32m
 BLUE		:= \033[0;34m
 YELLOW		:= \033[0;33m
-END		:= \033[0m
+END			:= \033[0m
 
 #====< Rules >==================================================================
 all: $(NAME)
