@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:34:00 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/27 10:09:59 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/11/27 16:51:36 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 class	ScalarConverter
 {
 	public:
-		getState(std::string str);
 		static void	convert(std::string input);
 };
 
