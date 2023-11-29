@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FSM.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 10:45:09 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/29 15:40:18 by oezzaou          ###   ########.fr       */
+/*   Created: 2023/11/29 14:55:56 by oezzaou           #+#    #+#             */
+/*   Updated: 2023/11/29 15:24:52 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include "FSM.hpp"
+# ifndef __FSM_HPP__
+# define __FSM_HPP__
+# include <iostream>
 
-//====< main >==================================================================
-int	main(int ac, char **av)
+typedef enum	e_state
 {
-	if (ac == 1)
-		return (EXIT_FAILURE);
-	ScalarConverter::convert(std::string(*(++av)));
-	return (EXIT_SUCCESS);
-}
+	START,
+	CHAR,
+	INT,
+	FUTURE_INT,
+	DOUBLE,
+	FUTURE_DOUBLE,
+	FLOAT,
+	STRING,
+	END,
+}				t_state;
+
+class	FSM
+{
+	private:
+		static int	getNextState(int prv, char input);
+
+	public:
+		static int	detectType(std::string str);
+};
+
+#endif /*__FSM_HPP__*/
