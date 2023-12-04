@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FSM.hpp                                            :+:      :+:    :+:   */
+/*   operation.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 14:55:56 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/04 14:18:57 by oezzaou          ###   ########.fr       */
+/*   Created: 2023/12/04 16:17:51 by oezzaou           #+#    #+#             */
+/*   Updated: 2023/12/04 17:02:29 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# ifndef __FSM_HPP__
-# define __FSM_HPP__
+#ifndef __OPERATIONS_HPP__
+# define __OPERATIONS_HPP__
 # include <iostream>
 
-typedef enum	e_state
-{
-	START,
-	CHAR,
-	INT,
-	FUTURE_INT,
-	DOUBLE,
-	FUTURE_DOUBLE,
-	FLOAT,
-	STRING,
-	END,
-}				t_state;
+template <typename T>
+void	swap(T& x, T& y);
 
-class	FSM
-{
-	private:
-		static int	getNextState(int prv, char input);
+template <typename T>
+T	min(T x, T y);
 
-	public:
-		static int	detectType(std::string str);
-};
+template <typename T>
+T	max(T x, T y);
 
-#endif /*__FSM_HPP__*/
+#endif /*__OPERATIONS_HPP__*/

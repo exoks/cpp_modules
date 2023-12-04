@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FSM.hpp                                            :+:      :+:    :+:   */
+/*   Array.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 14:55:56 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/04 14:18:57 by oezzaou          ###   ########.fr       */
+/*   Created: 2023/12/04 18:57:14 by oezzaou           #+#    #+#             */
+/*   Updated: 2023/12/04 19:06:32 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef __FSM_HPP__
-# define __FSM_HPP__
-# include <iostream>
+# include "Array.hpp"
 
-typedef enum	e_state
+//====< constructor >===========================================================
+Array<class T>::Array(void)
 {
-	START,
-	CHAR,
-	INT,
-	FUTURE_INT,
-	DOUBLE,
-	FUTURE_DOUBLE,
-	FLOAT,
-	STRING,
-	END,
-}				t_state;
+	a = new T();
+}
 
-class	FSM
+//====< constructor >===========================================================
+Array<class T>::Array(unsigned int n)
 {
-	private:
-		static int	getNextState(int prv, char input);
-
-	public:
-		static int	detectType(std::string str);
-};
-
-#endif /*__FSM_HPP__*/
+	a = new T();
+}

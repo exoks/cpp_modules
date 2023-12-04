@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FSM.hpp                                            :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 14:55:56 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/04 14:18:57 by oezzaou          ###   ########.fr       */
+/*   Created: 2023/12/04 17:07:18 by oezzaou           #+#    #+#             */
+/*   Updated: 2023/12/04 18:17:36 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef __FSM_HPP__
-# define __FSM_HPP__
+#ifndef __ITER_HPP__
+# define __ITER_HPP__
 # include <iostream>
 
-typedef enum	e_state
-{
-	START,
-	CHAR,
-	INT,
-	FUTURE_INT,
-	DOUBLE,
-	FUTURE_DOUBLE,
-	FLOAT,
-	STRING,
-	END,
-}				t_state;
+template <typename T>
+void	iter(T arr[], int len, void fun(T & element));
 
-class	FSM
-{
-	private:
-		static int	getNextState(int prv, char input);
+template <typename T>
+void	fun(T & element);
 
-	public:
-		static int	detectType(std::string str);
-};
-
-#endif /*__FSM_HPP__*/
+#endif /*__ITER_HPP__*/

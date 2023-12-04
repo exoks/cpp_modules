@@ -6,19 +6,18 @@
 #    By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 19:48:44 by oezzaou           #+#    #+#              #
-#    Updated: 2023/12/04 14:31:43 by oezzaou          ###   ########.fr        #
+#    Updated: 2023/12/04 20:36:38 by oezzaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #====< Variables >==============================================================
-NAME		:= converter
+NAME		:= funTemplate
 CC			:= c++
 CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
 SRC			:= $(wildcard *.cpp)
 OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
 RM			:= rm -rf
-VALUE		:= 1
 
 #====< Colors >=================================================================
 RED			:= \033[0;31m
@@ -60,7 +59,7 @@ fclean: clean
 re: fclean all
 
 run:
-	@./$(NAME) $(VALUE)
+	@./$(NAME)
 
 .SUFFIXES: .o .cpp
 .PHONY: all clean fclean re run
