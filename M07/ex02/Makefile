@@ -6,14 +6,14 @@
 #    By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 19:48:44 by oezzaou           #+#    #+#              #
-#    Updated: 2023/12/04 20:36:38 by oezzaou          ###   ########.fr        #
+#    Updated: 2023/12/05 00:04:42 by oezzaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #====< Variables >==============================================================
-NAME		:= funTemplate
+NAME		:= array
 CC			:= c++
-CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
+CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror #-Wuninitialized
 OBJ_DIR		:= objs
 SRC			:= $(wildcard *.cpp)
 OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
