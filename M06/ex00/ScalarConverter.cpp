@@ -6,27 +6,38 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:42:41 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/04 15:32:41 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/05 14:04:48 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ScalarConverter.hpp"
 
+# define TO_INT();
 //====< strtod >================================================================
 t_data	strtod(std::string input);
 
 //====< convert >===============================================================
 void	ScalarConverter::convert(std::string input)
 {
-	void	(*fun[4])(t_data& data) = {toChar, toInt, toDouble, toFloat};
-	std::string tmp[9] = {"START", "CHAR", "INT", "FUTURE_INT", "DOUBLE", "FUTURE_DOUBLE", "FLOAT", "STRING", "END"};
-	t_data	data;
+//	void	(*fun[4])(t_data& data) = {toChar, toInt, toDouble, toFloat};
+//	t_data	data;
+	int		type;
 
-	data = strtod(input);
-	for (int index = 0; index < 4; index++)
-		fun[index](data);
+	type = FSM::detectType(input);
+//	data = strtod(input);
+//	for (int index = 0; index < 4; index++)
+//		fun[index](data);
 }
 
+void	fromInt(std::string input)
+{
+	std::stringstream	ss(input);
+	int					container;
+
+	ss >> container;
+}
+
+/*
 //====< strtod >================================================================
 t_data	strtod(std::string input)
 {
@@ -120,7 +131,7 @@ void	toFloat(t_data& data)
 		std::cout << "Impossible";
 	std::cout << std::endl;
 }
-
+*/
 // NOTICE:
 // need to add more optimizaiton to this fucking code
 /*	std::string state[8] = {"START",

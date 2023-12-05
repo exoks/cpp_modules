@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:59:14 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/05 00:00:51 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/05 12:17:57 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,30 @@ int	main(void)
 
 	arr2[0] = 1;
 	arr2[1] = 2;
-	std::cout << "arr.length : " << arr.length << std::endl;
-	std::cout << "arr2.length : " << arr2.length << std::endl;
+	std::cout << "arr.length : " << arr.size() << std::endl;
+	std::cout << "arr2.length : " << arr2.size() << std::endl;
+
+	std::cout << "================ ARR ================" << std::endl;	
+	arr.displayElements();
+	std::cout << "================ ARR2 ===============" << std::endl;	
+	arr2.displayElements();
 
 	arr = arr2;
+	
+	std::cout << "================ ARR ================" << std::endl;	
+	arr.displayElements();
+	std::cout << "================ ARR2 ===============" << std::endl;	
+	arr2.displayElements();
+
+	arr[0] = 7;
+	arr2[1] = 9;
+
+	std::cout << "================ ARR ================" << std::endl;	
+	arr.displayElements();
+	std::cout << "================ ARR2 ===============" << std::endl;	
+	arr2.displayElements();
+
+	std::cout << "====== Accessting invalid index =====" << std::endl;
+	arr2[11];
 	return (EXIT_SUCCESS);
 }

@@ -1,0 +1,47 @@
+==================== TEMPLATE :
+Template is a simple glorified macros very powerful tool in c++, the simple idea is to pass the data type as parameter so that we don’t need to write the same code for different data types,;
+syntax:
+c++ adds two new keywords to support templates: “template” and “type name” the second keyword can always be replaced by the keyword “class”
+Templates in c++ is defined as blueprint or formula for creating a generic class or a function generic programming.
+IMPORTANT SENTENCE: special functions that can interact with generic types are known as function templates,
+
+HOW TEMPLATE WORKS ?
+Templates are expanded at compiler time, this is like macros, the difference is that the compiler does type-checking before template expansion the idea is simple source code contains only function /class but compiled ode may contain multiple copies of the same function/class.
+
+RESUME:
+The compiler has type-checking it checks the data type that you want to deal with and then generate a function with the targeted data type (this part called expansion) like macros a macro function that add two value 
+It does not ask for the real data at all, (nothing is new) (it can be called as auto casting).
+
+Convenient: (adj) suitable for your purposes.
+
+SYNTAX:
+Template <typename T> T myMax(T x, T y);
+
+MY QUESTION:
+The templates are related to something called overloading function
+
+The concept on function is very simple let’s try to understand the concept on classes
+
+ABOUT TPP FILES:
+It’s convenient to have separate files for the definition and implementation, but this one cannot be compiled standalone, as an aside this one reason why code that uses templates heavily can be slow to compile since the compiler might have to parse template code several time, generating intermediate code that just has to be discarded later.
+
+Does it matter it it’s .tpp or any other extension. ? and why not use a .cpp?
+It does not matter what the extension it , but don’t use .cpp because it does ain’t conventions (it wills till work, but don’t do it; .cpp files are generally course files). Other than that it’s a matter of what your code base uses. For example I (and the boost codebase) use .ipp for this purpose.
+What’s the significance of a .tp files ? 
+It’s us3ed when you don’t want the file that contains the interface of module to contain all the gory implementation details but you cannot write the implantation in a .cpp file  because it’s template. So you do the best you can ( not considering  explicit instantiations and the like)
+I thought the while point fo writing definitions in headers and the implementations in a separate file is to save compilation time, so that you compile the implementations only once until you make some changes ?
+You can’t split up general template code into an implementation file, you need the full code visible in order to sue the template, that’s why you need to put everything in the header file.
+
+IMPORTANT FACTS ABOUT TEMPLATES:
+1 => a Template is not a class or a function, a template is a “pattern” that the compiler uses to generate a family of classes or functions.
+2 => in order for the compiler to generate the code, it must see both the template definition (not just declaration)) and the specific types /whatever used to “fill in “ the template, the compiler must see both the foo template and the fact that you are trying to make a specific foo <int>
+3 => your compiler probably doesn’t remember the details of one. Cpp fieldworker while it is compiling another .cpp file it could but most do not and if you are reading these fat it almost definitely does not btw this is called the “separate compilation model”
+
+Resume:
+Since the compiler use the template to generate code source and in case we put the definition in cpp file the complier will not have the time to generate the template code, since is seeing the cpp one.
+
+===== TEMPLATE TYPES
+We have to main types of templates
+1 => Function Template (in the other hand standard function not generic)
+2 => Class Template
+

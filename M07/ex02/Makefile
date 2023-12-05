@@ -6,7 +6,7 @@
 #    By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 19:48:44 by oezzaou           #+#    #+#              #
-#    Updated: 2023/12/05 00:04:42 by oezzaou          ###   ########.fr        #
+#    Updated: 2023/12/05 11:32:10 by oezzaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,6 @@ re: fclean all
 run:
 	@./$(NAME)
 
-.SUFFIXES: .o .cpp
+.SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run
 #===============================================================================
