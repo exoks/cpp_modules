@@ -6,37 +6,57 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:42:41 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/05 14:04:48 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/05 21:50:34 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ScalarConverter.hpp"
 
-# define TO_INT();
 //====< strtod >================================================================
 t_data	strtod(std::string input);
 
 //====< convert >===============================================================
 void	ScalarConverter::convert(std::string input)
 {
-//	void	(*fun[4])(t_data& data) = {toChar, toInt, toDouble, toFloat};
-//	t_data	data;
+	void	(*fun[4])(std::string) = {fromInt, fromInt, fromInt, fromInt};
 	int		type;
 
 	type = FSM::detectType(input);
-//	data = strtod(input);
-//	for (int index = 0; index < 4; index++)
-//		fun[index](data);
+	for (int index = 0; index < 4; index++)
+		fun[index](input);
 }
 
 void	fromInt(std::string input)
 {
+	std::string			types[4] = {"Char: ", "Int: ", "Double: ", "Float: "};
 	std::stringstream	ss(input);
 	int					container;
+	bool				isValid;
 
-	ss >> container;
+	isValid = (ss >> container);
+	if (isValid && container >= 32 && container <= 126)
+		std::cout << types[0] << static_cast<char>(container) << std::endl;
+	else if (isValid && ((container > 126 && container <= 255) || container < 32)))
+
+	if (isValid)
+		std::cout << types[1] << container << std::endl;
+	std::cout << types[2] << static_cast<double>(container) << std::endl;
+	std::cout << types[3] << static_cast<float>(container) << std::endl;
 }
 
+/*
+void	doubleContainerInfo(std::string input)
+{
+	std::stringstream	ss(input);
+	double				container;
+
+
+	std::cout << "Int: ";
+	if (!ss >> container)
+		std::cout << "Impossible" << std::endl;
+	std::cout << containder << std::endl;
+}
+*/
 /*
 //====< strtod >================================================================
 t_data	strtod(std::string input)

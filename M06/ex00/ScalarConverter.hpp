@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:34:00 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/04 14:50:38 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/05 21:10:15 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ class	ScalarConverter
 		static void	convert(std::string input);
 };
 
-void	toChar(t_data& data);
-void	toInt(t_data& data);
-void	toDouble(t_data& data);
-void	toFloat(t_data& data);
+void	fromInt(std::string input);
 
 #endif /*__SCALARCONVERTER_HPP__*/
