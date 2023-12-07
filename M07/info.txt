@@ -26,9 +26,9 @@ ABOUT TPP FILES:
 It’s convenient to have separate files for the definition and implementation, but this one cannot be compiled standalone, as an aside this one reason why code that uses templates heavily can be slow to compile since the compiler might have to parse template code several time, generating intermediate code that just has to be discarded later.
 
 Does it matter it it’s .tpp or any other extension. ? and why not use a .cpp?
-It does not matter what the extension it , but don’t use .cpp because it does ain’t conventions (it wills till work, but don’t do it; .cpp files are generally course files). Other than that it’s a matter of what your code base uses. For example I (and the boost codebase) use .ipp for this purpose.
+It does not matter what the extension it , but don’t use .cpp because it does ain’t conventions (it will works, but don’t do it; .cpp files are generally source files). Other than that it’s a matter of what your code base uses. For example I (and the boost codebase) use .ipp for this purpose.
 What’s the significance of a .tp files ? 
-It’s us3ed when you don’t want the file that contains the interface of module to contain all the gory implementation details but you cannot write the implantation in a .cpp file  because it’s template. So you do the best you can ( not considering  explicit instantiations and the like)
+It’s used when you don’t want the file that contains the interface of module to contain all the gory implementation details but you cannot write the implantation in a .cpp file  because it’s template. So you do the best you can ( not considering  explicit instantiations and the like)
 I thought the while point fo writing definitions in headers and the implementations in a separate file is to save compilation time, so that you compile the implementations only once until you make some changes ?
 You can’t split up general template code into an implementation file, you need the full code visible in order to sue the template, that’s why you need to put everything in the header file.
 
@@ -38,7 +38,7 @@ IMPORTANT FACTS ABOUT TEMPLATES:
 3 => your compiler probably doesn’t remember the details of one. Cpp fieldworker while it is compiling another .cpp file it could but most do not and if you are reading these fat it almost definitely does not btw this is called the “separate compilation model”
 
 Resume:
-Since the compiler use the template to generate code source and in case we put the definition in cpp file the complier will not have the time to generate the template code, since is seeing the cpp one.
+Since the compiler use the template to generate code source and in case we put the definition in cpp file the complier will not have the time to generate the template code, since is seeing the .cpp one.
 
 ===== TEMPLATE TYPES
 We have to main types of templates

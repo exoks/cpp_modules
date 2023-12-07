@@ -1,0 +1,27 @@
+	Containers in c++
+
+A contaner is a holder object that stores a collection of other obejects (its elements), the are implemented as class templates, which allows great flexibility in the types supported as elements,
+
+the contaner manages the storage space for its elements and provides memeber functions to acess them, either directly or through iterators(reference objects with similar properties to pointers).
+
+	Types of STL (standard template library)
+1 => Sequential Containers:
+in c++ sequential contaners allow us to store elements that can be accessed in qequential order.
+Internally sequential containers are implemented as arrays or linked lists data structures.
+ types of sequential containers:
+ . Array
+ . Vector
+ . Deque
+ . List
+ . Forward List
+
+ 2 => Associative Containers:
+ in c++, associative containers allow us to store elements in sorted the order doesn't depend upon when the element is inserted.
+Internally, the are implemented as binary tree data structures.
+types of Associative containers:
+. Set
+. Map
+. Multiset
+. Multimap
+
+ 3 => 

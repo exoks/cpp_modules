@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:42:41 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/05 21:50:34 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/06 16:53:52 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ void	ScalarConverter::convert(std::string input)
 		fun[index](input);
 }
 
+//====< fromChar >==============================================================
+void	fromChar(std::string input)
+{
+	std::string			types[4] = {"Char: ", "Int: ", "Double: ", "Float: "};
+	std::stringstream	ss(input);
+	char				container;
+	bool				isValid;
+
+	isValid = (ss >> container);
+	if (isValid)
+	{
+		std::cout << "Char: " << container << std::endl;
+		std::cout << "Int: " << static_cast<int>(container) << std::endl;
+		std::cout << "Double: " << static_cast<double>(container) << std::endl;
+		std::cout << "Float: " << static_cast<float>(container) << std::endl;
+	}
+}
+
+//====< fromInt >===============================================================
 void	fromInt(std::string input)
 {
 	std::string			types[4] = {"Char: ", "Int: ", "Double: ", "Float: "};
@@ -36,12 +55,60 @@ void	fromInt(std::string input)
 	isValid = (ss >> container);
 	if (isValid && container >= 32 && container <= 126)
 		std::cout << types[0] << static_cast<char>(container) << std::endl;
-	else if (isValid && ((container > 126 && container <= 255) || container < 32)))
-
+	else if (isValid && container > 126 && container <= 255 && container < 32)
+		std::cout << "non displayable" << std::endl;
 	if (isValid)
+	{
 		std::cout << types[1] << container << std::endl;
-	std::cout << types[2] << static_cast<double>(container) << std::endl;
-	std::cout << types[3] << static_cast<float>(container) << std::endl;
+		std::cout << types[2] << static_cast<double>(container) << std::endl;
+		std::cout << types[3] << static_cast<float>(container) << std::endl;
+	}
+	for (int index = 0; index < 4 && isValid; index++)
+		std::cout << types[index] << "Impossible" << std::endl;
+}
+
+//====< fromDouble >============================================================
+void	fromDouble(std::string input)
+{
+	std::string			types[4] = {"Char: ", "Int: ", "Double: ", "Float: "};
+	std::stringstream	ss(input);
+	bool				isValid;
+	double				container;
+
+	isValid = (ss >> container);
+	if (isValid && container >= 32 && container <= 126)
+		std::cout << "Char: " << static_cast<char>(container) << std::endl;
+	if (isValid && container >= INT_MIN && container <= INT_MAX)
+		std::cout << "Int : " << static_cast<int>(container) << std::endl;
+	if (isValid)
+	{
+		std::cout << "Double: " << container << std::endl;
+		std::cout << "Float : " << static_cast<float>(container) << std::endl;
+	}
+	for (int index = 0; index < 4 && isValid; index++)
+		std::cout << types[index] << "Impossible" << std::endl;
+}
+
+//====< fromDouble >============================================================
+void	fromFloat(std::string input)
+{
+	std::string			types[4] = {"Char: ", "Int: ", "Double: ", "Float: "};
+	std::stringstream	ss(input);
+	bool				isValid;
+	float				container;
+
+	isValid = (ss >> container);
+	if (isValid && container >= 32 && container <= 126)
+		std::cout << "Char: " << static_cast<char>(container) << std::endl;
+	if (isValid && container >= INT_MIN && container <= INT_MAX)
+		std::cout << "Int : " << static_cast<int>(container) << std::endl;
+	if (isValid)
+	{
+		std::cout << "Double: " << static_cast<double>(container) << std::endl;
+		std::cout << "Float : " << container << std::endl;
+	}
+	for (int index = 0; index < 4 && isValid; index++)
+		std::cout << types[index] << "Impossible" << std::endl;
 }
 
 /*
