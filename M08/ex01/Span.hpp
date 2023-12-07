@@ -7,8 +7,8 @@
 //          ###-...             .-####                                                    
 //          ###...              ..+##      Student: oussama <oezzaou@student.1337.ma>     
 //           #-.++###.      -###+..##                                                     
-//           #....  ...   .-.  ....##         Created: 2023/12/07 18:45:13 by oussama     
-//        --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 18:45:13 by oussama     
+//           #....  ...   .-.  ....##         Created: 2023/12/07 19:41:31 by oezzaou     
+//        --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 19:41:31 by oezzaou     
 //         ---....... ..  ........... -                                                   
 //         -+#..     ..   .       .+-.                                                    
 //          .--.     .     .     ..+.                                                     
@@ -31,13 +31,15 @@ class	Span
 	private:
 		unsigned int		N;
 		std::vector<int>	*v;
+
 	public:
 		Span(void);
 		Span(unsigned int N);
 		Span(const Span & span);
-		// destructor
-	
+		~Span(void);
+
 		Span &	operator=(const Span & span);
+		void	addNumber(int nbr);
 };
 
 #endif /*__SPAN_HPP__*/
