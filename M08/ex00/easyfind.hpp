@@ -2,13 +2,13 @@
 //             ####################                                                       
 //           ########################                                                     
 //          #############+########### #                                                   
-//          ######-..        .+########          < main.cpp >                             
+//          ######-..        .+#######     < easyfind.hpp >                                    
 //          ####-..            ..+####                                                    
 //          ###-...             .-####                                                    
-//          ###...              ..+##      Student: oezzaou <oezzaou@student.1337.ma>     
+//          ###...              ..+##      Student: oussama <oezzaou@student.1337.ma>     
 //           #-.++###.      -###+..##                                                     
-//           #....  ...   .-.  ....##         Created: 2023/12/07 17:49:55 by oussama     
-//        --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 17:55:24 by oussama     
+//           #....  ...   .-.  ....##         Created: 2023/12/07 18:25:15 by oussama     
+//        --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 18:25:15 by oussama     
 //         ---....... ..  ........... -                                                   
 //         -+#..     ..   .       .+-.                                                    
 //          .--.     .     .     ..+.                                                     
@@ -17,20 +17,18 @@
 //             +...#####-++###-..-                                                        
 //             #---..----+--.---+##                                                       
 //           ###-+--.... ....--+#####                                                     
-//     ##########--#-.......-#-###########        Made By Oussama Ezzaou (OEZZAOU) :)     
+//     ##########--#-.......-#-###########        Made By Oussama Ezzaou <OEZZAOU> :)     
 
-# include "easyfind.hpp"
+#ifndef __EASYFIND_HPP__
+# define __EASYFIND_HPP__
 
-//====< main >==================================================================
-int	main(void)
-{
-	std::vector<int> v;
+# include <exception>
+# include <iostream>
+# include <vector>
 
-	v.push_back(0);
-	v.push_back(3);
-	v.push_back(2);
-	v.push_back(7);
+template <typename T>
+void	easyfind(T vector, int x);
 
-	easyfind(v, 0);
-	return (EXIT_SUCCESS);
-}
+# include "easyfind.tpp"
+
+#endif /*__EASYFIND_HPP__*/

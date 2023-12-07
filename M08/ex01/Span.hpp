@@ -2,13 +2,13 @@
 //             ####################                                                       
 //           ########################                                                     
 //          #############+########### #                                                   
-//          ######-..        .+########          < main.cpp >                             
+//          ######-..        .+########   < Span.hpp >                                    
 //          ####-..            ..+####                                                    
 //          ###-...             .-####                                                    
-//          ###...              ..+##      Student: oezzaou <oezzaou@student.1337.ma>     
+//          ###...              ..+##      Student: oussama <oezzaou@student.1337.ma>     
 //           #-.++###.      -###+..##                                                     
-//           #....  ...   .-.  ....##         Created: 2023/12/07 17:49:55 by oussama     
-//        --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 17:55:24 by oussama     
+//           #....  ...   .-.  ....##         Created: 2023/12/07 18:45:13 by oussama     
+//        --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 18:45:13 by oussama     
 //         ---....... ..  ........... -                                                   
 //         -+#..     ..   .       .+-.                                                    
 //          .--.     .     .     ..+.                                                     
@@ -17,20 +17,27 @@
 //             +...#####-++###-..-                                                        
 //             #---..----+--.---+##                                                       
 //           ###-+--.... ....--+#####                                                     
-//     ##########--#-.......-#-###########        Made By Oussama Ezzaou (OEZZAOU) :)     
+//     ##########--#-.......-#-###########        Made By Oussama Ezzaou <OEZZAOU> :)     
 
-# include "easyfind.hpp"
+#ifndef __SPAN_HPP__
+# define __SPAN_HPP__
 
-//====< main >==================================================================
-int	main(void)
+# include <exception>
+# include <iostream>
+# include <vector>
+
+class	Span
 {
-	std::vector<int> v;
+	private:
+		unsigned int		N;
+		std::vector<int>	*v;
+	public:
+		Span(void);
+		Span(unsigned int N);
+		Span(const Span & span);
+		// destructor
+	
+		Span &	operator=(const Span & span);
+};
 
-	v.push_back(0);
-	v.push_back(3);
-	v.push_back(2);
-	v.push_back(7);
-
-	easyfind(v, 0);
-	return (EXIT_SUCCESS);
-}
+#endif /*__SPAN_HPP__*/

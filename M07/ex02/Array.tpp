@@ -7,8 +7,8 @@
 //           ###-...             .-####                                                    
 //           ###...              ..+##      Student: oezzaou <oezzaou@student.1337.ma>     
 //            #-.++###.      -###+..##                                                     
-#            #....  ...   .-.  ....##         Created: 2023/12/07 14:19:44 by oezzaou     
-#         --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 14:19:44 by oezzaou     
+#            #....  ...   .-.  ....##         Created: 2023/12/07 17:37:08 by oussama     
+#         --.#.-#+## -..  -+ ##-#-.-...       Updated: 2023/12/07 17:37:08 by oussama     
 //          ---....... ..  ........... -                                                   
 //          -+#..     ..   .       .+-.                                                    
 //           .--.     .     .     ..+.                                                     
@@ -58,7 +58,8 @@ void	Array<T>::operator=(const Array<T> & arr)
 template <class T>
 T&	Array<T>::operator[](int index) const
 {
-	try {
+	try
+	{
 		if (index < 0 || index >= length)
 			throw (std::out_of_range("OutOfBounds."));
 		return (arr[index]);

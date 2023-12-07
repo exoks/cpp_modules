@@ -11,6 +11,7 @@ Internally sequential containers are implemented as arrays or linked lists data 
  types of sequential containers:
  . Array
  . Vector
+need to learn more about this one : how does it works (is it just a linked list or array with realloc)
  . Deque
  . List
  . Forward List
