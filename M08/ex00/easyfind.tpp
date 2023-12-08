@@ -1,4 +1,3 @@
-
 //====< easyfind >==============================================================
 template <typename T>
 void	easyfind(T vector, int x)

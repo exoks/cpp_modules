@@ -1,8 +1,18 @@
 	Containers in c++
 
-A contaner is a holder object that stores a collection of other obejects (its elements), the are implemented as class templates, which allows great flexibility in the types supported as elements,
+A container is a holder object that stores a collection of other obejects (its elements), the are implemented as class templates, which allows great flexibility in the types supported as elements, (make programming quickly , efficiently and generic)
+i
+Generic programming: generic-types == templates
+ - datas types not specified in implementation, but rather in its use.
+ - compile-time polymorphism.
 
-the contaner manages the storage space for its elements and provides memeber functions to acess them, either directly or through iterators(reference objects with similar properties to pointers).
+componenets of STL:
+- containers : data structures to store collection of objects.
+- iterators  : pointers like object that allows traversal of containers.
+- algorithms : set of function, to deal with containers (search , sort, merge ...)
+- functors (function objects) : classes with overload operators (), so they can be used as functions (<functional> std::plus, equal to)
+
+the container manages the storage space for its elements and provides memeber functions to acess them, either directly or through iterators(reference objects with similar properties to pointers).
 
 	Types of STL (standard template library)
 1 => Sequential Containers:
@@ -10,11 +20,14 @@ in c++ sequential contaners allow us to store elements that can be accessed in q
 Internally sequential containers are implemented as arrays or linked lists data structures.
  types of sequential containers:
  . Array
- . Vector
+ . Vector : dynamic size array, elements are stored continously in memory, random access.
 need to learn more about this one : how does it works (is it just a linked list or array with realloc)
- . Deque
- . List
- . Forward List
+ . Deque : double-ended queue pope from both ends (not as normal push from side and poping from the one)
+ . List : (simple list) doubly linked list, elements are not stored continously in memory, random access are not supported, insertion and deletion are supported unlike vector.
+ . Forward List (single linked list)
+
+THE IDEA IS SIMPLE:
+	fi c dik lkhedma dyal ashmen data type ankhdem biha is simple all i need is to use these things instead of making my own, realloc => vector (not linked list), lmhm mn experience dyali sahla bach ghadi nkhdem.
 
  2 => Associative Containers:
  in c++, associative containers allow us to store elements in sorted the order doesn't depend upon when the element is inserted.
@@ -25,4 +38,36 @@ types of Associative containers:
 . Multiset
 . Multimap
 
- 3 => 
+ 3 => Container Adapters : interfaces that implement special functionality on top of sequence containers.
+ . Stack
+ . Queue
+ . Priority queue
+
+ITERATORS:
+ - An iterator is an object that can iterate over elements in c++ standard library container and provide access to individual elements.
+the c++ Standard library containers all provide iterators so that algorithms can access their elements in a standard way without having to be converned with the type of container the elements are stored in.
+- you can use iterators explicityly using member and global functions such as begin() and end() and operators such as ++ and -- to move forward or backward, you can also use iterators implicitly with a range-for loop or (for some iterator types) the subscript operator [].
+
+iterators are one of the four pillars of STL in c++, and iterator is used to point the memory address of the stll container classess. for better understanding youn can rlate them with a pointer to some extent.
+
+iterators act as a bridge that connects algorithms to STL containers and allows the modification of the data present inside the container, they allow you to iterate over the containers, access and assign the values, and run different operators over them. to get the desired result.
+
+=> Difference between iterators and Pointers ?
+Pointer:
+	- pointer is a varibale that stores the memory address of the variable it is pointing to.
+	- pointer has a data type. 
+	- the pointer help to provide large information to the functions by just passing the mem address of the object.
+
+Iterator:
+	- iterators are used to point to the memory address of the STL containers.
+	- iterators are used to iterate over the data structures (access or assign value that a pointer as unable to do)
+	- pointers can also point to functions, whereas the iterators just serve the purpose of performing operations on the STL containers.
+
+	HOW VECTORS WORKS ?
+Vectors are sequence containers representing arrays that can change in size, and just like arrays vectors use contiguous storage locatinos for their elements, which means that their elements can also be accessed using offsets on regular pointers to its elements, and just as efficiently as in arrays, but unlike arrays their size can change dynamically, with their storage being handled automatically by the container.
+
+Internally, vectors use a dynamically allocated array to store their elements, this array me need to be reallocated in order to grow in size when new elements are inserted, which implies allocation a new array and moving all element to it the is a relatively expensize task in terms of processing tie, and << VECTORS DO NOT REALLOCATE EACH TIME AN ELEMENT IS ADDED TO THE CONTIANER >> instead vector containers may allocate some extra storage to accommodate for possible growth, and the container may have an actual capacity greater than the storage strictly needed to contain its elements, libraries can implement different strategies for grwth to balance between memory usage adn reallocations, but in any case reallocations should only heppen at logarithmically growing intervals of size so that the insertion of individual elelements at the end of the vctor can be provided with AMORTIZED CONST TIME complixty.
+
+Therefore, compared to arrays, vectors consume more memory in exchange for the abbility to manage storage and grow dyanmically in efficient way.
+
+/compared to the other dynamic sequence containers (deques , lists, forward lists), vectors are very efficient accessing its elements (just like arrays) and relatively efficient adding or removing elements from its end, for operations that invlove inserting or removing elements at positions other than the end, they perform worse than the others, and have less consisstent iterators and references that list and forward lists.
