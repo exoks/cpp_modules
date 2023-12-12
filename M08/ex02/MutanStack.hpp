@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########  < Serializer.cpp >                        
+//       ######-..        .+########  < MutanStack.hpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:24:12 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:24:12 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/12 11:42:03 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 11:42:03 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,16 +19,48 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#include "Serializer.hpp"
+#ifndef __MUTANSTACK_HPP__
+# define __MUTANSTACK_HPP__
+# include <iostream>
+# include <exception>
+# include <algorithm>
+# include <deque>
 
-//====< serialize >=============================================================
-uintptr_t	Serializer::serialize(Data *ptr)
+// add container as parametre
+template <class Type>
+class	MutanStack
 {
-	return (reinterpret_cast<uintptr_t>(ptr));
-}
+	private:
+		std::deque<Type>	s;
+		
+	public:
+		class	iterator
+		{
+			private:
+				typename std::deque<Type>::iterator iter;
 
-//====< deserialize >===========================================================
-Data		*Serializer::deserialize(uintptr_t raw)
-{
-	return (reinterpret_cast<Data *>(raw));
-}
+			public:
+				iterator (void);
+				iterator (typename std::deque<Type>::iterator iter);
+
+				iterator &	operator++();
+				iterator &	operator--();
+				Type		operator*(void);
+				bool		operator!=(const iterator & it)
+				{
+					return (iter != it.iter);
+				}
+		};
+
+		void		push(Type element);
+		void		pop(void);
+		int			size(void);
+		Type		top(void);
+
+		iterator	begin(void);
+		iterator	end(void);
+};
+
+# include "MutanStack.tpp"
+
+#endif /*__MUTANSTACK_HPP__*/

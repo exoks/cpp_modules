@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 21:02:47 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 21:02:47 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/10 08:56:01 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/10 09:06:27 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -34,6 +34,7 @@ Span::Span(unsigned int N) : N(N)
 //====< copy constructor >======================================================
 Span::Span(const Span & span)
 {
+	this->N = span.N;
 	*this = span;
 }
 
@@ -46,7 +47,7 @@ Span::~Span(void)
 //====< operator= >=============================================================
 Span &	Span::operator=(const Span & span)
 {
-	for (unsigned int i = 0; i < span.v.size(); i++)
+	for (unsigned int i = 0; i < span.v.size(); ++i)
 	{
 		try
 		{
@@ -54,7 +55,8 @@ Span &	Span::operator=(const Span & span)
 				throw (std::out_of_range("Can not copy all elements"));
 			v[i] = span.v[i];
 		} catch (std::exception & e){
-			std::cout << "Exception Caught: " << e.what() << span.v[i] << std::endl;	
+			std::cout	<< "Exception Caught: "	<< e.what()
+						<< span.v[i]			<< std::endl;	
 		}
 	}
 	return (*this);

@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:14:33 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:33:52 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/10 11:25:50 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/10 11:25:50 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -31,6 +31,8 @@ int	main(void)
 	v.push_back(2);
 	v.push_back(7);
 
-	easyfind(v, 0);
+	easyfind(v, 3);
+	easyfind(v, 9);
+
 	return (EXIT_SUCCESS);
 }

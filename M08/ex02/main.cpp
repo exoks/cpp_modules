@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########  < Serializer.cpp >                        
+//       ######-..        .+########        < main.cpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:24:12 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:24:12 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/12 11:40:46 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 11:40:46 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,16 +19,36 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#include "Serializer.hpp"
+# include "MutanStack.hpp"
 
-//====< serialize >=============================================================
-uintptr_t	Serializer::serialize(Data *ptr)
+//====< main >==================================================================
+int	main(void)
 {
-	return (reinterpret_cast<uintptr_t>(ptr));
-}
+	MutanStack<int>	ms;
 
-//====< deserialize >===========================================================
-Data		*Serializer::deserialize(uintptr_t raw)
-{
-	return (reinterpret_cast<Data *>(raw));
+	ms.push(20);
+	ms.push(17);
+
+	std::cout 	<< "==================================" << std::endl
+				<< "Size: "		<< ms.size()
+				<< std::endl
+				<< "Top: "		<< ms.top()
+				<< std::endl	<< std::endl;	
+	ms.pop();
+	
+	std::cout 	<< "==================================" << std::endl
+				<< "Size: "		<< ms.size()
+				<< std::endl
+				<< "Top: "		<< ms.top()
+				<< std::endl	<< std::endl;
+
+	ms.push(10);
+	MutanStack<int>::iterator i;
+
+	i = ms.begin();
+	std::cout << "begin: " << *i << std::endl;
+	std::cout << "end:   " << *ms.end() << std::endl;
+	bool b = ms.begin() != ms.end();
+	std::cout << "diff: " << b << std::endl;
+	return (EXIT_SUCCESS);
 }

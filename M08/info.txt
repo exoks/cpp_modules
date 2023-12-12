@@ -71,3 +71,80 @@ Internally, vectors use a dynamically allocated array to store their elements, t
 Therefore, compared to arrays, vectors consume more memory in exchange for the abbility to manage storage and grow dyanmically in efficient way.
 
 /compared to the other dynamic sequence containers (deques , lists, forward lists), vectors are very efficient accessing its elements (just like arrays) and relatively efficient adding or removing elements from its end, for operations that invlove inserting or removing elements at positions other than the end, they perform worse than the others, and have less consisstent iterators and references that list and forward lists.
+
+
+
+< STL ALGORITHM : STL  is nothing but iterators + template + algorithm >
+-STL algorithm library defines functions for a variety of purposes (searching, sorting, counting, manipulating).
+-Algorithms are applied to range of elements.
+-<algorithm> header is used to get all algorithms available in STL.
+
+1|_Sort:
+
+Syntax:
+	Sort(iterator begin, iterator end);
+	Sort(exec policy, iterator begin, iterator end);
+	Sort(iterator begin, iterator end, function object());
+	Sort(iterator begin, iterator end, lambda function());
+										std::greater<int>();
+										std::less<int>();
+
+ - In C++ STL we have sort function that can sort in ascending or decending order.
+ - Not only Integer value can be sorted (Integral) and other types can be sorted:
+ 	+ sorting integer data types
+	+ sorting user defined data types (objects) by using overload operator < or >, or function object,
+		lambda pression ([](args){body})
+ - how sort function is working ? : it uses IntroSort which is combination of quickSort, headpSort and InsertionSor,
+ 	By default it uses quickSort but
+	if quickSort is doing unfair partitioning and taking more than N*LogN time,
+	it switches to headSort and when the array size becomes really small, it switches to InsertionSort.
+ - We can use parellel execution policy for better performance.
+	sort(std::execution::par, v.begin(), v.end()); (Guess, this one create more threads for better performance)
+
+2|_is_sort
+	checks if the elements in range [first, last] are sorted in non-descending order.
+
+Syntax:
+	bool	is_sorted(std::iterator begin, std::iterator end);
+	bool	is_sorted(std::iterator begin, std::iterator end, order); order : std::greater<int>(), std::less<int>()
+
+3|_partial_sor:
+	partial_sort is function that takes a range of numbers and sorted, it can sort a part from all.
+	
+syntax:
+	partial_sort(iterator begin, iterator rangEnd, iterator containerEnd);
+
+
+4|_nth_element:
+
+
+5|_is_sorted_until:
+	finds how many elements are sorted in given range.
+
+	syntax:
+		iterartor is_sorted_until(iterator begin, iterator oend);
+		iterartor is_sorted_until(iterator begin, iterator oend, order);
+
+		return iterator to the last one sorted.
+
+There is a function that distance(iterator start, iterator end);
+
+6|_ std::iota
+	fills the range start, end with sequentially values, starting from value to ++value;
+
+	iota(iterator begin, iterator end, int startingValue);
+
+
+
+
+
+
+
+
+
+
+
+
+ADD:
+	missing 'typename" prior to dependent type name x = std::deque<type::iterator'
+	add typename before x will solve the problem but how ?

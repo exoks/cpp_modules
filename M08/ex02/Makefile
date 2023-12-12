@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2023/12/08 17:29:13 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:30:16 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2023/12/12 10:19:10 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 10:19:10 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -20,9 +20,9 @@
 #   ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
 #====< Variables >==============================================================
-NAME		:= iter
+NAME		:= mutanStack
 CC			:= c++
-CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
+CPPFLAGS	:= -std=c++98 #-Wall -Wextra -Werror #-Wuninitialized
 OBJ_DIR		:= objs
 SRC			:= $(wildcard *.cpp)
 OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
@@ -70,6 +70,6 @@ re: fclean all
 run:
 	@./$(NAME)
 
-.SUFFIXES: .o .cpp
+.SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run
 #===============================================================================

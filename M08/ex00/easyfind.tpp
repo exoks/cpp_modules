@@ -1,18 +1,13 @@
 //====< easyfind >==============================================================
 template <typename T>
-void	easyfind(T vector, int x)
+void	easyfind(T container, int x)
 {
-	unsigned int	index;
-
-	index = 0;
 	try
 	{
-		while (index < vector.size() && vector[index] != x)
-			index++;
-		if (index == vector.size())
-			throw (std::out_of_range("Exception Caught: Not found."));
-		std::cout << "Exist: " << vector[index] << std::endl;
+		if (find(container.begin(), container.end(), x) == container.end())
+			throw (std::out_of_range(": Not found."));
+		std::cout << "Exist: " << x << std::endl;
 	} catch (std::exception & e){
-		std::cout << e.what() << std::endl;
+		std::cout << "Exception caught: " << x << e.what() << std::endl;
 	}
 }
