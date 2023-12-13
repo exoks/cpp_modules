@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/12 11:44:03 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 12:15:52 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/12 22:56:28 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 22:56:28 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,12 +19,11 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-// add container as parametre
 //====< push >==================================================================
 template <class Type>
 void	MutanStack<Type>::push(Type element)
 {
-	s.push_back(element);
+	this->push_back(element);
 }
 
 //====< pop >===================================================================
@@ -33,19 +32,12 @@ void	MutanStack<Type>::pop()
 {
 	try
 	{
-		if (s.size() == 0)
+		if (this->size() == 0)
 			throw (std::out_of_range("empty stack."));
-		s.pop_back();
+		this->pop_back();
 	} catch (std::exception & e){
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
-}
-
-//====< size >==================================================================
-template <class Type>
-int		MutanStack<Type>::size(void)
-{
-	return (s.size());
 }
 
 //====< top >===================================================================
@@ -54,9 +46,9 @@ Type		MutanStack<Type>::top(void)
 {
 	try 
 	{
-		if (s.size() == 0)
+		if (this->size() == 0)
 			throw (std::out_of_range("empty stack."));
-		return (s.back());
+		return (this->back());
 	} catch (std::exception & e){
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -71,25 +63,25 @@ MutanStack<Type>::iterator::iterator(void)
 
 //====< iterator constructor >==================================================
 template<class Type>
-MutanStack<Type>::iterator::iterator(typename std::deque<Type>::iterator iter)
+MutanStack<Type>::iterator::iterator(typename std::deque<Type>::iterator it)
 {
-	this->iter = iter;
+	this->iter = it;
 }
-
+/*
 //====< begin >=================================================================
 template <class Type>
-typename MutanStack<Type>::iterator	MutanStack<Type>::begin(void)
-{	
-	return (iterator(--s.end()));
+typename std::deque<Type>::iterator	MutanStack<Type>::begin(void)
+{
+	return (this->begin());
 }
 
 //====< end >===================================================================
 template <class Type>
 typename MutanStack<Type>::iterator	MutanStack<Type>::end(void)
 {
-	return (iterator(s.begin()));
+	return (iterator(this->begin()));
 }
-
+*/
 //====< operator++ >============================================================
 template<class Type>
 typename MutanStack<Type>::iterator& MutanStack<Type>::iterator::operator++()
@@ -103,6 +95,13 @@ typename MutanStack<Type>::iterator& MutanStack<Type>::iterator::operator--()
 {
 	return (++iter, *this);
 }
+
+//====< operator-- >============================================================
+//template<class Type>
+//bool MutanStack<Type>::iterator::operator!=(const MutanStack<Type>::iterator & it)
+//{
+//	return (iter != it); 
+//}
 
 //====< operator* >=============================================================
 template<class Type>

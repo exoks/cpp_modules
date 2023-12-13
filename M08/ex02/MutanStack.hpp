@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/12 11:42:03 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 11:42:03 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/12 22:55:44 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 22:55:44 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -28,11 +28,8 @@
 
 // add container as parametre
 template <class Type>
-class	MutanStack
+class	MutanStack : public std::deque<Type>
 {
-	private:
-		std::deque<Type>	s;
-		
 	public:
 		class	iterator
 		{
@@ -46,19 +43,15 @@ class	MutanStack
 				iterator &	operator++();
 				iterator &	operator--();
 				Type		operator*(void);
-				bool		operator!=(const iterator & it)
-				{
-					return (iter != it.iter);
-				}
+		//		bool		operator!=(const MutanStack<Type>::iterator & it);
 		};
 
 		void		push(Type element);
 		void		pop(void);
-		int			size(void);
 		Type		top(void);
 
-		iterator	begin(void);
-		iterator	end(void);
+		//deque<Type>::iterator	begin(void);
+		//iterator	end(void);
 };
 
 # include "MutanStack.tpp"
