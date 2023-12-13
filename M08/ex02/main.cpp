@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/12 22:56:57 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 22:56:57 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/13 16:26:18 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/13 16:38:56 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -49,11 +49,12 @@ int	main(void)
 	i = ms.begin();
 	std::cout << "hello world" << std::endl;
 	std::cout << "begin: " << *i << std::endl;
-	std::cout << *(++i) << std::endl;
-//	std::cout << "end:   " << *ms.end() << std::endl;
-//	bool b = ms.begin() != ms.end();
-//	std::cout << "diff: " << b << std::endl;
+	--i;
+	++i;
+	std::cout << *i << std::endl;
+	bool b = ms.begin() != ms.end();
+	std::cout << "diff: " << b << std::endl;
 
-//	std::stack<int> s(ms);
+	std::stack<int> s(ms);
 	return (EXIT_SUCCESS);
 }

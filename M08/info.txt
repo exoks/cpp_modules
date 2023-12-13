@@ -92,7 +92,7 @@ Syntax:
  - In C++ STL we have sort function that can sort in ascending or decending order.
  - Not only Integer value can be sorted (Integral) and other types can be sorted:
  	+ sorting integer data types
-	+ sorting user defined data types (objects) by using overload operator < or >, or function object,
+	+ sorting user defined data types (objects) by using overload operator < or >, or function objectear
 		lambda pression ([](args){body})
  - how sort function is working ? : it uses IntroSort which is combination of quickSort, headpSort and InsertionSor,
  	By default it uses quickSort but

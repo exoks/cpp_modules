@@ -5,10 +5,10 @@
 //       ######-..        .+########  < MutanStack.tpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/12 22:56:28 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/12 22:56:28 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/13 16:42:57 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/13 16:42:57 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -56,55 +56,41 @@ Type		MutanStack<Type>::top(void)
 }
 
 //====< iterator constructor >==================================================
-template<class Type>
+template <class Type>
 MutanStack<Type>::iterator::iterator(void)
 {
 }
 
 //====< iterator constructor >==================================================
-template<class Type>
+template <class Type>
 MutanStack<Type>::iterator::iterator(typename std::deque<Type>::iterator it)
 {
 	this->iter = it;
 }
-/*
-//====< begin >=================================================================
-template <class Type>
-typename std::deque<Type>::iterator	MutanStack<Type>::begin(void)
-{
-	return (this->begin());
-}
 
-//====< end >===================================================================
-template <class Type>
-typename MutanStack<Type>::iterator	MutanStack<Type>::end(void)
-{
-	return (iterator(this->begin()));
-}
-*/
 //====< operator++ >============================================================
-template<class Type>
+template <class Type>
 typename MutanStack<Type>::iterator& MutanStack<Type>::iterator::operator++()
 {
 	return (--iter, *this);
 }
 
 //====< operator-- >============================================================
-template<class Type>
+template <class Type>
 typename MutanStack<Type>::iterator& MutanStack<Type>::iterator::operator--()
 {
 	return (++iter, *this);
 }
 
 //====< operator-- >============================================================
-//template<class Type>
-//bool MutanStack<Type>::iterator::operator!=(const MutanStack<Type>::iterator & it)
-//{
-//	return (iter != it); 
-//}
+template <class Type>
+bool MutanStack<Type>::iterator::operator!=(const MutanStack<Type>::iterator & it)
+{
+	return (iter != it); 
+}
 
 //====< operator* >=============================================================
-template<class Type>
+template <class Type>
 Type	MutanStack<Type>::iterator::operator*(void)
 {
 	return (*iter);
