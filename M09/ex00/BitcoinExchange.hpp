@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########        < main.cpp >                        
+//       ######-..        .+#####< BitcoinExchange.hpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/17 18:51:00 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/17 18:51:00 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/17 17:15:57 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/17 20:56:08 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -18,15 +18,28 @@
 //          #---..----+--.---+##                                                
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
+//==============================================================================
 
+#ifndef __BITCOINEXCHANGE_HPP__
+# define __BITCOINEXCHANGE_HPP__
+
+# define VALID_ARGS		2
+
+# include <map>
+# include <iostream>
 # include "Parser.hpp"
-# include "BitcoinExchange.hpp"
 
-int	main(void)
+class	BitcoinExchange
 {
-	BitcoinExchange	bitcoin("test.csv");
+	private:
+		std::string					fileName;
 
-	bitcoin.exchange();
-	std::cout << prs::trim("       hello world   ") << std::endl;
-	return (EXIT_SUCCESS);
-}
+	public:
+		BitcoinExchange(void);
+		BitcoinExchange(std::string fileName);
+		~BitcoinExchange(void);
+
+		void	exchange(void);
+};
+
+#endif /*__BITCOINEXCHANGE_HPP__*/

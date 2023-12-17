@@ -1,0 +1,35 @@
+
+
+				<std::map Container>
+
+=>	propertise of map:
+- An associative container that containes key-value paires with unique keys (Sorted)
+- A user-provided compare can be supplied to change the ordering by user.
+- complixty of (search, removal, insertion) times are logarithmic.
+- Usually implmented as RB (red-black) Trees.
+
+=>	map functions:
+- size() : number of nods
+- initializer list = {pair{key, value}, paire{key, value}, paire{key, value}, ...}
+- [key] : subscript operator, at(key). [key] the key is not an int only it can be any data type including string
+- clear()
+- count(), find() (find return an iterator to that key)
+- empty()
+- erase(iter pos), removes element at position and return iterator to next one.
+  erase(iter pos1, iter pos2) : removes elements between pos1 and pos2 and return pointer to next one.
+  erase(key) removes elements with key (if present) key, return numbers of elements removed.
+- insert({, } paire), inset(it1, it2), insert(init_list{{paire1}, {paire2}, ...})
+- begin(), end() return iterators.
+- upper_bound(key), lower_bound(key). 
+
+
+template < class Key, Class T, Class compare = std::less<Key>, class allocator = std::allocator<std::pair<const key, T> >, >
+class Map
+
+
+WORDS:
+	- Associative (adj): making such connections, or connected in your mind with someone or something.
+
+NOTE:
+	- DO NOT FORGET TO read about read-black trees.
+	- DO NOT FORGET TO read about std::allocator.

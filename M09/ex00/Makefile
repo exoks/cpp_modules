@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2023/12/13 18:56:44 by oussama
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/13 18:56:44 by oussama
+#         #....  ...   .-.  ....##       Created: 2023/12/17 16:08:53 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/17 19:56:24 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -22,8 +22,10 @@
 #====< Variables >==============================================================
 NAME		:= btc
 CC			:= c++
-CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror #-Wuninitialized
+CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
+SRC_DIR		:= src
+INCLUDE		:= include
 SRC			:= $(wildcard *.cpp)
 OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
 RM			:= rm -rf
@@ -39,7 +41,6 @@ END			:= \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "\r"
 	@$(CC) $(CPPFLAGS) $^ -o $@
 	@test | awk '						\
 	BEGIN{								\
@@ -47,7 +48,7 @@ $(NAME): $(OBJ)
 			printf("$(GREEN)▇$(END)");	\
 			system("sleep 0.01");		\
 		}								\
-		print("");				\
+		print("");						\
 	}'									
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
