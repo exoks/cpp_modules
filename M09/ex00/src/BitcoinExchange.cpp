@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/17 18:21:24 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/17 18:28:09 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/18 22:24:11 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/18 22:37:47 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -32,39 +32,50 @@ BitcoinExchange::BitcoinExchange(std::string fileName)
 	this->fileName = fileName;
 }
 
+//====< copy constructor >======================================================
+BitcoinExchange::BitcoinExchange(const BitcoinExchange & be)
+{
+	*this = be;
+}
+
 //====< Destructor >============================================================
 BitcoinExchange::~BitcoinExchange(void)
 {
 }
 
+//====< operator= >=============================================================
+BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & be)
+{
+	this->fileName = be.fileName;
+	return (*this);
+}
+
 //====< exchange >==============================================================
 void	BitcoinExchange::exchange(void)
 {
-	prs::KeyValueParser<std::string, int, ','>	data("data/data.csv");
-	prs::KeyValueParser<std::string, int>		input(fileName);
-	std::map<std::string, int>					map;
+	prs::KeyValueParser<std::string, double, ','>	data("data/data.csv");
+	prs::KeyValueParser<std::string, double>		input(fileName);
+	std::pair<std::string, double>					kv;
+	std::map<std::string, double>					db;
 
-	map = input.parseFile();
-	std::map<std::string, int>::iterator it;
-	for (it = map.begin(); it != map.end(); ++it)
+	db = data.parseFile();
+	while (true)
 	{
-		std::cout << it->first << "$" << std::endl;
+		kv = input.parseNextLine();
+		if (input.eof() == true)
+			break ;
+		else if (prs::isValidDate(kv.first) == false)
+			std::cout << "Error: bad input " + kv.first	<< std::endl;
+		else if (kv.second < 0)
+			std::cout << "Error: not a positive number" << std::endl;
+		else if (kv.second > INT_MAX)
+			std::cout << "Error: too large a number."	<< std::endl;
+		else
+			std::cout	<< kv.first	<< " => " << kv.second << " = " 
+						<< db.lower_bound(kv.first)->second * kv.second
+						<< std::endl;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

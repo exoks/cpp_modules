@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2023/12/17 16:08:53 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/17 19:56:24 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2023/12/18 22:40:51 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/18 22:40:51 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -25,9 +25,9 @@ CC			:= c++
 CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
 SRC_DIR		:= src
-INCLUDE		:= include
-SRC			:= $(wildcard *.cpp)
-OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
+INCLUDE		:= -Iinclude -Ilib/include
+SRC			:= $(wildcard *.cpp) $(wildcard */*.cpp) $(wildcard */*/*.cpp)
+OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
 RM			:= rm -rf
 
 #====< Colors >=================================================================
@@ -51,8 +51,16 @@ $(NAME): $(OBJ)
 		print("");						\
 	}'									
 
+$(OBJ_DIR)/%.o: lib/src/%.cpp | $(OBJ_DIR)
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
+	@printf "✅	Compiling... %5s\n" $<
+
+$(OBJ_DIR)/%.o: src/%.cpp | $(OBJ_DIR)
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
+	@printf "✅	Compiling... %5s\n" $<
+
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
 	@printf "✅	Compiling... %5s\n" $<
 
 $(OBJ_DIR):

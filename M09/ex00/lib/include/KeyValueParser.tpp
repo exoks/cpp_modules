@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/17 17:16:40 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/17 20:53:53 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/18 22:16:35 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/18 22:16:35 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,7 +19,6 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-// need to add more works to this file
 //====< constructor >===========================================================
 template <class p1, class p2, char sep>
 KeyValueParser<p1, p2, sep>::KeyValueParser(void)
@@ -33,7 +32,7 @@ KeyValueParser<p1, p2, sep>::KeyValueParser(std::fstream fs)
 	try
 	{
 		if (fs == NULL)
-			throw (std::out_of_range("can not open the file"));
+			throw (std::out_of_range("Error: could not open file."));
 		this->fs = fs;
 	} catch (std::exception & e){
 		std::cout << e.what() << std::endl;
@@ -48,7 +47,7 @@ KeyValueParser<p1, p2, sep>::KeyValueParser(std::string fileName)
 	{
 		fs.open(fileName, std::ios::in);
 		if (fs == NULL)
-			throw (std::out_of_range("can not open the file"));
+			throw (std::out_of_range("Error: could not open file."));
 	} catch (std::exception & e){
 		std::cout << e.what() << std::endl;
 	}
@@ -65,13 +64,17 @@ KeyValueParser<p1, p2, sep>::~KeyValueParser(void)
 template <class p1, class p2, char sep>
 std::pair<p1, p2>	KeyValueParser<p1, p2, sep>::parseNextLine(void)
 {
-	std::string	key;
-	std::string	tmp;
-	int			value;
+	std::string	first;
+	std::string	second;
+	p1			key;
+	p2			value;
 
-	getline(fs, key, sep);
-	getline(fs, tmp, '\n');
-	value = atoi(tmp.c_str());
+	getline(fs, first, sep);
+	getline(fs, second, '\n');
+	std::stringstream	kss(first);
+	std::stringstream	vss(second);
+	kss >> key;
+	vss >> value;
 	return (std::pair<p1, p2>(key, value));
 }
 
@@ -90,4 +93,11 @@ std::map<p1, p2>	KeyValueParser<p1, p2, sep>::parseFile(void)
 		map.insert(pair);
 	}
 	return (map);
+}
+
+//====< eof >===================================================================
+template<class p1, class p2, char sep>
+bool	KeyValueParser<p1, p2, sep>::eof(void)
+{
+	return (fs.eof());
 }
