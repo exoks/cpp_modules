@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/18 22:14:04 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/18 22:14:04 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/19 22:40:19 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 22:40:19 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -22,6 +22,8 @@
 #ifndef __DATE_HPP__
 # define __DATE_HPP__
 
+# include <ctime>
+
 struct	Date
 {
 	int			year;
@@ -34,7 +36,9 @@ struct	Date
 
 namespace prs
 {
+	Date		getCurrentDate(void);
 	bool		isValidDate(Date date);
+	bool		compareToCurrentDate(Date date);
 };
 
 #endif /*__DATE_HPP__*/

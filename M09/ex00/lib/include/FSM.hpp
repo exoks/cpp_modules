@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########      < Parser.cpp >                        
+//       ######-..        .+########         < FSM.hpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 20:10:41 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 20:10:41 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/19 12:17:32 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 22:23:45 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,45 +19,31 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-# include "Parser.hpp"
+# ifndef __FSM_HPP__
+# define __FSM_HPP__
+# include <iostream>
 
-//====< parseDate >=============================================================
-Date	prs::parseDate(std::string strDate)
+typedef enum	e_state
 {
-	std::stringstream	ss(strDate);
-	int					ymd[3];
-	std::string			buff;
+	START,
+	CHAR,
+	INT,
+	OPERATOR,
+	DOUBLE,
+	FUTURE_DOUBLE,
+	FLOAT,
+	STRING,
+	END,
+}				t_state;
 
-	try {
-		for (int i = 0; i < 4 && getline(ss, buff, '-'); i++)
-		{
-			if (i > 2 || buff.length() < 2)
-				throw (std::out_of_range("Error: invalid format"));
-			std::stringstream(buff) >> ymd[i];
-		}
-	} catch (std::exception & e){
-		std::cout << e.what() << " => " << strDate << std::endl;
-	}
-	return (Date(ymd[0], ymd[1], ymd[2]));
-}
-
-//====< isValidDate >===========================================================
-bool		prs::isValidDate(std::string strDate)
+class	FSM
 {
-	return (isValidDate(parseDate(strDate)));
-}
+	private:
+		FSM(void);
+		static int	getNextState(int prv, char input);
 
-//====< trim >==================================================================
-std::string 	prs::trim(std::string str)
-{
-	int		start;
-	int		end;
+	public:
+		static int	detectType(std::string str);
+};
 
-	start = 0;
-	end = str.length() - 1;
-	while (start <= end && str[start] == ' ')
-		start++;
-	while (end >= 0 && str[end] == ' ')
-	  	end--;
-	return (str.substr(start, end - start + 1));
-}
+#endif /*__FSM_HPP__*/
