@@ -1,25 +1,37 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 10:26:18 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/24 16:12:35 by oezzaou          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//            ################                                                  
+//          ####################                                                
+//        ########################                                              
+//       #############+########### #                                            
+//       ######-..        .+########  < Bureaucrat.hpp >                        
+//       ####-..            ..+####                                             
+//       ###-...             .-####                                             
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
+//        #-.++###.      -###+..##                                              
+//        #....  ...   .-.  ....##       Created: 2023/12/21 21:38:04 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/21 21:38:04 by oussama
+//      ---....... ..  ........... -                                            
+//      -+#..     ..   .       .+-.                                             
+//       .--.     .     .     ..+.                                              
+//         -..    .+--.-.     ...                                               
+//         +.... .-+#.#+.    ..-                                                
+//          +...#####-++###-..-                                                 
+//          #---..----+--.---+##                                                
+//        ###-+--.... ....--+#####                                              
+//  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __BUREAUCRAT_HPP__
-# define __BUREAUCRAT_HPP__
+#ifndef __BUREAUCRAT_HPP_
+# define __BUREAUCRAT_HPP_
+
+class	AForm;
 
 # include <iostream>
 # include "Exception.hpp"
+# include "AForm.hpp"
 
 class	Bureaucrat
 {
 	private:
-		std::string	name;
+		const std::string	name;
 		int			grade;
 
 	public:
@@ -27,15 +39,17 @@ class	Bureaucrat
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &inst);
 		~Bureaucrat(void);
-
+		
 		Bureaucrat&	operator=(const Bureaucrat &inst);
+		
 		std::string	getName(void) const;
 		int			getGrade(void) const;
-
+		
 		void		incrementGrade(void);
 		void		decrementGrade(void);
-//		void		signForm(AForm const & form);
-//		void		executeForm(AForm const & form);
+
+		void		signForm(AForm & form);
+		void		executeForm(AForm & form);
 };
 
 std::ostream&		operator<<(std::ostream& stream, Bureaucrat& inst);

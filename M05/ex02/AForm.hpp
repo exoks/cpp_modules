@@ -6,18 +6,16 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:53:01 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/24 16:09:31 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/21 21:41:14 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __AFORM_HPP__
 # define __AFORM_HPP__
 
-# include <iostream>
-# include <fstream>
-# include "Exception.hpp"
-
 class	Bureaucrat;
+
+# include "Bureaucrat.hpp"
 
 class	AForm
 {
@@ -40,8 +38,8 @@ class	AForm
 		int					getSignGrade(void) const;
 		int					getExecGrade(void) const;
 
-		virtual void		execute(Bureaucrat const & executor) const = 0;
 		virtual void		beSigned(const Bureaucrat& bureaucrat) = 0;
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream&	operator<<(std::ostream& stream, const AForm& form);
