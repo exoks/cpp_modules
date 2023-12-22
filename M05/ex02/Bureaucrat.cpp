@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/21 21:40:14 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/21 21:40:22 by oussama
+//        #....  ...   .-.  ....##       Created: 2023/12/21 22:06:27 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/21 22:16:03 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -132,7 +132,7 @@ void	Bureaucrat::executeForm(AForm & form)
 		std::cout << name << " execute " << form.getName() << std::endl;
 	} catch(Exception & e){
 		std::cout	<< this->name
-				<< " couldn't sign form "
+				<< " couldn't execute form "
 				<< form.getName()
 			       	<< " because "
 				<< e.what() << std::endl;

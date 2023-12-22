@@ -1,21 +1,30 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Exception.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 16:30:46 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/22 18:11:39 by oezzaou          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//            ################                                                  
+//          ####################                                                
+//        ########################                                              
+//       #############+########### #                                            
+//       ######-..        .+########   < Exception.cpp >                        
+//       ####-..            ..+####                                             
+//       ###-...             .-####                                             
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
+//        #-.++###.      -###+..##                                              
+//        #....  ...   .-.  ....##       Created: 2023/12/21 20:50:27 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/21 20:50:27 by oussama
+//      ---....... ..  ........... -                                            
+//      -+#..     ..   .       .+-.                                             
+//       .--.     .     .     ..+.                                              
+//         -..    .+--.-.     ...                                               
+//         +.... .-+#.#+.    ..-                                                
+//          +...#####-++###-..-                                                 
+//          #---..----+--.---+##                                                
+//        ###-+--.... ....--+#####                                              
+//  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#include "Exception.hpp"
+# include "Exception.hpp"
 
 //====< Constructor >===========================================================
 Exception::Exception(std::string msg)
 {
-	this->msg = "Exception Caught: " + msg;
+	this->msg = msg;
 }
 
 //====< Destructor >===========================================================
@@ -30,7 +39,7 @@ const char	*Exception::what() const throw()
 }
 
 //====< GradeTooHighException Constructor >=====================================
-GradeTooHighException::GradeTooHighException() : Exception("Can't hight grade")
+GradeTooHighException::GradeTooHighException() : Exception("too low grade")
 {
 }
 
@@ -40,7 +49,7 @@ GradeTooHighException::~GradeTooHighException() throw()
 }
 
 //====< gradetoolowexception constructor >=====================================
-GradeTooLowException::GradeTooLowException() : Exception("Can't lower grade")
+GradeTooLowException::GradeTooLowException() : Exception("too low grade")
 {
 }
 
@@ -48,4 +57,3 @@ GradeTooLowException::GradeTooLowException() : Exception("Can't lower grade")
 GradeTooLowException::~GradeTooLowException() throw()
 {
 }
-

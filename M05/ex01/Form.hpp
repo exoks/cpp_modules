@@ -1,19 +1,30 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 10:53:01 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/23 12:28:05 by oezzaou          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//            ################                                                  
+//          ####################                                                
+//        ########################                                              
+//       #############+########### #                                            
+//       ######-..        .+########        < Form.hpp >                        
+//       ####-..            ..+####                                             
+//       ###-...             .-####                                             
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
+//        #-.++###.      -###+..##                                              
+//        #....  ...   .-.  ....##       Created: 2023/12/21 20:29:26 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/21 20:52:25 by oussama
+//      ---....... ..  ........... -                                            
+//      -+#..     ..   .       .+-.                                             
+//       .--.     .     .     ..+.                                              
+//         -..    .+--.-.     ...                                               
+//         +.... .-+#.#+.    ..-                                                
+//          +...#####-++###-..-                                                 
+//          #---..----+--.---+##                                                
+//        ###-+--.... ....--+#####                                              
+//  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
 #ifndef __FORM_HPP__
 # define __FORM_HPP__
 
 # include "Bureaucrat.hpp"
+
+class	Bureaucrat;
 
 class	Form
 {
@@ -25,11 +36,12 @@ class	Form
 
 	public:
 		Form(void);
-		Form(std::string attr1, bool attr2, int attr3, int attr4);
+		Form(std::string name, int signGrade, int execGrade);
 		Form(const Form& form);
 		~Form(void);
 
 		Form&			operator=(const Form& form);
+	
 		std::string		getName(void) const;
 		bool			getIsSigned(void) const;
 		int				getSignGrade(void) const;

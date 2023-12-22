@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:44:14 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/12/21 21:31:58 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/21 22:09:06 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,20 @@ void	SCForm::execute(Bureaucrat const & executor) const
 {
 	std::fstream	fs;
 
-	if (!this->getIsSigned() || executor.getGrade() > this->getSignGrade())
-		throw (Exception("can't be executed"));
+	if (this->getIsSigned() == false)
+		throw (Exception("form not signed"));
+	if (executor.getGrade() > this->getSignGrade())
+		throw (GradeTooLowException());
 	fs.open(this->getName() + "_shrubbery", std::ios::out);
-	fs		<< "                ,@@@@@@@,"			<< std::endl
-			<< "       ,,,.   ,@@@@@@/@@@, .oo8888o."	<< std::endl
-			<< "    ,&\\&&&%&&%,@@@@@/@@@@@@,8888\\88/8o"	<< std::endl
-			<< "  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'"	<< std::endl
-			<< "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'"	<< std::endl
-			<< "   %&&%/ %&&&&&@@\\ V /@@' `88\\8 `/88'"	<< std::endl
-			<< "   `&%\\ ` /%&'    |.|        \\ '|8'"	<< std::endl
-			<< "       |o|        | |         | |"		<< std::endl
-			<< "       |.|        | |         | |"		<< std::endl
-			<< "    \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//_"	<< std::endl;
+	fs	<< "                ,@@@@@@@,"			<< std::endl
+		<< "       ,,,.   ,@@@@@@/@@@, .oo8888o."	<< std::endl
+		<< "    ,&\\&&&%&&%,@@@@@/@@@@@@,8888\\88/8o"	<< std::endl
+		<< "  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'"	<< std::endl
+		<< "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'"	<< std::endl
+		<< "   %&&%/ %&&&&&@@\\ V /@@' `88\\8 `/88'"	<< std::endl
+		<< "   `&%\\ ` /%&'    |.|        \\ '|8'"	<< std::endl
+		<< "       |o|        | |         | |"		<< std::endl
+		<< "       |.|        | |         | |"		<< std::endl
+		<< "    \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//_"	<< std::endl;
 	fs.close();
 }

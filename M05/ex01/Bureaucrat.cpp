@@ -1,16 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 10:35:09 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/23 12:23:04 by oezzaou          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//            ################                                                  
+//          ####################                                                
+//        ########################                                              
+//       #############+########### #                                            
+//       ######-..        .+########  < Bureaucrat.cpp >                        
+//       ####-..            ..+####                                             
+//       ###-...             .-####                                             
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
+//        #-.++###.      -###+..##                                              
+//        #....  ...   .-.  ....##       Created: 2023/12/21 20:53:29 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/21 20:58:20 by oussama
+//      ---....... ..  ........... -                                            
+//      -+#..     ..   .       .+-.                                             
+//       .--.     .     .     ..+.                                              
+//         -..    .+--.-.     ...                                               
+//         +.... .-+#.#+.    ..-                                                
+//          +...#####-++###-..-                                                 
+//          #---..----+--.---+##                                                
+//        ###-+--.... ....--+#####                                              
+//  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
 //====< Constructor >===========================================================
 Bureaucrat::Bureaucrat(void)
@@ -18,16 +27,15 @@ Bureaucrat::Bureaucrat(void)
 }
 
 //====< Constructor >===========================================================
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
-	this->name = name;
 	try
 	{
 		if (grade < 1 || grade > 150)
-			throw (Exception("Invalid Value: Grade < 1 or Grade > 150"));
+			throw (Exception("Grade < 1 or Grade > 150"));
 		this->grade = grade;
 	}catch (Exception& e){
-		std::cout << e.what() << std::endl;
+		std::cout << "Invalid Value: " << e.what() << std::endl;
 	}
 }
 
@@ -45,7 +53,6 @@ Bureaucrat::~Bureaucrat(void)
 //====< Copy Assignment Operator >==============================================
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& inst)
 {
-	name = inst.name;
 	grade = inst.grade;
 	return (*this);
 }
@@ -81,8 +88,8 @@ void		Bureaucrat::incrementGrade(void)
 			throw (GradeTooHighException());
 		--grade;
 	}
-	catch (Exception& e){
-		std::cout << std::string(e.what()) << std::endl;
+	catch (Exception & e){
+		std::cout << "Excption Caught: " << e.what() << std::endl;
 	}
 }
 
@@ -95,20 +102,23 @@ void		Bureaucrat::decrementGrade(void)
 			throw (GradeTooLowException());
 		++grade;
 	}
-	catch (Exception& e){
-		std::cout << std::string(e.what()) << std::endl;
+	catch (Exception & e){
+		std::cout << "Exception Caught: " << e.what() << std::endl;
 	}
 }
 
 //====< signForm >==============================================================
-/*void		Bureaucrat::signForm()
+void	Bureaucrat::signForm(Form & form)
 {
-	if (form.getIsSigned() == true)
-		std::cout	<< name
-					<< " signed "
-					<< form.getName()
-					<< std::endl;
-	else
-		std::cout	<< "couldn't sign"
-					<< std::endl;
-}*/
+	try
+	{
+		form.beSigned(*this);
+		std::cout << name << " signed " << form.getName() << std::endl;
+	} catch(Exception & e){
+		std::cout	<< this->name
+				<< " couldn't sign form "
+				<< form.getName()
+			       	<< " because "
+				<< e.what() << std::endl;
+	}
+}

@@ -6,66 +6,58 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:44:14 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/24 16:14:20 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/21 22:30:56 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PresidentialPardonForm.hpp"
 
 //====< Constructor >===========================================================
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm("x", false, 25, 5)
+PPForm::PresidentialPardonForm(void) : AForm("x", false, 25, 5)
 {
 }
 
 //====< Constructor >===========================================================
-PresidentialPardonForm::PresidentialPardonForm(std::string name)
-: AForm(name, false, 25, 5)
+PPForm::PresidentialPardonForm(std::string name) : AForm(name, false, 25, 5)
 {
 }
 
 //====< Constructor >===========================================================
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& fm)
-: AForm(fm.getName(), fm.getIsSigned(), fm.getSignGrade(), fm.getExecGrade())
+PPForm::PresidentialPardonForm(PPForm & fm)
+: AForm(fm.getName(), false, fm.getSignGrade(), fm.getExecGrade())
 {
 }
 
 //====< Destructor >============================================================
-PresidentialPardonForm::~PresidentialPardonForm(void)
+PPForm::~PresidentialPardonForm(void)
 {
 }
 
 //====< operator= >=============================================================
-PresidentialPardonForm&	PresidentialPardonForm
-::operator=(PresidentialPardonForm const & form)
+PPForm &	PresidentialPardonForm::operator=(PPForm const & form)
 {
 	this->setIsSigned(form.getIsSigned());
 	return (*this);
 }
 
 //====< beSigned >==============================================================
-void	PresidentialPardonForm::beSigned(const Bureaucrat& bureaucrat)
+void	PPForm::beSigned(const Bureaucrat& bureaucrat)
 {
-	try
-	{
-		if (bureaucrat.getGrade() > this->getSignGrade())
-			throw (GradeTooLowException());
-		this->setIsSigned(true);
-	}catch (Exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	if (this->getIsSigned() == true)
+		throw (Exception("form already signed"));
+	if (bureaucrat.getGrade() > this->getSignGrade())
+		throw (GradeTooLowException());
+	this->setIsSigned(true);
 }
 
 //====< execute >===============================================================
-void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
+void	PPForm::execute(Bureaucrat const & executor) const
 {
-	try
-	{
-		if (!this->getIsSigned() || executor.getGrade() > this->getSignGrade())
-			throw (Exception("pardoned has been denied"));
-		std::cout	<< this->getName()
-					<< " :has been pardoned by Zaphod Beeblebrox."
-					<< std::endl;
-	}catch (Exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	if (this->getIsSigned() == false)
+		throw (Exception("form is not signed."));
+	if (executor.getGrade() > this->getSignGrade())
+		throw (GradeTooLowException());
+	std::cout	<< this->getName()
+			<< " :has been pardoned by Zaphod Beeblebrox."
+			<< std::endl;
 }

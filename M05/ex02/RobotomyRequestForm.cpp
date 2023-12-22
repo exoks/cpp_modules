@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:44:14 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/11/24 15:47:10 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/12/21 22:21:36 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,56 +18,50 @@ RobotomyRequestForm::RobotomyRequestForm(void) : AForm("x", false, 72, 45)
 }
 
 //====< Constructor >===========================================================
-RobotomyRequestForm::RobotomyRequestForm(std::string name)
-: AForm(name, false, 72, 45)
+RRForm::RobotomyRequestForm(std::string name) : AForm(name, false, 72, 45)
 {
 }
 
 //====< Constructor >===========================================================
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& fm)
-: AForm(fm.getName(), fm.getIsSigned(), fm.getSignGrade(), fm.getExecGrade())
+RRForm::RobotomyRequestForm(RRForm& form)
+: AForm(form.getName(), false, form.getSignGrade(), form.getExecGrade())
 {
 }
 
 //====< Destructor >============================================================
-RobotomyRequestForm::~RobotomyRequestForm(void)
+RRForm::~RobotomyRequestForm(void)
 {
 }
 
 //====< operator= >=============================================================
-RobotomyRequestForm&	RobotomyRequestForm
-::operator=(RobotomyRequestForm const & form)
+RRForm&	RobotomyRequestForm::operator=(RRForm const & form)
 {
 	this->setIsSigned(form.getIsSigned());
 	return (*this);
 }
 
 //====< beSigned >==============================================================
-void	RobotomyRequestForm::beSigned(const Bureaucrat& bureaucrat)
+void	RRForm::beSigned(const Bureaucrat& bureaucrat)
 {
-	try
-	{
-		if (bureaucrat.getGrade() > this->getSignGrade())
-			throw (GradeTooLowException());
-		this->setIsSigned(true);
-	}catch (Exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	if (this->getIsSigned() == true)
+		throw (Exception("form already signed"));
+	if (bureaucrat.getGrade() > this->getSignGrade())
+		throw (GradeTooLowException());
+	this->setIsSigned(true);
 }
 
 //====< execute >===============================================================
-void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void	RRForm::execute(Bureaucrat const & executor) const
 {
-	try
-	{
-		std::cout << "Making drilling noise: trrrrrrrrrrr" << std::endl;
-		if (!this->getIsSigned() || executor.getGrade() > this->getSignGrade())
-			throw (Exception("robotomy failed"));
-		std::cout	<< this->getName()
-					<< " :has been robotomized successfully."
-					<< std::endl;
-		/* subject still not clear for me */
-	}catch (Exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	std::string	msg[2] = {"success", "failure"};
+	int		index;
+
+	index = rand() % 2;
+	if (this->getIsSigned() == false)
+		throw (Exception("form is not signed."));
+	if (executor.getGrade() > this->getSignGrade())
+		throw (GradeTooLowException());
+	std::cout 	<< this->getName()
+			<< " robotomized with "
+			<< msg[index] << std::endl;
 }
