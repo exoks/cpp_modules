@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:21:57 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:21:57 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/23 20:11:32 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/23 20:11:32 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -25,7 +25,7 @@
 //====< main >==================================================================
 int	main(int ac, char **av)
 {
-	if (ac == 1)
+	if (ac != 2)
 		return (EXIT_FAILURE);
 	ScalarConverter::convert(std::string(*(++av)));
 	return (EXIT_SUCCESS);

@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/13 16:26:18 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/13 16:38:56 by oussama
+//        #....  ...   .-.  ....##       Created: 2023/12/24 20:21:39 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 20:21:39 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -47,14 +47,14 @@ int	main(void)
 	MutanStack<int>::iterator i;
 
 	i = ms.begin();
-	std::cout << "hello world" << std::endl;
+	std::cout << "========" << std::endl;
 	std::cout << "begin: " << *i << std::endl;
 	--i;
 	++i;
 	std::cout << *i << std::endl;
-	bool b = ms.begin() != ms.end();
-	std::cout << "diff: " << b << std::endl;
+//	bool b = ms.begin() != ms.end();
+//	std::cout << "diff: " << b << std::endl;
 
-	std::stack<int> s(ms);
+//	std::stack<int> s(ms);
 	return (EXIT_SUCCESS);
 }

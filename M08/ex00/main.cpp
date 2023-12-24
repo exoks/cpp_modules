@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/10 11:25:50 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/10 11:25:50 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/24 16:23:53 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 16:23:53 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -31,8 +31,12 @@ int	main(void)
 	v.push_back(2);
 	v.push_back(7);
 
-	easyfind(v, 3);
-	easyfind(v, 9);
-
+	try
+	{
+		easyfind(v, 3);
+		easyfind(v, 9);
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
 	return (EXIT_SUCCESS);
 }

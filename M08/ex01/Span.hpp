@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 19:32:58 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 19:32:58 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/24 17:59:27 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 17:59:27 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -27,8 +27,6 @@
 # include <algorithm>
 # include <vector>
 
-typedef std::vector<int>::iterator vint_iter;
-
 class	Span
 {
 	private:
@@ -44,6 +42,7 @@ class	Span
 		Span &	operator=(const Span & span);
 		void	addNumber(int nbr);
 		int		longestSpan(void);
+		int		shortestSpan(void);
 };
 
 #endif /*__SPAN_HPP__*/

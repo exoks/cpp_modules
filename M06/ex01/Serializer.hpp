@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:24:21 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:24:21 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/22 21:56:18 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/22 21:56:18 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,6 +26,9 @@
 
 class	Serializer
 {
+	private:
+		Serializer(void);
+
 	public:
 		static uintptr_t	serialize(Data *ptr);
 		static Data			*deserialize(uintptr_t raw);

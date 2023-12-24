@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:23:23 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:23:23 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/23 20:38:29 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/23 20:38:29 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,15 +24,8 @@
 
 # include "FSM.hpp"
 # include <sstream>
-
-typedef struct s_data
-{
-	int		type;
-	char	cValue;
-	int		iValue;
-	double	dValue;
-	float	fValue;
-}				t_data;
+# include <iomanip>
+# include <cstdlib>
 
 class	ScalarConverter
 {
@@ -40,6 +33,9 @@ class	ScalarConverter
 		static void	convert(std::string input);
 };
 
-void	fromInt(std::string input);
+void	toChar(std::string input, int type);
+void	toInt(std::string input, int type);
+void	toDouble(std::string input, int type);
+void	toFloat(std::string input, int type);
 
 #endif /*__SCALARCONVERTER_HPP__*/

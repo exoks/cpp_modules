@@ -1,13 +1,29 @@
+//            ################                                                  
+//          ####################                                                
+//        ########################                                              
+//       #############+########### #                                            
+//       ######-..        .+########    < easyfind.tpp >                        
+//       ####-..            ..+####                                             
+//       ###-...             .-####                                             
+//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//        #-.++###.      -###+..##                                              
+//        #....  ...   .-.  ....##       Created: 2023/12/24 16:29:42 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 16:29:42 by oezzaou
+//      ---....... ..  ........... -                                            
+//      -+#..     ..   .       .+-.                                             
+//       .--.     .     .     ..+.                                              
+//         -..    .+--.-.     ...                                               
+//         +.... .-+#.#+.    ..-                                                
+//          +...#####-++###-..-                                                 
+//          #---..----+--.---+##                                                
+//        ###-+--.... ....--+#####                                              
+//  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
+
 //====< easyfind >==============================================================
 template <typename T>
 void	easyfind(T container, int x)
 {
-	try
-	{
-		if (find(container.begin(), container.end(), x) == container.end())
-			throw (std::out_of_range(": Not found."));
-		std::cout << "Exist: " << x << std::endl;
-	} catch (std::exception & e){
-		std::cout << "Exception caught: " << x << e.what() << std::endl;
-	}
+	if (find(container.begin(), container.end(), x) == container.end())
+		throw (std::out_of_range("Not found : "));
+	std::cout << "Exist: " << x << std::endl;
 }

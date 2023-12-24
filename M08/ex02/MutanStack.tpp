@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/13 16:42:57 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/13 16:42:57 by oussama
+//        #....  ...   .-.  ....##       Created: 2023/12/24 20:18:11 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 20:18:18 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -18,7 +18,7 @@
 //          #---..----+--.---+##                                                
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
-
+/*
 //====< push >==================================================================
 template <class Type>
 void	MutanStack<Type>::push(Type element)
@@ -54,7 +54,7 @@ Type		MutanStack<Type>::top(void)
 	}
 	return (0);
 }
-
+*/
 //====< iterator constructor >==================================================
 template <class Type>
 MutanStack<Type>::iterator::iterator(void)
@@ -70,14 +70,14 @@ MutanStack<Type>::iterator::iterator(typename std::deque<Type>::iterator it)
 
 //====< operator++ >============================================================
 template <class Type>
-typename MutanStack<Type>::iterator& MutanStack<Type>::iterator::operator++()
+typename MutanStack<Type>::iterator & MutanStack<Type>::iterator::operator++()
 {
 	return (--iter, *this);
 }
 
 //====< operator-- >============================================================
 template <class Type>
-typename MutanStack<Type>::iterator& MutanStack<Type>::iterator::operator--()
+typename MutanStack<Type>::iterator & MutanStack<Type>::iterator::operator--()
 {
 	return (++iter, *this);
 }

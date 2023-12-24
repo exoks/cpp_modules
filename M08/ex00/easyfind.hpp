@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/10 11:17:55 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/10 11:18:21 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/24 16:25:17 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 16:25:20 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,8 +24,8 @@
 
 # include <exception>
 # include <iostream>
-# include <vector>
 # include <algorithm>
+# include <vector>
 
 template <typename T>
 void	easyfind(T container, int x);

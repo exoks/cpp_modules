@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:20:46 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:20:46 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/23 19:19:37 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/23 19:19:37 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -21,6 +21,7 @@
 
 # ifndef __FSM_HPP__
 # define __FSM_HPP__
+
 # include <iostream>
 
 typedef enum	e_state
@@ -28,11 +29,11 @@ typedef enum	e_state
 	START,
 	CHAR,
 	INT,
-	FUTURE_INT,
-	DOUBLE,
-	FUTURE_DOUBLE,
 	FLOAT,
+	DOUBLE,
 	STRING,
+	OPERATOR,
+	FUTURE_DOUBLE,
 	END,
 }				t_state;
 

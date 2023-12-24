@@ -1,24 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/14 19:48:44 by oezzaou           #+#    #+#              #
-#    Updated: 2023/11/24 15:34:46 by oezzaou          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#             ################                                                  
+#           ####################                                                
+#         ########################                                              
+#        #############+########### #                                            
+#        ######-..        .+########        < Makefile >                        
+#        ####-..            ..+####                                             
+#        ###-...             .-####                                             
+#        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+#         #-.++###.      -###+..##                                              
+#         #....  ...   .-.  ....##       Created: 2023/12/22 17:21:56 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/22 18:51:35 by oezzaou
+#       ---....... ..  ........... -                                            
+#       -+#..     ..   .       .+-.                                             
+#        .--.     .     .     ..+.                                              
+#          -..    .+--.-.     ...                                               
+#          +.... .-+#.#+.    ..-                                                
+#           +...#####-++###-..-                                                 
+#           #---..----+--.---+##                                                
+#         ###-+--.... ....--+#####                                              
+#   ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
 #====< Variables >==============================================================
-NAME		:= bureaucrat
+NAME		:= intern
 CC			:= c++
 CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
-SRC			:= $(wildcard *.cpp)
-OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
+SRC_DIR		:= src
+INCLUDE		:= -Iinclude
+SRC			:= $(wildcard *.cpp) $(wildcard */*.cpp)
+OBJ			:= $(addsuffix .o, $(notdir $(basename $(SRC))))
+OBJ			:= $(addprefix $(OBJ_DIR)/, $(OBJ))
 RM			:= rm -rf
-GEN_FILES	:= $(wildcard *_shrubbery)
 
 #====< Colors >=================================================================
 RED			:= \033[0;31m
@@ -34,16 +45,19 @@ $(NAME): $(OBJ)
 	@$(CC) $(CPPFLAGS) $^ -o $@
 	@test | awk '						\
 	BEGIN{								\
-		printf("$(RED)[$(END)");		\
 		for (i=0; i < 50; i++){			\
-			printf("$(GREEN)#$(END)");	\
+			printf("$(GREEN)▇$(END)");	\
 			system("sleep 0.01");		\
 		}								\
-		print("$(RED)]$(END)");			\
+		print("");						\
 	}'									
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
+	@printf "✅	Compiling... %5s\n" $<
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
 	@printf "✅	Compiling... %5s\n" $<
 
 $(OBJ_DIR):
@@ -53,8 +67,8 @@ clean:
 	@${RM} $(OBJ_DIR)
 	@printf "✅	cleaning objs...\n"
 
-fclean: $(GEN_FILES) clean
-	@${RM} $(NAME) $<
+fclean: clean
+	@${RM} $(NAME)
 	@printf "✅	cleaning program...\n"
 
 re: fclean all
@@ -62,6 +76,6 @@ re: fclean all
 run:
 	@./$(NAME)
 
-.SUFFIXES: .o .cpp
+.SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run
 #===============================================================================

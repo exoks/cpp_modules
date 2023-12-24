@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 22:27:32 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 22:27:32 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/19 22:45:04 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/20 14:30:48 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -53,7 +53,7 @@ namespace	prs
 
 	Date		parseDate(std::string date);
 	bool		isValidDate(std::string date);
-	
+
 	std::string	trim(std::string str);
 
 # include "KeyValueParser.tpp"

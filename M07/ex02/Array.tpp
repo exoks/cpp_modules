@@ -1,13 +1,34 @@
+//            ################                                                  
+//          ####################                                                
+//        ########################                                              
+//       #############+########### #                                            
+//       ######-..        .+########       < Array.tpp >                        
+//       ####-..            ..+####                                             
+//       ###-...             .-####                                             
+//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//        #-.++###.      -###+..##                                              
+//        #....  ...   .-.  ....##       Created: 2023/12/23 17:54:25 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/23 17:54:48 by oezzaou
+//      ---....... ..  ........... -                                            
+//      -+#..     ..   .       .+-.                                             
+//       .--.     .     .     ..+.                                              
+//         -..    .+--.-.     ...                                               
+//         +.... .-+#.#+.    ..-                                                
+//          +...#####-++###-..-                                                 
+//          #---..----+--.---+##                                                
+//        ###-+--.... ....--+#####                                              
+//  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
+
 //====< constructor >===========================================================
-template <class T> Array<T>::Array(void) : length(10)
+template <class T> Array<T>::Array(void) : length(0)
 {
 		this->arr = new T[length];
 }
 
 //====< constructor >===========================================================
-template <class T> Array<T>::Array(unsigned int n) : length(static_cast<int>(n))
+template <class T> Array<T>::Array(unsigned int n) : length(n)
 {
-	this->arr = new T[n];
+	this->arr = new T[length];
 }
 
 
@@ -28,37 +49,22 @@ template <class T> Array<T>::~Array(void)
 template <class T>
 void	Array<T>::operator=(const Array<T> & arr)
 {
-	for (int i = 0; i < length && i < arr.size(); i++)
-		(*this)[i] = arr[i];
+	for (unsigned int index = 0; index < length && index < arr.size(); index++)
+		(*this)[index] = arr[index];
 }
 
 //====< operator[] >============================================================
 template <class T>
-T&	Array<T>::operator[](int index) const
+T&	Array<T>::operator[](unsigned int index) const
 {
-	try
-	{
-		if (index < 0 || index >= length)
-			throw (std::out_of_range("OutOfBounds."));
-		return (arr[index]);
-	}
-	catch (std::exception & e){
-		std::cout << "Exception Caught: " << e.what() << std::endl;
-	}
-	return (arr[0]);
-}
-
-//====< displayElements >=======================================================
-template <class T>
-void	Array<T>::displayElements(void)
-{
-	for (int index = 0; index < length; index++)
-		std::cout << arr[index] << std::endl;
+	if (index >= length)
+		throw (std::out_of_range("OutOfBounds: Invalid index"));
+	return (arr[index]);
 }
 
 //====< size >==================================================================
 template <class T>
-int	Array<T>::size(void) const
+unsigned int	Array<T>::size(void) const
 {
-	return (length);
+	return (this->length);
 }

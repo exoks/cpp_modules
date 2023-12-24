@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/08 17:20:28 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/08 17:20:28 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/23 13:07:53 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/23 13:07:53 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -42,14 +42,14 @@ int	FSM::detectType(std::string str)
 	return ((state != START && prev_state == END)? state: prev_state);
 }
 
-//====< getNextState >========================================================
+//====< getNextState >==========================================================
 int	FSM::getNextState(int prv, char input)
 {
 	if (prv == START && input == ' ')
 		return (START);
 	if (prv == START && !isdigit(input))
-		return (strchr("+-", input)? FUTURE_INT: CHAR);
-	if ((prv == START || prv == FUTURE_INT || prv == INT) && isdigit(input))
+		return (strchr("+-", input)? OPERATOR: CHAR);
+	if ((prv == START || prv == OPERATOR || prv == INT) && isdigit(input))
 		return (INT);
 	if (prv == INT && input == '.')
 		return (FUTURE_DOUBLE);
