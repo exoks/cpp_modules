@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/03 20:25:55 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/03 20:25:55 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/04 13:24:29 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/04 13:26:34 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -23,71 +23,65 @@
 # include <vector>
 
 //==============================================================================
-void	fun(int level, int len);
-void	swap_pairs(std::vector<int> & v, int level, int len);
+void	fordJhonsonAlgorithm(std::vector<int> & v, int level, int len);
+void	merge(std::vector<int> & v, int level, int len);
 
 //====< main >==================================================================
 int	main(void)
 {
 	std::vector<int>	v;
 
+	v.push_back(2);
 	v.push_back(1);
 	v.push_back(4);
 	v.push_back(3);
-	v.push_back(2);
-	
-	swap_pairs(v, 1, 4);
-	
-	for (int index = 0; index < 4; ++index)
+	v.push_back(5);
+
+//	v.push_back(2);
+//	v.push_back(7);
+//	v.push_back(8);
+//	v.push_back(9);
+
+//	fordJhonsonAlgorithm(v, 1, v.size());
+
+
+	merge(v, 1, 5);
+	for (int index = 0; index < v.size(); ++index)
 		std::cout << v[index] << std::endl;
+
 	return (EXIT_SUCCESS);
 }
 
-//====< fun >===================================================================
-void	fun(int level, int len)
+//====< fordJhonsonAlgorithm >==================================================
+void	fordJhonsonAlgorithm(std::vector<int> & v, int level, int len)
 {
 	int	pair_size;
 
 	pair_size = (1 << level);
 	if (pair_size > len || pair_size * 2 > len)
 		return ;
-	std::cout << pair_size << std::endl;
-	fun(++level, len);
-	// swap pairs each time depend on the level
-	// can't be called in case of pair_size > len || pair_size * 2 > len
+	fordJhonsonAlgorithm(v, ++level, len);
 }
 
-//====< swap >==================================================================
-void	swap_pairs(std::vector<int> & v, int level, int len)
+//====< merge >=================================================================
+void	merge(std::vector<int> & v, int level, int len)
 {
-	int	pair_size;
-	int	index;
-	int	tmp;
+	int							step(1);
+	int							index(-1);
 
-	pair_size = (1 << level);
-	index = pair_size - 1;
-	std::cout << "tmp : " << v[index] << std::endl;
-	while (index < len && index + pair_size < len)
+	step <<= level;
+	index += step;
+	while (index < len)
 	{
-		v[index] = tmp; 
-		v[index] = v[index + pair_size];
-		v[index + pair_size] = tmp;
-		index += pair_size;
+		if (index + step < len)
+			;//swap_range(v, v.begin() + index, step);
+		index += (step + 1);
 	}
-	for (int i = 0; i < 4; ++i)
-		std::cout << "index : " << v[i] << std::endl;
 }
 
-//	std::cout << "===> " << index << std::endl;
-//	std::cout << "===> " << index + pair_size << std::endl;
-
-/*
-void	merge(std::vector<int> & v, int step)
+//: function must use iterator instead of index
+//====< swap_range >============================================================
+bool	swap_range(std::vector<int> & v, std::vector<int>::iterator s, int range)
 {
-	if (v.size() / step < 2)
-		return ;
-	merge(v, step * 2);
-	// i know the step so i have to split between the main chaine and pend
-	// move and swap between the two paires
+	return (true);
 }
-*/
