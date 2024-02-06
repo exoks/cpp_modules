@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/26 13:09:55 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/26 13:10:40 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/05 21:06:01 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/05 21:06:01 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -29,11 +29,18 @@
 class	PmergeMe
 {
 	private:
-		PmergeMe(void);
 
 	public:
-		void	sort(std::vector<int> & v);
-//		void	mergeInsertion(std::list<int> & l);
+		PmergeMe(void);
+		void	merge(std::vector<int> & v, int level, int len);
+//		void	insert(arguments);
+
+		void	mergeInsertion(std::vector<int> & v, int level, int size);
 };
+
+std::vector<int>::iterator	toIterator(std::vector<int> & v, int index);
+std::list<int>::iterator	toIterator(std::list<int> & v, int index);
+
+bool				swap_range(std::vector<int> & v, int level, int size);
 
 #endif /*__PMERGEME_HPP__*/

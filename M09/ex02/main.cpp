@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/26 14:40:55 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/26 14:40:57 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/05 21:05:37 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/05 21:05:40 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -22,12 +22,26 @@
 # include "PmergeMe.hpp"
 
 //====< main >==================================================================
-int	main(int ac, char **av)
+int	main(void)
 {
 	std::vector<int>	v;
+	PmergeMe		m;
 
-	(void) ac;
-	(void) av;
-	(void) v;
+	v.push_back(4);
+	v.push_back(3);
+	v.push_back(2);
+	v.push_back(1);
+
+//	v.push_back(2);
+//	v.push_back(7);
+//	v.push_back(8);
+//	v.push_back(9);
+
+	m.mergeInsertion(v, 0, 4);
+
+	std::cout << "=============================" << std::endl;
+	for (int index = 0; index < 4; ++index)
+		std::cout << v[index] << std::endl;
+
 	return (EXIT_SUCCESS);
 }

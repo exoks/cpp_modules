@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2023/12/26 13:14:56 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/02 10:24:49 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2024/02/05 21:06:36 by oussama
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/05 21:06:36 by oussama
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -20,7 +20,7 @@
 #   ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
 #====< Variables >==============================================================
-NAME		:= FJAlgorithm
+NAME		:= mergeInsertion
 CC			:= c++
 CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
