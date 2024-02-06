@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/05 21:05:37 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/05 21:05:40 by oussama
+//        #....  ...   .-.  ....##       Created: 2024/02/06 12:22:25 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/06 12:23:04 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,24 +24,25 @@
 //====< main >==================================================================
 int	main(void)
 {
-	std::vector<int>	v;
-	PmergeMe		m;
+	std::vector<int>	c;
 
-	v.push_back(4);
-	v.push_back(3);
-	v.push_back(2);
-	v.push_back(1);
+	c.push_back(9);
+	c.push_back(8);
+	c.push_back(7);
+	c.push_back(6);
 
-//	v.push_back(2);
-//	v.push_back(7);
-//	v.push_back(8);
-//	v.push_back(9);
+	c.push_back(5);
+	c.push_back(4);
+	c.push_back(3);
+	c.push_back(2);
 
-	m.mergeInsertion(v, 0, 4);
+	c.push_back(10);
+	c.push_back(0);
+	PmergeMe::mergeInsertion(c, 1, c.size());
 
 	std::cout << "=============================" << std::endl;
-	for (int index = 0; index < 4; ++index)
-		std::cout << v[index] << std::endl;
+	for (std::vector<int>::iterator i = c.begin(); i != c.end(); ++i)
+		std::cout << "value => " << *i << std::endl;
 
 	return (EXIT_SUCCESS);
 }

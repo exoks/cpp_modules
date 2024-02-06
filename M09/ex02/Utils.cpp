@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########    < PmergeMe.cpp >                        
+//       ######-..        .+########       < Utils.cpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/06 13:29:44 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/06 13:29:54 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/06 12:10:27 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/06 12:20:19 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,38 +19,25 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-# include "PmergeMe.hpp"
+# include "Utils.hpp"
 
-//====< constructor >===========================================================
-PmergeMe::PmergeMe(void)
+//====< toIterator >============================================================
+std::vector<int>::iterator	getIterator(std::vector<int> & v, int index)
 {
+	if (index < 0 && index >= static_cast<int>(v.size()))
+		throw (std::out_of_range("Invalid index"));
+	return (v.begin() + index);
 }
 
-//====< merge >=================================================================
-void	PmergeMe::merge(std::vector<int> & v, int level, int len)
+//====< toIterator >============================================================
+std::list<int>::iterator	getIterator(std::list<int> & l, int index)
 {
-	int	index;
+	std::list<int>::iterator	iter;
 
-	index = level - 1;
-	while (index < len)
-	{
-		if (index + level < len)
-			swap_range(v, index, level);
-		index += (2 * level);
-	}
+	if (index < 0 && index >= static_cast<int>(l.size()))
+		throw (std::out_of_range("Invalid index"));
+	iter = l.begin();
+	while (index-- > 0)
+		iter++;
+	return (iter);
 }
-
-//====< insertion >=============================================================
-
-
-//====< mergeInsertion >========================================================
-void	PmergeMe::mergeInsertion(std::vector<int> & v, int level, int len)
-{
-	if (level > len || level * 2 > len)
-		return ;
-	merge(v, level, len);
-	mergeInsertion(v, level << 1, len);
-//	insert(v, len);
-}
-
-// need to know pend chaine and main chaine
