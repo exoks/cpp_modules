@@ -46,12 +46,17 @@ Pre-requisit:
 binary search algorithm: used in sorted array repeatedly dividing to search interval in half, the idea of binary search is to use
 the information that the array is sorted and reduce the time comlexity to O(log n)
 	(merget sort)
-merge sort is a recursize algorithm that continously splits the array in half until it cannot be further divided.
+merge sort is a recursive algorithm that continously splits the array in half until it cannot be further divided.
 
 since we understand the binary search algorithm we know that most inserting-based sorting algorthm are base on this one but as the articl
 (said most of them don't take that property of binary search into account) the question is how ?
 
 	=> Steps:
+
+read about ford-jhonson algorithm
+==========================( merge sort )============================
 1|_ split the collection pairs of 2 elements and 
+2|_ get the main chaine and the pand chaine
 
-
+==========================( insertion )=============================
+1|_ insert each element into it's right place

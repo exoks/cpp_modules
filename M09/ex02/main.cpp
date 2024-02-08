@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/06 12:22:25 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/06 12:23:04 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/08 15:11:21 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/08 15:11:21 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,18 +26,19 @@ int	main(void)
 {
 	std::vector<int>	c;
 
-	c.push_back(9);
-	c.push_back(8);
 	c.push_back(7);
-	c.push_back(6);
-
-	c.push_back(5);
-	c.push_back(4);
+	c.push_back(0);
 	c.push_back(3);
+	c.push_back(5);
+
+	c.push_back(4);
+	c.push_back(9);
+	c.push_back(1);
 	c.push_back(2);
 
-	c.push_back(10);
-	c.push_back(0);
+//	c.push_back(10);
+//	c.push_back(0);
+
 	PmergeMe::mergeInsertion(c, 1, c.size());
 
 	std::cout << "=============================" << std::endl;
@@ -46,3 +47,6 @@ int	main(void)
 
 	return (EXIT_SUCCESS);
 }
+
+// inseriton part
+// 1: sort using simple insertion algorithm

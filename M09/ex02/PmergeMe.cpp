@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/06 13:29:44 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/06 13:29:54 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/08 15:49:03 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/08 15:50:07 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -36,7 +36,8 @@ void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 	{
 		if (index + level < len)
 			swap_range(v, index, level);
-		index += (2 * level);
+//		index += (2 * level);
+		index += (level * ((level != 1) + 1));
 	}
 }
 
@@ -47,10 +48,11 @@ void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 void	PmergeMe::mergeInsertion(std::vector<int> & v, int level, int len)
 {
 	if (level > len || level * 2 > len)
+	{
+//		insertion part
 		return ;
+	}
 	merge(v, level, len);
 	mergeInsertion(v, level << 1, len);
-//	insert(v, len);
+//	insert part
 }
-
-// need to know pend chaine and main chaine

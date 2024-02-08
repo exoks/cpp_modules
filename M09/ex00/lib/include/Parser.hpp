@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 22:45:04 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/20 14:30:48 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/28 16:49:57 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/28 16:49:57 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -45,7 +45,7 @@ namespace	prs
 			KeyValueParser(std::fstream fs);
 			KeyValueParser(std::string fileName);
 			~KeyValueParser(void);
-		
+
 			std::map<p1, p2>	parseFile(void);
 			std::pair<p1, p2>	parseNextLine(void);
 			bool				eof(void);

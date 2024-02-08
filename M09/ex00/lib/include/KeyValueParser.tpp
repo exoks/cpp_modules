@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 22:46:48 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 22:46:48 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/28 16:51:48 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/03 19:46:30 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -73,6 +73,8 @@ std::pair<p1, p2>	KeyValueParser<p1, p2, sep>::parseNextLine(void)
 	getline(fs, second, '\n');
 	std::stringstream	kss(first);
 	std::stringstream	vss(second);
+	// solve the problem using overloading functions
+	// check(T value, int type);
 	kss >> key;
 	vss >> value;
 	return (std::pair<p1, p2>(key, value));
