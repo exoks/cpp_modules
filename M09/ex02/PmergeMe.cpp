@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/08 15:49:03 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/08 15:50:07 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/08 19:52:19 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/08 19:52:19 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -29,25 +29,28 @@ PmergeMe::PmergeMe(void)
 //====< merge >=================================================================
 void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 {
-	int	index;
+	int	i1,	i2;
 
-	index = level - 1;
-	while (index < len)
+	(void) i2;
+	i1 = level - 1;
+	while (i1 < len)
 	{
-		if (index + level < len)
-			swap_range(v, index, level);
-//		index += (2 * level);
-		index += (level * ((level != 1) + 1));
+		if (i1 + level < len)
+			swap_range(v, i1, level);
+		i1 += (2 * level);
 	}
 }
 
+//		at level 4 we have to merge {a..b} {c.d}
+
+//		index += (level * ((level != 1) + 1));
 //====< insertion >=============================================================
 
 
 //====< mergeInsertion >========================================================
 void	PmergeMe::mergeInsertion(std::vector<int> & v, int level, int len)
 {
-	if (level > len || level * 2 > len)
+	if (level > len)
 	{
 //		insertion part
 		return ;

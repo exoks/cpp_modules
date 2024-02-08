@@ -6,15 +6,15 @@ void binary(std::vector<int> v, int target, int start, int end);
 int	main(void)
 {
 	std::vector<int>	v;
-	v.push_back(3);
+	v.push_back(7);
 	v.push_back(4);
 	v.push_back(6);
-	v.push_back(8);
-	v.push_back(9);
+	v.push_back(3);
+	v.push_back(10);
 	v.push_back(13);
 
 
-	binary(v, 9, 0, v.size() - 1);	
+	binary(v, 3, 0, v.size() - 1);	
 	return (0);
 }
 
