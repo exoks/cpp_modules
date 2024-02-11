@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/11 20:33:19 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/11 20:33:19 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/11 22:36:22 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/11 22:36:22 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,20 +26,24 @@ int	main(void)
 {
 	std::vector<int>	c;
 
-	c.push_back(3);
-	c.push_back(9);
-	c.push_back(2);
-	c.push_back(5);
-
 	c.push_back(10);
+	c.push_back(99);
 	c.push_back(8);
-	c.push_back(0);
 	c.push_back(4);
 
 	c.push_back(1);
 	c.push_back(7);
+	c.push_back(12);
+	c.push_back(11);
 
-
+//	c.push_back(3);
+//	c.push_back(9);
+//	c.push_back(20);
+//	c.push_back(5);
+	
+//	c.push_back(18);
+//	c.push_back(22);
+//	c.push_back(19);
 
 	PmergeMe::mergeInsertion(c, 1, c.size());
 

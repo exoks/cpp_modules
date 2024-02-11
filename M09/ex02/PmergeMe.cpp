@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/11 20:33:37 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/11 21:47:26 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/11 22:52:47 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/11 22:52:47 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -31,6 +31,8 @@ void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 {
 	int	s1, m, s2, e;
 
+	(void) v;
+	std::cout << "===========" << level << "===========" << std::endl;
 	m = level - 1;
 	e = len - (len % 2);
 	while (m < len)
@@ -39,15 +41,25 @@ void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 		s2 = m + 1 + (level > 1);
 		while (s1 <= m && s2 < e)
 		{
-			if (swap_range(v, s1, s2, 1 + (level > 1)) == false)
+			if (*getIterator(v, s1) > *getIterator(v, s2))
+			{
+				std::cout << s1 << " = " << s2 << std::endl;
 				++s1 += (level > 1);
-			else if (swap_range(v, s1, s2, 1 + (level > 1)) == true)
+			}
+			if (*getIterator(v, s1) < *getIterator(v, s2))
+			{
+				std::cout << s1 << " = " << s2 << std::endl;
 				++s2 += (level > 1);
+			}
 		}
 		m += (2 * level);
 	}
 }
 
+//			if (swap_range(v, s1, s2, 1 + (level > 1)) == false)
+//				++s1 += (level > 1);
+//			else if (swap_range(v, s1, s2, 1 + (level > 1)) == true)
+//				++s2 += (level > 1);
 //====< insertion >=============================================================
 
 
