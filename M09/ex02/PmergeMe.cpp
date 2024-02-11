@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/08 19:52:19 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/08 19:52:19 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/11 20:33:37 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/11 21:47:26 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -29,21 +29,25 @@ PmergeMe::PmergeMe(void)
 //====< merge >=================================================================
 void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 {
-	int	i1,	i2;
+	int	s1, m, s2, e;
 
-	(void) i2;
-	i1 = level - 1;
-	while (i1 < len)
+	m = level - 1;
+	e = len - (len % 2);
+	while (m < len)
 	{
-		if (i1 + level < len)
-			swap_range(v, i1, level);
-		i1 += (2 * level);
+		s1 = m - (level > 1) * (level - 2);
+		s2 = m + 1 + (level > 1);
+		while (s1 <= m && s2 < e)
+		{
+			if (swap_range(v, s1, s2, 1 + (level > 1)) == false)
+				++s1 += (level > 1);
+			else if (swap_range(v, s1, s2, 1 + (level > 1)) == true)
+				++s2 += (level > 1);
+		}
+		m += (2 * level);
 	}
 }
 
-//		at level 4 we have to merge {a..b} {c.d}
-
-//		index += (level * ((level != 1) + 1));
 //====< insertion >=============================================================
 
 

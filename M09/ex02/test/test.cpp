@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/05 20:45:56 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/05 20:46:08 by oussama
+//        #....  ...   .-.  ....##       Created: 2024/02/10 11:27:24 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/10 11:27:27 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -65,10 +65,11 @@ void	mergeInsertion(std::vector<int> & v, int level, int len)
 	if (pair_size > len || pair_size * 2 > len)
 		return ;
 	merge(v, level, len);
-	mergeInsertion(v, ++level, len);
+	mergeInsertion(v, level, len);
 //	insertion operation
 }
 
+void	merge_arr(std::vector<int> &v, int m, int end, int level);
 //====< merge >=================================================================
 void	merge(std::vector<int> & v, int level, int len)
 {
@@ -80,13 +81,35 @@ void	merge(std::vector<int> & v, int level, int len)
 	while (index < len)
 	{
 		if (index + step < len)
-			swap_range(v, index, step);
-		index += (step + 1);
+			merge_arr(v, index, index + step, level);
+		index += (2 * step);
 	}
 }
 
-//: to make this function works as expected with the list and vector i have to pass index as an argument
-//: function must use iterator instead of index
+void	merge_arr(std::vector<int> &v, int m, int end, int level)
+{
+	int	s1, s2;
+
+	std::cout << "==============(" << level << ")=================" << std::endl;
+	s1 = (level > 1);
+	s2 = m + ((level > 1) + 1);
+	while (s1 <= m && s2 <= end)
+	{
+		if (toIterator(v, s1) < toIterator(v, s2))
+		{
+			std::cout << "swap : " << *toIterator(v, s1) << std::endl;
+			std::cout << "=> swap : " << *toIterator(v, s2) << std::endl;
+			s1 += 2;
+		}
+		else
+		{
+			std::cout << "swap : " << *toIterator(v, s1) << std::endl;
+			std::cout << "=> swap : " << *toIterator(v, s2) << std::endl;
+			s2 += 2;
+		}
+	}
+}
+
 //====< swap_range >============================================================
 bool	swap_range(std::vector<int> & v, int start, int range)
 {

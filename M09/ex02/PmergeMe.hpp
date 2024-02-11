@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/06 12:24:22 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/06 12:41:36 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/11 18:13:03 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/11 18:13:03 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -38,5 +38,7 @@ class	PmergeMe
 
 		static void	mergeInsertion(std::vector<int> & v, int level, int size);
 };
+
+void	merge_arr(std::vector<int> &v, int m, int len, int level);
 
 #endif /*__PMERGEME_HPP__*/
