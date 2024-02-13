@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/24 16:29:42 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 16:29:42 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/28 14:57:37 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/28 14:57:37 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,6 +24,6 @@ template <typename T>
 void	easyfind(T container, int x)
 {
 	if (find(container.begin(), container.end(), x) == container.end())
-		throw (std::out_of_range("Not found : "));
+		throw (std::out_of_range("Not found"));
 	std::cout << "Exist: " << x << std::endl;
 }

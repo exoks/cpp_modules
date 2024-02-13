@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/24 17:59:27 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 17:59:27 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/28 15:20:19 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/28 15:55:40 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -41,6 +41,7 @@ class	Span
 
 		Span &	operator=(const Span & span);
 		void	addNumber(int nbr);
+		void	addNumbers(unsigned int range);
 		int		longestSpan(void);
 		int		shortestSpan(void);
 };

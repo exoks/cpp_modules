@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2023/12/24 16:38:35 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 16:38:35 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2023/12/27 16:43:41 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/27 16:43:41 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -20,7 +20,7 @@
 #   ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
 #====< Variables >==============================================================
-NAME		:= span
+NAME		:= mutanStack
 CC			:= c++
 CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs

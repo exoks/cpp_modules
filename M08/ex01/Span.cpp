@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/24 18:30:20 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/24 18:32:56 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/28 15:41:26 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/28 16:10:10 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -60,6 +60,16 @@ void	Span::addNumber(int nbr)
 	if (v.size() >= N)
 		throw (std::out_of_range("can not add more numbers"));
 	v.push_back(nbr);
+}
+
+//====< addNumbers >============================================================
+void	Span::addNumbers(unsigned int range)
+{
+	if (range > N)
+		throw (std::out_of_range("OutOfBounds"));
+	srand(time(NULL));
+	for (unsigned int index = 0; index < range; index++)
+		v.push_back(rand());
 }
 
 //====< shortestSpan >==========================================================
