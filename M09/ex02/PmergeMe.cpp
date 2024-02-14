@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/11 22:52:47 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/11 22:52:47 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/14 19:53:49 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/14 19:55:33 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -30,6 +30,7 @@ PmergeMe::PmergeMe(void)
 void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 {
 	int	s1, m, s2, e;
+	int	ref;
 
 	(void) v;
 	std::cout << "===========" << level << "===========" << std::endl;
@@ -39,17 +40,19 @@ void	PmergeMe::merge(std::vector<int> & v, int level, int len)
 	{
 		s1 = m - (level > 1) * (level - 2);
 		s2 = m + 1 + (level > 1);
-		while (s1 <= m && s2 < e)
+		ref = s2 + level;
+		while (s1 <= m && s2 <= e)
 		{
-			if (*getIterator(v, s1) > *getIterator(v, s2))
+			// try to swap a pair each time but make the main pair in the middle of the vector
+			if (*getIterator(v, s1) > *getIterator(v, ref))
 			{
-				std::cout << s1 << " = " << s2 << std::endl;
-				++s1 += (level > 1);
-			}
-			if (*getIterator(v, s1) < *getIterator(v, s2))
-			{
-				std::cout << s1 << " = " << s2 << std::endl;
+				swap_range(v, s1, ref, 1 + (level > 1));
 				++s2 += (level > 1);
+			}
+			if (*getIterator(v, s2) >= *getIterator(v, ref))
+			{
+				swap_range(v, s2, ref, 1 + (level > 1));
+				++s1 += (level > 1);
 			}
 		}
 		m += (2 * level);
