@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/14 17:56:53 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/14 19:53:01 by oussama
+//        #....  ...   .-.  ....##       Created: 2024/02/19 22:46:11 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/19 22:46:11 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -21,31 +21,28 @@
 
 # include "PmergeMe.hpp"
 
+void	ss(std::vector<int>::iterator & i1, std::vector<int>::iterator & i2, int range);
 //====< main >==================================================================
 int	main(void)
 {
-	std::vector<int>	c;
+	std::vector<std::vector<int> >	c;
 
-	c.push_back(4);
-	c.push_back(8);
-	c.push_back(10);
-	c.push_back(99);
+	c.push_back(std::vector<int>(4, 8));
+	c.push_back(std::vector<int>(10, 99));
 
-	c.push_back(1);
-	c.push_back(7);
-	c.push_back(11);
-	c.push_back(12);
+	c.push_back(std::vector<int>(1, 7));
+	c.push_back(std::vector<int>(11, 12));
 
-//	c.push_back(3);
-//	c.push_back(9);
-//	c.push_back(20);
-//	c.push_back(5);
-	
-//	c.push_back(18);
-//	c.push_back(22);
-//	c.push_back(19);
+	c.push_back(std::vector<int>(3, 9));
+	c.push_back(std::vector<int>(20, 5));
 
-	std::cout << "=============================" << std::endl;
+
+	c.push_back(std::vector<int>(18, 22));
+	c.push_back(std::vector<int>(19));
+
+	PmergeMe::mergeInsertion(c, 1, c.size());
+/*
+ 	std::cout << "=============================" << std::endl;
 	for (std::vector<int>::iterator i = c.begin(); i != c.end(); ++i)
 		std::cout << "value => " << *i << std::endl;
 
@@ -54,10 +51,16 @@ int	main(void)
 	std::cout << "=============================" << std::endl;
 	for (std::vector<int>::iterator i = c.begin(); i != c.end(); ++i)
 		std::cout << "value => " << *i << std::endl;
+*/
 
 	return (EXIT_SUCCESS);
 }
 
+void	ss(std::vector<int>::iterator & i1, std::vector<int>::iterator & i2, int range)
+{
+	while (range-- > 0)
+		std::swap(*i1--, *i2--);
+}
 
 /*
 void	merge_arr(std::vector<int> &v, int m, int len, int level)
