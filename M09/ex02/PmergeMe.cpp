@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/19 23:46:06 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/19 23:46:06 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/23 23:24:49 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/23 23:24:49 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -25,6 +25,75 @@
 PmergeMe::PmergeMe(void)
 {
 }
+
+//====< merge >=================================================================
+void	PmergeMe::merge(std::vector<std::vector<int> > & v, int level, int len)
+{
+	int	s1, m, s2;
+	vv			tmp;
+
+	std::cout << "================(" << level << ")==============" << std::endl;
+	m = level - 1;
+	while (m < len)
+	{
+		s1 = m - level + 1;
+		s2 = m + 1;
+
+		tmp.push_back(*getIterator(v, m + 1));
+		while (s1 <= m + 1 && s2 < len)
+		{
+			// getIterator does not work, i should solve this problem
+			if ((*getIterator(v, s1))[0] >= (*getIterator(tmp, 0))[0])
+			{
+				std::swap(*getIterator(v, s1), *v.begin());
+				++s1;
+			}
+			else if ((*getIterator(v, s2))[0] < (*getIterator(tmp, 0))[0])
+			{
+				std::swap(*getIterator(v, s2), *v.begin());
+				++s2;
+			}
+		}
+		m += (level << 1);
+	}
+}
+//		std::cout << "==============|" << m << "|=================" << std::endl;
+//		std::cout << "s1 : " << s1 << std::endl << "s2 : " << s2 << std::endl;
+
+//====< insertion >=============================================================
+
+//====< mergeInsertion >========================================================
+void	PmergeMe::mergeInsertion(std::vector<std::vector<int> > & v, int level, int len)
+{
+	if (level > len)
+	{
+//		insertion part
+		return ;
+	}
+	merge(v, level, len);
+	mergeInsertion(v, level << 1, len);
+//	insert part
+}
+
+
+
+
+
+
+
+//====< mergeInsertion >========================================================
+/*void	PmergeMe::mergeInsertion(std::vector<int> & v, int level, int len)
+{
+	if (level > len)
+	{
+//		insertion part
+		return ;
+	}
+	merge(v, level, len);
+	mergeInsertion(v, level << 1, len);
+//	insert part
+}*/
+
 
 //====< merge >=================================================================
 /*void	PmergeMe::merge(std::vector<int> & v, int level, int len)
@@ -57,66 +126,6 @@ PmergeMe::PmergeMe(void)
 		m += (2 * level);
 	}
 }*/
-
-//====< merge >=================================================================
-void	PmergeMe::merge(std::vector<std::vector<int> > & v, int level, int len)
-{
-	int	s1, m, s2, step, e;
-
-	(void) v;
-	(void) s1;
-	(void) s2;
-
-	std::cout << "=========== " << level << " ===========" << std::endl;
-	e = len - (len % 2);
-	step = (level + 1) / 2;
-	m = step - 1;
-	while (m < e)
-	{
-		std::cout << "-->> " << m << std::endl;
-		s1 = m - step;
-		s2 = m + 1;
-//		while (s1 <= m && s2 < e)
-//			;
-		m += step;
-	}
-}
-
-//		s1 = m - (level > 1) * (level - 2);
-//		s2 = m + 1 + (level > 1);
-
-// let's just try to insert the smallest one and preserve the bigger
-//====< insertion >=============================================================
-
-//====< mergeInsertion >========================================================
-void	PmergeMe::mergeInsertion(std::vector<std::vector<int> > & v, int level, int len)
-{
-	if (level > len)
-	{
-//		insertion part
-		return ;
-	}
-	merge(v, level, len);
-	mergeInsertion(v, level << 1, len);
-//	insert part
-}
-
-//====< mergeInsertion >========================================================
-/*void	PmergeMe::mergeInsertion(std::vector<int> & v, int level, int len)
-{
-	if (level > len)
-	{
-//		insertion part
-		return ;
-	}
-	merge(v, level, len);
-	mergeInsertion(v, level << 1, len);
-//	insert part
-}*/
-
-
-
-
 
 
 //			if (swap_range(v, s1, s2, 1 + (level > 1)) == false)

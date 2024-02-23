@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/06 12:10:27 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/06 12:20:19 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/23 21:38:14 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/23 21:38:14 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -22,7 +22,7 @@
 # include "Utils.hpp"
 
 //====< toIterator >============================================================
-std::vector<int>::iterator	getIterator(std::vector<int> & v, int index)
+vv::iterator	getIterator(vv & v, int index)
 {
 	if (index < 0 && index >= static_cast<int>(v.size()))
 		throw (std::out_of_range("Invalid index"));

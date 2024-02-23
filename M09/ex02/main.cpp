@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/19 22:46:11 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/19 22:46:11 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/23 23:26:31 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/23 23:26:31 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -22,36 +22,29 @@
 # include "PmergeMe.hpp"
 
 void	ss(std::vector<int>::iterator & i1, std::vector<int>::iterator & i2, int range);
+
 //====< main >==================================================================
 int	main(void)
 {
 	std::vector<std::vector<int> >	c;
 
-	c.push_back(std::vector<int>(4, 8));
-	c.push_back(std::vector<int>(10, 99));
-
-	c.push_back(std::vector<int>(1, 7));
 	c.push_back(std::vector<int>(11, 12));
+	c.push_back(std::vector<int>(1, 7));
+
+	c.push_back(std::vector<int>(10, 99));
+	c.push_back(std::vector<int>(4, 8));
 
 	c.push_back(std::vector<int>(3, 9));
-	c.push_back(std::vector<int>(20, 5));
+//	c.push_back(std::vector<int>(20, 5));
 
-
-	c.push_back(std::vector<int>(18, 22));
-	c.push_back(std::vector<int>(19));
-
-	PmergeMe::mergeInsertion(c, 1, c.size());
-/*
- 	std::cout << "=============================" << std::endl;
-	for (std::vector<int>::iterator i = c.begin(); i != c.end(); ++i)
-		std::cout << "value => " << *i << std::endl;
+//	c.push_back(std::vector<int>(18, 22));
+//	c.push_back(std::vector<int>(19));
 
 	PmergeMe::mergeInsertion(c, 1, c.size());
-
+ 	
 	std::cout << "=============================" << std::endl;
-	for (std::vector<int>::iterator i = c.begin(); i != c.end(); ++i)
-		std::cout << "value => " << *i << std::endl;
-*/
+	for (vv::iterator i = c.begin(); i != c.end(); ++i)
+		std::cout << "value => " << (*i)[0] << std::endl;
 
 	return (EXIT_SUCCESS);
 }
