@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/23 21:38:41 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/23 21:38:41 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/24 14:30:45 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/24 14:30:45 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -30,11 +30,12 @@
 //	DECENDING
 //}		Mode;
 
+//====< typedef >===============================================================
 typedef std::vector<std::vector<int> >	vv;
 
-//===< getIterator >============================================================
-vv::iterator	getIterator(vv & v, int index);
+//====< getIterator >===========================================================
 std::list<int>::iterator	getIterator(std::list<int> & l, int index);
+vv::iterator				getIterator(vv & v, int index);
 
 //====< swap_range >============================================================
 template <class container>

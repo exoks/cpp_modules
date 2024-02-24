@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/23 23:24:49 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/23 23:24:49 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/24 15:14:47 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/24 15:14:47 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,44 +26,35 @@ PmergeMe::PmergeMe(void)
 {
 }
 
+#include <unistd.h>
 //====< merge >=================================================================
-void	PmergeMe::merge(std::vector<std::vector<int> > & v, int level, int len)
+void	PmergeMe::merge(vv & v, int level, int len)
 {
 	int	s1, m, s2;
-	vv			tmp;
 
+	(void) v;
 	std::cout << "================(" << level << ")==============" << std::endl;
 	m = level - 1;
 	while (m < len)
 	{
 		s1 = m - level + 1;
 		s2 = m + 1;
-
-		tmp.push_back(*getIterator(v, m + 1));
 		while (s1 <= m + 1 && s2 < len)
-		{
-			// getIterator does not work, i should solve this problem
-			if ((*getIterator(v, s1))[0] >= (*getIterator(tmp, 0))[0])
-			{
-				std::swap(*getIterator(v, s1), *v.begin());
-				++s1;
-			}
-			else if ((*getIterator(v, s2))[0] < (*getIterator(tmp, 0))[0])
-			{
-				std::swap(*getIterator(v, s2), *v.begin());
-				++s2;
-			}
-		}
+			break ;
 		m += (level << 1);
 	}
 }
+
+// 1 => reach each element in subvector
+// 2 => compare between them
+
 //		std::cout << "==============|" << m << "|=================" << std::endl;
 //		std::cout << "s1 : " << s1 << std::endl << "s2 : " << s2 << std::endl;
 
 //====< insertion >=============================================================
 
 //====< mergeInsertion >========================================================
-void	PmergeMe::mergeInsertion(std::vector<std::vector<int> > & v, int level, int len)
+void	PmergeMe::mergeInsertion(vv & v, int level, int len)
 {
 	if (level > len)
 	{
@@ -74,11 +65,6 @@ void	PmergeMe::mergeInsertion(std::vector<std::vector<int> > & v, int level, int
 	mergeInsertion(v, level << 1, len);
 //	insert part
 }
-
-
-
-
-
 
 
 //====< mergeInsertion >========================================================
