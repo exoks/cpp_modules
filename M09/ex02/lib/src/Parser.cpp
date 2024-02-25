@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########    < PmergeMe.hpp >                        
+//       ######-..        .+########      < Parser.cpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 19:53:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:53:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/19 20:10:41 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 20:10:41 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,25 +19,45 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __PMERGEME_HPP__
-# define __PMERGEME_HPP__
+# include "Parser.hpp"
 
-# include <iostream>
-# include "Utils.hpp"
-
-// This class can be a template class in the end
-
-class	PmergeMe
+//====< parseDate >=============================================================
+Date	prs::parseDate(std::string strDate)
 {
-	private:
-		PmergeMe(void);
+	std::stringstream	ss(strDate);
+	int					ymd[3];
+	std::string			buff;
 
-	public:
-		static void	merge(vvp & v, int level, int len);
+	try {
+		for (int i = 0; i < 4 && getline(ss, buff, '-'); i++)
+		{
+			if (i > 2 || buff.length() < 2)
+				throw (std::out_of_range("Error: invalid format"));
+			std::stringstream(buff) >> ymd[i];
+		}
+	} catch (std::exception & e){
+		std::cout << e.what() << " => " << strDate << std::endl;
+	}
+	return (Date(ymd[0], ymd[1], ymd[2]));
+}
 
-//		static void	insert(arguments);
+//====< isValidDate >===========================================================
+bool		prs::isValidDate(std::string strDate)
+{
+	return (isValidDate(parseDate(strDate)));
+}
 
-		static void	mergeInsertion(vvp & v, int level, int size);
-};
+//====< trim >==================================================================
+std::string 	prs::trim(std::string str)
+{
+	int		start;
+	int		end;
 
-#endif /*__PMERGEME_HPP__*/
+	start = 0;
+	end = str.length() - 1;
+	while (start <= end && str[start] == ' ')
+		start++;
+	while (end >= 0 && str[end] == ' ')
+	  	end--;
+	return (str.substr(start, end - start + 1));
+}

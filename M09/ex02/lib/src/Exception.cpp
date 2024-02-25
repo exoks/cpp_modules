@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########    < PmergeMe.hpp >                        
+//       ######-..        .+########   < Exception.cpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 19:53:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:53:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/25 19:46:38 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:46:38 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,25 +19,21 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __PMERGEME_HPP__
-# define __PMERGEME_HPP__
+# include "Exception.hpp"
 
-# include <iostream>
-# include "Utils.hpp"
-
-// This class can be a template class in the end
-
-class	PmergeMe
+//====< Constructor >===========================================================
+Exception::Exception(std::string msg)
 {
-	private:
-		PmergeMe(void);
+	this->msg = msg;
+}
 
-	public:
-		static void	merge(vvp & v, int level, int len);
+//====< Destructor >===========================================================
+Exception::~Exception() throw()
+{
+}
 
-//		static void	insert(arguments);
-
-		static void	mergeInsertion(vvp & v, int level, int size);
-};
-
-#endif /*__PMERGEME_HPP__*/
+//====< what >==================================================================
+const char	*Exception::what() const throw()
+{
+	return (msg.c_str());
+}

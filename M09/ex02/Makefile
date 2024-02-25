@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2024/02/05 21:06:36 by oussama
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/14 15:46:37 by oussama
+#         #....  ...   .-.  ....##       Created: 2024/02/25 19:43:01 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:43:12 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -26,7 +26,7 @@ CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
 SRC_DIR		:= src
 INCLUDE		:= -Iinclude -Ilib/include
-SRC			:= $(wildcard *.cpp)
+SRC			:= $(wildcard *.cpp) $(wildcard */*.cpp) $(wildcard */*/*.cpp)
 OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
 RM			:= rm -rf
 
@@ -77,7 +77,7 @@ fclean: clean
 re: fclean all
 
 run:
-	@./$(NAME)
+	@./$(NAME) 1 7 8 10 3 9 20 5 18 22
 
 .SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run

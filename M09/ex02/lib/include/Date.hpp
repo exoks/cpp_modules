@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########    < PmergeMe.hpp >                        
+//       ######-..        .+########          < Date.h >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 19:53:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:53:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/19 22:40:19 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 22:45:44 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,25 +19,26 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __PMERGEME_HPP__
-# define __PMERGEME_HPP__
+#ifndef __DATE_HPP__
+# define __DATE_HPP__
 
-# include <iostream>
-# include "Utils.hpp"
+# include <ctime>
 
-// This class can be a template class in the end
-
-class	PmergeMe
+struct	Date
 {
-	private:
-		PmergeMe(void);
+	int			year;
+	int			month;
+	int			day;
 
-	public:
-		static void	merge(vvp & v, int level, int len);
-
-//		static void	insert(arguments);
-
-		static void	mergeInsertion(vvp & v, int level, int size);
+	Date(void);
+	Date(int y, int m, int d);
 };
 
-#endif /*__PMERGEME_HPP__*/
+namespace prs
+{
+	Date		getCurrentDate(void);
+	bool		isValidDate(Date date);
+	bool		compareToCurrentDate(Date date);
+};
+
+#endif /*__DATE_HPP__*/

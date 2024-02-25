@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/24 15:14:47 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/24 15:14:47 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/25 22:30:33 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 22:30:33 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -28,10 +28,11 @@ PmergeMe::PmergeMe(void)
 
 #include <unistd.h>
 //====< merge >=================================================================
-void	PmergeMe::merge(vv & v, int level, int len)
+void	PmergeMe::merge(vvp & v, int level, int len)
 {
 	int	s1, m, s2;
-
+	vp	tmp;
+	
 	(void) v;
 	std::cout << "================(" << level << ")==============" << std::endl;
 	m = level - 1;
@@ -40,21 +41,18 @@ void	PmergeMe::merge(vv & v, int level, int len)
 		s1 = m - level + 1;
 		s2 = m + 1;
 		while (s1 <= m + 1 && s2 < len)
+		{
+			std::cout << "hello wordl" << std::endl;
 			break ;
+		}
 		m += (level << 1);
 	}
 }
 
-// 1 => reach each element in subvector
-// 2 => compare between them
-
-//		std::cout << "==============|" << m << "|=================" << std::endl;
-//		std::cout << "s1 : " << s1 << std::endl << "s2 : " << s2 << std::endl;
-
 //====< insertion >=============================================================
 
 //====< mergeInsertion >========================================================
-void	PmergeMe::mergeInsertion(vv & v, int level, int len)
+void	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 {
 	if (level > len)
 	{

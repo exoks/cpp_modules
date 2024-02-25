@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########    < PmergeMe.hpp >                        
+//       ######-..        .+########         < FSM.hpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 19:53:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:53:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/19 12:17:32 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/22 21:20:13 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,25 +19,31 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __PMERGEME_HPP__
-# define __PMERGEME_HPP__
-
+# ifndef __FSM_HPP__
+# define __FSM_HPP__
 # include <iostream>
-# include "Utils.hpp"
 
-// This class can be a template class in the end
+typedef enum	e_state
+{
+	START,
+	CHAR,
+	INT,
+	OPERATOR,
+	DOUBLE,
+	FUTURE_DOUBLE,
+	FLOAT,
+	STRING,
+	END,
+}				t_state;
 
-class	PmergeMe
+class	FSM
 {
 	private:
-		PmergeMe(void);
+		FSM(void);
+		static int	getNextState(int prv, char input);
 
 	public:
-		static void	merge(vvp & v, int level, int len);
-
-//		static void	insert(arguments);
-
-		static void	mergeInsertion(vvp & v, int level, int size);
+		static int	detectType(std::string str);
 };
 
-#endif /*__PMERGEME_HPP__*/
+#endif /*__FSM_HPP__*/

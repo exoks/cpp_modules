@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########    < PmergeMe.hpp >                        
+//       ######-..        .+########   < Exception.hpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 19:53:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:53:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/25 19:46:50 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:46:51 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,25 +19,22 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __PMERGEME_HPP__
-# define __PMERGEME_HPP__
+#ifndef __EXCEPTION_HPP__
+# define __EXCEPTION_HPP__
 
+# include <exception>
 # include <iostream>
-# include "Utils.hpp"
 
-// This class can be a template class in the end
-
-class	PmergeMe
+class	Exception : public std::exception
 {
-	private:
-		PmergeMe(void);
+	protected:
+		std::string	msg;
 
 	public:
-		static void	merge(vvp & v, int level, int len);
+		Exception(std::string msg);
+		virtual ~Exception() throw();
 
-//		static void	insert(arguments);
-
-		static void	mergeInsertion(vvp & v, int level, int size);
+		virtual const char	*what() const throw();
 };
 
-#endif /*__PMERGEME_HPP__*/
+#endif /*__EXCEPTION_HPP__*/

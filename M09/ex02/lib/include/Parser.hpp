@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########    < PmergeMe.hpp >                        
+//       ######-..        .+########      < KeyValueParser.hpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 19:53:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:53:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2023/12/28 16:49:57 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/28 16:49:57 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,25 +19,45 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __PMERGEME_HPP__
-# define __PMERGEME_HPP__
+#ifndef __PARSER_HPP__
+# define __PARSER_HPP__
 
+# include <sstream>
 # include <iostream>
-# include "Utils.hpp"
+# include <string>
+# include <fstream>
+# include <map>
+# include "Date.hpp"
+# include "FSM.hpp"
 
-// This class can be a template class in the end
-
-class	PmergeMe
+namespace	prs
 {
-	private:
-		PmergeMe(void);
 
-	public:
-		static void	merge(vvp & v, int level, int len);
+	template <class p1, class p2, char sep = '|'>
+	class	KeyValueParser
+	{
+		private:
+			std::string		fileName;
+			std::fstream	fs;
 
-//		static void	insert(arguments);
+		public:
+			KeyValueParser(void);
+			KeyValueParser(std::fstream fs);
+			KeyValueParser(std::string fileName);
+			~KeyValueParser(void);
 
-		static void	mergeInsertion(vvp & v, int level, int size);
+			std::map<p1, p2>	parseFile(void);
+			std::pair<p1, p2>	parseNextLine(void);
+			bool				eof(void);
+	};
+
+	Date		parseDate(std::string date);
+	bool		isValidDate(std::string date);
+
+	std::string	trim(std::string str);
+
+# include "KeyValueParser.tpp"
+
 };
 
-#endif /*__PMERGEME_HPP__*/
+#endif /*__PARSER_HPP__*/

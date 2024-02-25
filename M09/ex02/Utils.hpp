@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/24 14:30:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/24 14:30:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/25 22:11:56 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 22:29:18 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -21,24 +21,29 @@
 
 #ifndef __UTILS_HPP__
 # define __UTILS_HPP__
-# include <vector>
-# include <list>
 
-//typedef enum	Mode
-//{
-//	ACCENDING,
-//	DECENDING
-//}		Mode;
+# include <list>
+# include <vector>
+# include "FSM.hpp"
+# include "Exception.hpp"
 
 //====< typedef >===============================================================
-typedef std::vector<std::vector<int> >	vv;
+typedef std::vector<std::pair<int, int > >				vp;
+typedef std::vector<std::vector<std::pair<int, int> > >	vvp;
+
+typedef std::list<std::pair<int, int > >				lp;
+typedef std::list<std::list<std::pair<int, int> > >		llp;
+
+//====< parseInput >============================================================
+vvp		parseInput(vvp & v, int ac, char **av);
+llp		parseInput(llp & l, int ac, char **av);
 
 //====< getIterator >===========================================================
 std::list<int>::iterator	getIterator(std::list<int> & l, int index);
-vv::iterator				getIterator(vv & v, int index);
+vvp::iterator				getIterator(vvp & v, int index);
 
 //====< swap_range >============================================================
-template <class container>
+/*template <class container>
 bool	swap_range(container & v, int s1, int s2, int range)
 {
 	typename container::iterator	i1, i2;
@@ -48,6 +53,6 @@ bool	swap_range(container & v, int s1, int s2, int range)
 	while (range-- > 0)
 		std::swap(*i1--, *i2--);
 	return (true);
-}
+}*/
 
 # endif /*__UTILS_HPP__*/
