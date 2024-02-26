@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/28 16:49:57 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/28 16:49:57 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/26 14:29:58 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:30:34 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -22,6 +22,7 @@
 #ifndef __PARSER_HPP__
 # define __PARSER_HPP__
 
+//====< includes >==============================================================
 # include <sstream>
 # include <iostream>
 # include <string>
@@ -29,10 +30,11 @@
 # include <map>
 # include "Date.hpp"
 # include "FSM.hpp"
+# include "Exception.hpp"
 
 namespace	prs
 {
-
+//====< KeyValueParser class >==================================================
 	template <class p1, class p2, char sep = '|'>
 	class	KeyValueParser
 	{
@@ -51,12 +53,30 @@ namespace	prs
 			bool				eof(void);
 	};
 
+# include "KeyValueParser.tpp"
+
+//====< PairParser class >======================================================
+	template<class Container, class Unit, bool sortPair = false>
+	class	PairParser
+	{
+		private:
+			char	**av;
+			int		ac;
+
+		public:
+			PairParser(int ac, char **av);
+			~PairParser(void);
+
+			Container	parse(void);
+	};
+
+# include "PairParser.tpp"
+
+//====< functions >=============================================================
 	Date		parseDate(std::string date);
 	bool		isValidDate(std::string date);
 
 	std::string	trim(std::string str);
-
-# include "KeyValueParser.tpp"
 
 };
 

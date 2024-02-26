@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 19:53:45 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:53:45 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/26 14:27:44 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:27:44 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,6 +24,7 @@
 
 # include <iostream>
 # include "Utils.hpp"
+# include "Parser.hpp"
 
 // This class can be a template class in the end
 
@@ -34,7 +35,6 @@ class	PmergeMe
 
 	public:
 		static void	merge(vvp & v, int level, int len);
-
 //		static void	insert(arguments);
 
 		static void	mergeInsertion(vvp & v, int level, int size);

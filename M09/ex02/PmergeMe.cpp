@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 22:30:33 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 22:30:33 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/26 14:37:51 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:37:51 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,14 +26,11 @@ PmergeMe::PmergeMe(void)
 {
 }
 
-#include <unistd.h>
 //====< merge >=================================================================
 void	PmergeMe::merge(vvp & v, int level, int len)
 {
 	int	s1, m, s2;
-	vp	tmp;
-	
-	(void) v;
+
 	std::cout << "================(" << level << ")==============" << std::endl;
 	m = level - 1;
 	while (m < len)
@@ -42,8 +39,8 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 		s2 = m + 1;
 		while (s1 <= m + 1 && s2 < len)
 		{
-			std::cout << "hello wordl" << std::endl;
-			break ;
+			(void) v;
+			++s2;
 		}
 		m += (level << 1);
 	}
@@ -63,6 +60,52 @@ void	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 	mergeInsertion(v, level << 1, len);
 //	insert part
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //====< mergeInsertion >========================================================

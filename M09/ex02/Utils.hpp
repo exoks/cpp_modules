@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 22:11:56 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 22:29:18 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/26 14:29:28 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:29:28 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -33,10 +33,6 @@ typedef std::vector<std::vector<std::pair<int, int> > >	vvp;
 
 typedef std::list<std::pair<int, int > >				lp;
 typedef std::list<std::list<std::pair<int, int> > >		llp;
-
-//====< parseInput >============================================================
-vvp		parseInput(vvp & v, int ac, char **av);
-llp		parseInput(llp & l, int ac, char **av);
 
 //====< getIterator >===========================================================
 std::list<int>::iterator	getIterator(std::list<int> & l, int index);

@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/25 22:14:44 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 22:14:44 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/26 15:08:30 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 15:12:36 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,21 +24,59 @@
 //====< main >==================================================================
 int	main(int ac, char **av)
 {
-	vvp	c;
+	prs::PairParser<vvp, vp, true>	parser(ac, av);
+	vvp								container;
 
 	try
 	{
-		c = parseInput(c, ac, av);
-		PmergeMe::mergeInsertion(c, 1, c.size());
+		container = parser.parse();
+		PmergeMe::mergeInsertion(container, 1, container.size());
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
 	}
 	
 	std::cout << "=============================" << std::endl;
-	for (vvp::iterator i = c.begin(); i != c.end(); ++i)
-		std::cout << "(" << (*i->begin()).first << ", " << (*i->begin()).second << ")" << std::endl;
+	for (vvp::iterator i = container.begin(); i != container.end(); ++i)
+		std::cout	<< "("	<< i->begin()->first
+					<< ", "
+					<< i->begin()->second
+					<< ")"	<< std::endl;
 	return (EXIT_SUCCESS);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 void	merge_arr(std::vector<int> &v, int m, int len, int level)
