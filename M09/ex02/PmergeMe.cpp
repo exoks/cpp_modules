@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/26 14:37:51 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:37:51 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/27 14:22:40 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/27 14:53:45 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -39,8 +39,16 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 		s2 = m + 1;
 		while (s1 <= m + 1 && s2 < len)
 		{
-			(void) v;
-			++s2;
+			if (getIterator(v, s1)->begin()->second > getIterator(v, s2)->begin()->second)
+			{
+				std::cout << getIterator(v, s2)->begin()->second << std::endl;
+				++s2;
+			}
+			else
+			{
+				std::cout << getIterator(v, s1)->begin()->second << std::endl;
+				++s1;
+			}
 		}
 		m += (level << 1);
 	}
