@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/27 21:23:53 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/27 21:23:53 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/29 18:29:14 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/29 18:30:10 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -37,21 +37,24 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 	{
 		s1 = m - level + 1;
 		s2 = m + 1;
-		while (s1 <= m + 1 && s2 < len)
+		vp tmp = *getIterator(v, s2);
+		while (s1 <= m && s2 < len)
 		{
-			if (getIterator(v, s1)->begin()->second > getIterator(v, s2)->begin()->second)
+			if (getIterator(v, s1)->begin()->second > tmp.begin()->second)
 			{
-				std::swap(*getIterator(v, s1), *getIterator(v, s2));
+				std::swap(*getIterator(v, s1), tmp);
 				++s2;
 			}
-			else
+			else if (getIterator(v, s2)->begin()->second < tmp.begin()->second)
 			{
-				std::cout << getIterator(v, s1)->begin()->second << std::endl;
+				std::swap(*getIterator(v, s2), tmp);
 				++s1;
 			}
 		}
+//		for (vvp::iterator i = tmp.begin(); i != tmp.end(); ++i)
+//			std::cout << "(" << i->begin()->first << ", " << i->begin()->second << ")" << std::endl;
 		m += (level << 1);
-	}
+	}	
 }
 
 //====< insertion >=============================================================

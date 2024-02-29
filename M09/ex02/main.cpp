@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/26 15:08:30 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 15:44:21 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/29 18:19:55 by oussama
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/29 18:19:57 by oussama
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -21,6 +21,8 @@
 
 # include "PmergeMe.hpp"
 
+void	display(vvp & container);
+
 //====< main >==================================================================
 int	main(int ac, char **av)
 {
@@ -30,21 +32,29 @@ int	main(int ac, char **av)
 	try
 	{
 		container = parser.parse();
+
+		display(container);
+
 		PmergeMe::mergeInsertion(container, 1, container.size());
+	
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
 	}
 	
+	display(container);
+
+	return (EXIT_SUCCESS);
+}
+
+void	display(vvp & container)
+{
 	std::cout << "=============================" << std::endl;
 	for (vvp::iterator i = container.begin(); i != container.end(); ++i)
 		std::cout	<< "("	<< i->begin()->first
 					<< ", "
 					<< i->begin()->second
 					<< ")"	<< std::endl;
-	return (EXIT_SUCCESS);
 }
-
-
 
 
 

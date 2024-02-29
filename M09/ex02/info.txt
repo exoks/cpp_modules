@@ -1,0 +1,2 @@
+1_ use another container for the merging part
+2_ try to use one iterator instead
