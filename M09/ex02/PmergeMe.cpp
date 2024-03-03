@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/29 18:29:14 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/29 18:30:10 by oussama
+//        #....  ...   .-.  ....##       Created: 2024/03/03 23:29:38 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/03 23:53:18 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,35 +26,37 @@ PmergeMe::PmergeMe(void)
 {
 }
 
+// if the middle is at the end we should break from the loop (!!!: end is related to the last pair)
+//		std::cout << ":=> e1 " << m << std::endl << ":=> e2 " << m + level << std::endl;
 //====< merge >=================================================================
 void	PmergeMe::merge(vvp & v, int level, int len)
 {
-	int	s1, m, s2;
+	int	s1,	s2;
+	vvp	tmp;
 
+	// detect the end is not len - 1
 	std::cout << "================(" << level << ")==============" << std::endl;
-	m = level - 1;
-	while (m < len)
+	for (int m = level - 1; m < len - 1; m += (level << 1))
 	{
 		s1 = m - level + 1;
 		s2 = m + 1;
-		vp tmp = *getIterator(v, s2);
-		while (s1 <= m && s2 < len)
+		while (s1 <= m || s2 <= m + level)
 		{
-			if (getIterator(v, s1)->begin()->second > tmp.begin()->second)
-			{
-				std::swap(*getIterator(v, s1), tmp);
-				++s2;
-			}
-			else if (getIterator(v, s2)->begin()->second < tmp.begin()->second)
-			{
-				std::swap(*getIterator(v, s2), tmp);
-				++s1;
-			}
+			if (s1 <= m && s2 > m + level)
+				tmp.push_back(*getIterator(v, s1++));
+			else if (s2 > m && s2 <= m + level)
+				tmp.push_back(*getIterator(v, s2++));
+			else if (getIterator(v, s1)->begin()->second < getIterator(v, s2)->begin()->second)
+				tmp.push_back(*getIterator(v, s1++));
+			else if (getIterator(v, s2)->begin()->second < getIterator(v, s1)->begin()->second)
+				tmp.push_back(*getIterator(v, s2++));
 		}
-//		for (vvp::iterator i = tmp.begin(); i != tmp.end(); ++i)
-//			std::cout << "(" << i->begin()->first << ", " << i->begin()->second << ")" << std::endl;
-		m += (level << 1);
 	}	
+
+	// Copy to main vector v
+	std::cout << "=================== buff ======================" << std::endl;
+			for (vvp::iterator i = tmp.begin(); i != tmp.end(); ++i)
+				std::cout << "(" << i->begin()->first << ", " << i->begin()->second << ")" << std::endl;
 }
 
 //====< insertion >=============================================================
@@ -73,8 +75,24 @@ void	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 }
 
 
-
-
+//			if (s1 > m)
+//				std::swap(*getIterator(v, s2++), tmp);
+//			else if (s2 >= len)
+//				std::swap(*getIterator(v, s1++), tmp);
+//			if (getIterator(v, s1)->begin()->second > tmp.begin()->second)
+//			{
+//			   	std::swap(*getIterator(v, s1), tmp);
+//				++s1;
+//			}
+//			else if (getIterator(v, s1)->begin()->second == tmp.begin()->second)
+//				++s1;
+//			else if (getIterator(v, s2)->begin()->second == tmp.begin()->second)
+//				++s2;
+//			else if (getIterator(v, s2)->begin()->second > tmp.begin()->second)
+//			{
+//				std::swap(*getIterator(v, s2), tmp);
+//				++s2;
+//			}
 
 
 
