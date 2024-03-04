@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/26 14:29:58 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:30:34 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/04 13:19:59 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/04 13:19:59 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -31,6 +31,14 @@
 # include "Date.hpp"
 # include "FSM.hpp"
 # include "Exception.hpp"
+
+//====< Types >=================================================================
+typedef enum	e_type
+{
+	POSITIVE,
+	NEGATIVE,
+	MIXED
+}				Type;
 
 namespace	prs
 {
@@ -56,7 +64,7 @@ namespace	prs
 # include "KeyValueParser.tpp"
 
 //====< PairParser class >======================================================
-	template<class Container, class Unit, bool sortPair = false>
+	template<class Container, class Unit, int type = MIXED, bool sortPair = false>
 	class	PairParser
 	{
 		private:
@@ -67,7 +75,7 @@ namespace	prs
 			PairParser(int ac, char **av);
 			~PairParser(void);
 
-			Container	parse(void);
+			Container	parseArgs(void);
 	};
 
 # include "PairParser.tpp"

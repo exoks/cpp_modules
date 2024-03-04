@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/29 18:19:55 by oussama
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/29 18:19:57 by oussama
+//        #....  ...   .-.  ....##       Created: 2024/03/04 13:23:23 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/04 13:23:23 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,19 +26,22 @@ void	display(vvp & container);
 //====< main >==================================================================
 int	main(int ac, char **av)
 {
-	prs::PairParser<vvp, vp, true>	parser(ac, av);
-	vvp								container;
+	prs::PairParser<vvp, vp, POSITIVE, true>	parser(ac, av);
+	vvp											container;
+	int											vpSize;
 
 	try
 	{
-		container = parser.parse();
+		container = parser.parseArgs();
+		vpSize = --ac / 2;
 
 		display(container);
 
-		PmergeMe::mergeInsertion(container, 1, container.size());
+		PmergeMe::mergeInsertion(container, 1, vpSize);
 	
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
+		return (EXIT_FAILURE);
 	}
 	
 	display(container);
@@ -48,7 +51,7 @@ int	main(int ac, char **av)
 
 void	display(vvp & container)
 {
-	std::cout << "=============================" << std::endl;
+	std::cout << "==================== container ================" << std::endl;
 	for (vvp::iterator i = container.begin(); i != container.end(); ++i)
 		std::cout	<< "("	<< i->begin()->first
 					<< ", "

@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/03 23:29:38 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/03 23:53:18 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/04 14:22:50 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/04 14:22:50 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -31,20 +31,20 @@ PmergeMe::PmergeMe(void)
 //====< merge >=================================================================
 void	PmergeMe::merge(vvp & v, int level, int len)
 {
-	int	s1,	s2;
+	int	s1,	s2, e;
 	vvp	tmp;
 
-	// detect the end is not len - 1
 	std::cout << "================(" << level << ")==============" << std::endl;
 	for (int m = level - 1; m < len - 1; m += (level << 1))
 	{
 		s1 = m - level + 1;
 		s2 = m + 1;
-		while (s1 <= m || s2 <= m + level)
+		e = (m + level < len) ? m + level: len - 1; 
+		while (s1 <= m || s2 <= e)
 		{
-			if (s1 <= m && s2 > m + level)
+			if (s1 <= m && s2 > e)
 				tmp.push_back(*getIterator(v, s1++));
-			else if (s2 > m && s2 <= m + level)
+			else if (s1 > m && s2 <= e)
 				tmp.push_back(*getIterator(v, s2++));
 			else if (getIterator(v, s1)->begin()->second < getIterator(v, s2)->begin()->second)
 				tmp.push_back(*getIterator(v, s1++));
@@ -53,8 +53,10 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 		}
 	}	
 
-	// Copy to main vector v
-	std::cout << "=================== buff ======================" << std::endl;
+	for (unsigned int i = 0; i < tmp.size(); ++i)
+		std::swap(*getIterator(v, i), *getIterator(tmp, i));
+
+	std::cout << "===================> buff" << std::endl;
 			for (vvp::iterator i = tmp.begin(); i != tmp.end(); ++i)
 				std::cout << "(" << i->begin()->first << ", " << i->begin()->second << ")" << std::endl;
 }
@@ -73,27 +75,6 @@ void	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 	mergeInsertion(v, level << 1, len);
 //	insert part
 }
-
-
-//			if (s1 > m)
-//				std::swap(*getIterator(v, s2++), tmp);
-//			else if (s2 >= len)
-//				std::swap(*getIterator(v, s1++), tmp);
-//			if (getIterator(v, s1)->begin()->second > tmp.begin()->second)
-//			{
-//			   	std::swap(*getIterator(v, s1), tmp);
-//				++s1;
-//			}
-//			else if (getIterator(v, s1)->begin()->second == tmp.begin()->second)
-//				++s1;
-//			else if (getIterator(v, s2)->begin()->second == tmp.begin()->second)
-//				++s2;
-//			else if (getIterator(v, s2)->begin()->second > tmp.begin()->second)
-//			{
-//				std::swap(*getIterator(v, s2), tmp);
-//				++s2;
-//			}
-
 
 
 
