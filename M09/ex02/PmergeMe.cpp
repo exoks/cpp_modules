@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/04 14:22:50 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/04 14:22:50 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/06 15:47:17 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/06 15:47:17 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,8 +26,7 @@ PmergeMe::PmergeMe(void)
 {
 }
 
-// if the middle is at the end we should break from the loop (!!!: end is related to the last pair)
-//		std::cout << ":=> e1 " << m << std::endl << ":=> e2 " << m + level << std::endl;
+// Don't forget to think of another way wihtout using tmp container
 //====< merge >=================================================================
 void	PmergeMe::merge(vvp & v, int level, int len)
 {
@@ -62,22 +61,30 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 }
 
 //====< insertion >=============================================================
+void	PmergeMe::insertion(vvp & v, int level, int len)
+{
+	(void) v;
+	(void) level;
+	(void) len;
+
+	// insert the pend chaine into main chaine using insertion algorithm
+	// forget : i have to find out how to make it without using lower_bound
+};
+
+void insertionTest(vvp & v, int len);
 
 //====< mergeInsertion >========================================================
 void	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 {
 	if (level > len)
 	{
-//		insertion part
+//		insertionTest(v, len);
 		return ;
 	}
 	merge(v, level, len);
 	mergeInsertion(v, level << 1, len);
 //	insert part
 }
-
-
-
 
 
 

@@ -1,2 +1,5 @@
-1_ use another container for the merging part
-2_ try to use one iterator instead
+
+_ first problem use lower_bound on vvp ? (the most common way is to use another container to insert) 
+	(try to avoid this way)
+
+_ second one : inserting must be in the final recursion or in the reverse recurstion
