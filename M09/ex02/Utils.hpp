@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/02/26 14:29:28 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:29:28 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/07 12:56:04 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/07 12:56:04 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -28,6 +28,8 @@
 # include "Exception.hpp"
 
 //====< typedef >===============================================================
+typedef std::vector<int>::iterator						vi;
+typedef std::vector<int>								v;
 typedef std::vector<std::pair<int, int > >				vp;
 typedef std::vector<std::vector<std::pair<int, int> > >	vvp;
 

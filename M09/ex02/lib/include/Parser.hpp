@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/04 13:19:59 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/04 13:19:59 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/07 16:33:41 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/07 16:33:41 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -31,6 +31,7 @@
 # include "Date.hpp"
 # include "FSM.hpp"
 # include "Exception.hpp"
+# include <vector>
 
 //====< Types >=================================================================
 typedef enum	e_type
