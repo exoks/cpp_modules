@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/07 17:46:42 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/07 17:46:42 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/09 17:01:17 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/09 17:02:17 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -21,11 +21,15 @@
 
 # include "PmergeMe.hpp"
 
-int number = 0;
 //====< constructor >===========================================================
 PmergeMe::PmergeMe(void)
 {
 }
+
+//	std::cout << "================(" << level << ")==============" << std::endl;
+//	std::cout << "===================> buff" << std::endl;
+//			for (vvp::iterator i = tmp.begin(); i != tmp.end(); ++i)
+//				std::cout << "(" << i->begin()->first << ", " << i->begin()->second << ")" << std::endl;
 
 // Don't forget to think of another way wihtout using tmp container
 // !!!: take the right postion of each one and then swap them
@@ -35,7 +39,6 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 	int	s1,	s2, e;
 	vvp	tmp;
 
-	std::cout << "================(" << level << ")==============" << std::endl;
 	for (int m = level - 1; m < len - 1; m += (level << 1))
 	{
 		s1 = m - level + 1;
@@ -53,24 +56,19 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 				tmp.push_back(*getIterator(v, s2++));
 		}
 	}
-
 	for (unsigned int i = 0; i < tmp.size(); ++i)
 		std::swap(*getIterator(v, i), *getIterator(tmp, i));
-
-//	std::cout << "===================> buff" << std::endl;
-//			for (vvp::iterator i = tmp.begin(); i != tmp.end(); ++i)
-//				std::cout << "(" << i->begin()->first << ", " << i->begin()->second << ")" << std::endl;
 }
 
 //==========================
 bool	cmp(int a, int b)
 {
-	number++;
+	std::cout << "1+" << std::endl;
 	return (a < b);
 }
 
 //====< insertion >=============================================================
-void	PmergeMe::insertion(vvp & v, int len)
+std::vector<int>	PmergeMe::insertion(vvp & v, int len)
 {
 	std::vector<int>	main;
 	vi					it;
@@ -82,24 +80,16 @@ void	PmergeMe::insertion(vvp & v, int len)
 	for (vvp::iterator i = v.begin() + 1; i != v.end(); ++i)
 	{
 		it = std::lower_bound(main.begin(), main.end(), i->begin()->first);
-		// understand this line
 		main.insert(it, i->begin()->first);
-		// needs to be swaped
 	}
-
-	std::cout << "====================================" << std::endl;
-	for (vi i = main.begin(); i != main.end(); ++i)
-		std::cout << " => " << *i << std::endl;
+	return (main);
 }
 
 //====< mergeInsertion >========================================================
-void	PmergeMe::mergeInsertion(vvp & v, int level, int len)
+std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 {
 	if (level > len)
-	{
-		insertion(v, len);
-		return ;
-	}
+		return (insertion(v, len));
 	merge(v, level, len);
-	mergeInsertion(v, level << 1, len);
+	return (mergeInsertion(v, level << 1, len));
 }

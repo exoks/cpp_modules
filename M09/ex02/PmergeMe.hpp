@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/07 13:18:30 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/07 13:18:33 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/09 16:12:55 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/09 16:12:55 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -22,10 +22,12 @@
 #ifndef __PMERGEME_HPP__
 # define __PMERGEME_HPP__
 
+
 # include <iostream>
 # include "Utils.hpp"
 # include "Parser.hpp"
 
+static int	nbr;
 // This class can be a template class in the end
 
 class	PmergeMe
@@ -35,9 +37,9 @@ class	PmergeMe
 
 	public:
 		static void	merge(vvp & v, int level, int len);
-		static void	insertion(vvp & v, int level);
+		static std::vector<int>	insertion(vvp & v, int level);
 
-		static void	mergeInsertion(vvp & v, int level, int size);
+		static std::vector<int>	mergeInsertion(vvp & v, int level, int size);
 };
 
 #endif /*__PMERGEME_HPP__*/

@@ -18,7 +18,7 @@ data=$(cat file)
 
 ./mergeInsertion $data
 
-echo -ne "\033[1;32m$data\033[1;0m\n"
+#echo -ne "\033[1;32m$data\033[1;0m\n"
 
 #all=`./mergeInsertion $data`
 #nbr=`echo "$all" | wc -l`
@@ -52,4 +52,4 @@ echo -ne "\033[1;32m$data\033[1;0m\n"
 
 rm file
 #echo -ne "sb :=> $sb\nra :=> $ra\nrb :=> $rb\nrr :=> $rr\npa :=> $pa\npb :=> $pb\nrra :=> $rra\nrrb :=> $rrb\nrrr :=> $rrr\n"
-echo -ne "\033[1;32m   Made By Oussama Ezzaou :)   \033[1;0m\n"
+#echo -ne "\033[1;32m   Made By Oussama Ezzaou :)   \033[1;0m\n"

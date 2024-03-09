@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/07 13:18:09 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/07 13:18:09 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/09 16:55:02 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/09 16:55:02 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 	prs::PairParser<vvp, vp, POSITIVE, true>	parser(ac, av);
 	vvp											container;
 	int											vpSize;
+	std::vector<int>							v;
 
 	try
 	{
@@ -37,15 +38,17 @@ int	main(int ac, char **av)
 
 		display(container);
 
-		PmergeMe::mergeInsertion(container, 1, vpSize);
-	
+		v = PmergeMe::mergeInsertion(container, 1, vpSize);
+
+		for (int i = 0; i < (int) v.size(); ++i)
+			std::cout << " => " << v[i] << std::endl;	
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
 		return (EXIT_FAILURE);
 	}
 	
 	display(container);
-
+	
 	return (EXIT_SUCCESS);
 }
 
