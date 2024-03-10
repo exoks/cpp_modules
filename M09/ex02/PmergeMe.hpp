@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/09 16:12:55 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/09 16:12:55 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/10 14:52:50 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/10 14:52:50 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,20 +24,18 @@
 
 
 # include <iostream>
-# include "Utils.hpp"
 # include "Parser.hpp"
+# include "Utils.hpp"
 
-static int	nbr;
 // This class can be a template class in the end
-
 class	PmergeMe
 {
 	private:
 		PmergeMe(void);
 
 	public:
-		static void	merge(vvp & v, int level, int len);
-		static std::vector<int>	insertion(vvp & v, int level);
+		static void				merge(vvp & v, int level, int len);
+		static std::vector<int>	insertion(vvp & v, int len);
 
 		static std::vector<int>	mergeInsertion(vvp & v, int level, int size);
 };

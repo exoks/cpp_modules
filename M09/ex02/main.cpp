@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/09 16:55:02 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/09 16:55:02 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/10 20:01:27 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/10 20:01:27 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -36,18 +36,20 @@ int	main(int ac, char **av)
 		container = parser.parseArgs();
 		vpSize = --ac / 2;
 
-		display(container);
+		//display(container);
 
 		v = PmergeMe::mergeInsertion(container, 1, vpSize);
 
-		for (int i = 0; i < (int) v.size(); ++i)
-			std::cout << " => " << v[i] << std::endl;	
+		//for (int i = 0; i < (int) v.size(); ++i)
+		//	std::cout << " => " << v[i] << std::endl;
+		
+		std::cout << "|isSorted~~~>> " << std::is_sorted(v.begin(), v.end()) << std::endl;
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
 		return (EXIT_FAILURE);
 	}
 	
-	display(container);
+	//display(container);
 	
 	return (EXIT_SUCCESS);
 }
@@ -60,6 +62,7 @@ void	display(vvp & container)
 					<< ", "
 					<< i->begin()->second
 					<< ")"	<< std::endl;
+	std::cout << "===============================================" << std::endl;
 }
 
 
