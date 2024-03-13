@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/10 21:48:48 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/10 21:50:12 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/12 17:55:11 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/12 17:55:11 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -54,24 +54,37 @@ typename Container::iterator	getIterator(Container & c, int index)
 
 // How to use Jacobsthal sequence in binary search
 //====< binarySearch >==========================================================
-template <class C>
+/*template <class C>
 typename C::iterator	binarySearch(C & c, int start, int end, int target)
 {
-	int		index;
+	int		middle;
 
-	index = (start + end) / 2;
-	if (index != start && target > *getIterator(c, index))
+	middle = (start + end) / 2;
+	if (start <= end && target > *getIterator(c, middle))
+		return (binarySearch(c, ++middle, end, target));
+	if (start <= end && target < *getIterator(c, middle))
+		return (binarySearch(c, start, --middle, target));
+	return (getIterator(c, start));
+}*/
+
+//====< binarySearch >==========================================================
+template <class C>
+typename C::iterator	binarySearch(C & c, int target)
+{
+	int	start, middle, end;
+
+	start = 0;
+	end = static_cast<int>(c.size()) - 1;
+	while (start <= end)
 	{
 		std::cout << "+1" << std::endl;
-		return (binarySearch(c, ++index, end, target));
+		middle = (start + end) / 2;
+		if (target < *getIterator(c, middle))
+			end = middle - 1;
+		if (target > *getIterator(c, middle))
+			start = middle + 1;
 	}
-	if (index != start && target < *getIterator(c, index))
-	{
-		std::cout << "+1" << std::endl;
-		return (binarySearch(c, start, --index, target));
-	}
-	std::cout << "+1" << std::endl;
-	return (getIterator(c, (target < *getIterator(c, start)) ? start : end));
+	return (getIterator(c, start));
 }
 
 # endif /*__UTILS_HPP__*/

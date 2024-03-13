@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/10 20:01:15 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/10 21:33:05 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/13 00:54:07 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/13 00:54:07 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -77,15 +77,33 @@ std::vector<int>	PmergeMe::insertion(vvp & v, int len)
 	main.push_back(getIterator(v, 0)->begin()->first);
 	for (int i = 0; i < len; i++)
 		main.push_back(getIterator(v, i)->begin()->second);
-	for (vvp::iterator i = v.begin() + 1; i != v.end(); ++i)
+	/*for (vvp::iterator i = v.begin() + 1; i != v.end(); ++i)
 	{
-		iter = binarySearch(main, 0, (int) main.size(), i->begin()->first);
-	//	iter = lower_bound(main.begin(), main.end(), i->begin()->first, cmp);
+		iter = binarySearch(main, i->begin()->first);
 		main.insert(iter, i->begin()->first);
+	}*/
+
+	int	i(1), j(1), k;
+
+	while (true)
+	{
+		k = (2 * i) + j;
+		if (k > (int) v.size())
+			break ;
+		for (int index = k; index > j; --index)
+		{
+			iter = binarySearch(main, getIterator(v, index)->begin()->first);
+			main.insert(iter, getIterator(v, index)->begin()->first);
+		}
+	//	std::cout << "-->" << k << std::endl;
+		i = j;
+		j = k;
 	}
+
 	return (main);
 }
 
+//iter = lower_bound(main.begin(), main.end(), i->begin()->first, cmp);
 //====< mergeInsertion >========================================================
 std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 {
@@ -94,10 +112,6 @@ std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 	merge(v, level, len);
 	return (mergeInsertion(v, level << 1, len));
 }
-
-
-
-
 
 
 

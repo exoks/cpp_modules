@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2024/03/10 19:52:39 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/10 21:30:28 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2024/03/13 00:50:23 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/13 00:50:23 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -77,7 +77,7 @@ fclean: clean
 re: fclean all
 
 run:
-	@./$(NAME) 50 9 2 7 1 10 6 8 4 5 3 11
+	@./run.sh 0 100 21 | awk '/^[|]/ END{print "=> "NR}'
 
 .SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run
