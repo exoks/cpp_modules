@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/12 17:54:34 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/12 17:54:34 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/13 17:06:14 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/13 17:06:14 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,6 +26,8 @@
 # include <iostream>
 # include "Parser.hpp"
 # include "Utils.hpp"
+
+# define JK(PREV, CURR) (PREV * 2 + CURR)
 
 // This class can be a template class in the end
 class	PmergeMe

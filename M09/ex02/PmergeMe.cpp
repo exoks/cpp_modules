@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/13 00:54:07 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/13 00:54:07 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/13 18:18:06 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/13 18:18:06 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -52,12 +52,12 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 				tmp.push_back(*getIterator(v, s2++));
 			else if (getIterator(v, s1)->begin()->second < getIterator(v, s2)->begin()->second)
 			{
-				std::cout << "+1" << std::endl;
+			//	std::cout << "+111" << std::endl;
 				tmp.push_back(*getIterator(v, s1++));
 			}
 			else if (getIterator(v, s2)->begin()->second < getIterator(v, s1)->begin()->second)
 			{
-				std::cout << "+1" << std::endl;
+			//	std::cout << "+111" << std::endl;
 				tmp.push_back(*getIterator(v, s2++));
 			}
 		}
@@ -68,42 +68,37 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 
 bool	cmp(int a, int b);
 
+#include <unistd.h>
+
 //====< insertion >=============================================================
 std::vector<int>	PmergeMe::insertion(vvp & v, int len)
 {
+	int							prev(1), curr(1), next;
 	std::vector<int>			main;
 	std::vector<int>::iterator	iter;
 
+	len = static_cast<int>(v.size());
 	main.push_back(getIterator(v, 0)->begin()->first);
-	for (int i = 0; i < len; i++)
-		main.push_back(getIterator(v, i)->begin()->second);
-	/*for (vvp::iterator i = v.begin() + 1; i != v.end(); ++i)
+	while (curr < len)
 	{
-		iter = binarySearch(main, i->begin()->first);
-		main.insert(iter, i->begin()->first);
-	}*/
-
-	int	i(1), j(1), k;
-
-	while (true)
-	{
-		k = (2 * i) + j;
-		if (k > (int) v.size())
-			break ;
-		for (int index = k; index > j; --index)
+		next = (JK(prev, curr) >= len) ? len: JK(prev, curr);
+		// try to remove one other elements in main chaine
+		for (int index = curr - 1; index < next - 1; ++index)
+			main.push_back(getIterator(v, index)->begin()->second);
+		for (int index = next - 1; index > curr - 1; --index)
 		{
+			std::cout << next << "++++" << std::endl;
 			iter = binarySearch(main, getIterator(v, index)->begin()->first);
 			main.insert(iter, getIterator(v, index)->begin()->first);
+	//		main.insert(iter, getIterator(v, index)->begin()->second);
 		}
-	//	std::cout << "-->" << k << std::endl;
-		i = j;
-		j = k;
+		prev = curr;
+		curr = next;
 	}
-
 	return (main);
 }
 
-//iter = lower_bound(main.begin(), main.end(), i->begin()->first, cmp);
+//iter = lower_bound(main.begin(), main.end(), getIterator(v, index)->begin()->first, cmp);
 //====< mergeInsertion >========================================================
 std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 {
@@ -114,7 +109,8 @@ std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 }
 
 
-
+// use the old way to make sure
+// try to change the current way
 
 
 
@@ -126,6 +122,6 @@ std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 //==========================
 bool	cmp(int a, int b)
 {
-	std::cout << "++++=1+" << std::endl;
+	std::cout << "+1" << std::endl;
 	return (a < b);
 }
