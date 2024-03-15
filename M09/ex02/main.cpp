@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/13 18:10:49 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/13 18:10:49 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/15 21:31:15 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/15 21:31:15 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 		container = parser.parseArgs();
 		vpSize = --ac / 2;
 
-		//display(container);
+//		display(container);
 
 		v = PmergeMe::mergeInsertion(container, 1, vpSize);
 
@@ -49,7 +49,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	
-	//display(container);
+	display(container);
 	
 	return (EXIT_SUCCESS);
 }
