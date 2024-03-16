@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/15 22:24:16 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/15 22:24:16 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/16 21:30:43 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/16 21:30:43 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -51,9 +51,15 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 			else if (s1 > m && s2 <= e)
 				tmp.push_back(*getIterator(v, s2++));
 			else if (getIterator(v, s1)->begin()->second < getIterator(v, s2)->begin()->second)
+			{
+				std::cout << "+1" << std::endl;
 				tmp.push_back(*getIterator(v, s1++));
+			}
 			else if (getIterator(v, s2)->begin()->second < getIterator(v, s1)->begin()->second)
+			{
+				std::cout << "+1" << std::endl;
 				tmp.push_back(*getIterator(v, s2++));
+			}
 		}
 	}
 	for (unsigned int i = 0; i < tmp.size(); ++i)
@@ -67,39 +73,26 @@ bool	cmp(int a, int b);
 //====< insertion >=============================================================
 std::vector<int>	PmergeMe::insertion(vvp & v, int len)
 {
-	int							prev(1), curr(1);
+	int							prev(1), curr(1), bi;
 	std::vector<int>			main;
 	std::vector<int>::iterator	iter;
 
 	len = static_cast<int>(v.size());
 	main.push_back(getIterator(v, 0)->begin()->first);
-	for (int index = 0; index < len; ++index)
-		if (getIterator(v, index)->begin()->second > -1)
-			main.push_back(getIterator(v, index)->begin()->second);
 	while (curr < len)
 	{
 		curr = (JK(curr, prev) >= len) ? len: JK(curr, prev);
-		std::cout << "==========(" << curr << ")==========" << std::endl;
-//		for (int index = prev - 1; index < curr - 1; ++index)
-//			if (getIterator(v, index)->begin()->second > -1)
-//				main.push_back(getIterator(v, index)->begin()->second);
+		for (int index = prev - 1; index < curr - 1; ++index)
+			if (getIterator(v, index)->begin()->second > -1)
+				main.push_back(getIterator(v, index)->begin()->second);
 		for (int index = curr - 1; index > prev - 1; --index)
 		{
-			std::cout << "     ==========      " << std::endl;
-//			std::cout << "adding : " << getIterator(v, prev - 1 + curr - index)->begin()->second << std::endl;
-//			if (getIterator(v, prev - 1 + curr - index)->begin()->second > -1)
-//				main.push_back(getIterator(v, prev - 1 + curr - index)->begin()->second);
-			int	b = getIterator(v, index)->begin()->first;
-			iter = lower_bound(main.begin(), main.end(), b, cmp);
-			main.insert(iter, getIterator(v, index)->begin()->first);
-			std::cout << "inserting : " << getIterator(v, index)->begin()->first << std::endl;
-
+			bi = getIterator(v, index)->begin()->first;
+			iter = lower_bound(main.begin(), main.end() - curr + index + 1, bi, cmp);
+			main.insert(iter, bi);
 		}
-		std::cout << "================ main =================" << std::endl;
-		for (int index = 0; index < (int) main.size(); ++index)
-			std::cout << "main :=> " << main[index] << std::endl;
 		std::swap(prev, curr);
-		std::cout << "=======================================" << std::endl;
+
 	}
 	return (main);
 }
@@ -116,10 +109,25 @@ std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 	return (mergeInsertion(v, level << 1, len));
 }
 
+//	for (int index = 0; index < len; ++index)
+//		if (getIterator(v, index)->begin()->second > -1)
+//			main.push_back(getIterator(v, index)->begin()->second);
+//		std::cout << "==========(" << curr << ")==========" << std::endl;
 
+//			std::cout << "     ==========      " << std::endl;
+//			if (getIterator(v, prev - 1 + curr - index)->begin()->second > -1)
+//				main.push_back(getIterator(v, prev - 1 + curr - index)->begin()->second);
 
+//			std::cout << "index : " << curr - 1 - index << std::endl;
 
+//			std::cout << "inserting : " << getIterator(v, index)->begin()->first << std::endl;
 
+/*
+		std::cout << "================ main =================" << std::endl;
+		for (int index = 0; index < (int) main.size(); ++index)
+			std::cout << "main :=> " << main[index] << std::endl;
+		std::cout << "=======================================" << std::endl;
+*/
 
 
 
