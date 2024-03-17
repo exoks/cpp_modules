@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/16 21:28:38 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/16 21:29:18 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/17 21:09:57 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/17 21:09:57 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -57,10 +57,7 @@ Container	PairParser<Container, Unit, type, sortPair>::parseArgs(void)
 			if (type == POSITIVE && tmp[j] < 0)
 				throw (Exception("mergeInsertion: negative argument"));
 			if (sortPair == true && j == 1 && tmp[0] > tmp[1])
-			{
-				std::cout << "+1" << std::endl;
 				std::swap(tmp[0], tmp[1]);
-			}
 		}
 		unit.push_back(std::pair<int, int>(tmp[0], tmp[1]));
 		container.push_back(unit);

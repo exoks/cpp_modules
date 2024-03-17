@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/14 18:58:31 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/14 18:58:31 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/17 21:25:05 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/17 21:25:07 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -37,7 +37,7 @@ class	PmergeMe
 
 	public:
 		static void				merge(vvp & v, int level, int len);
-		static std::vector<int>	insertion(vvp & v, int len);
+		static std::vector<int>	insertion(vvp & v);
 
 		static std::vector<int>	mergeInsertion(vvp & v, int level, int size);
 };

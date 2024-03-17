@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/13 17:35:01 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/13 17:35:01 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/17 21:32:57 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/17 21:33:00 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -51,21 +51,6 @@ typename Container::iterator	getIterator(Container & c, int index)
 		iter++;
 	return (iter);
 }
-
-// How to use Jacobsthal sequence in binary search
-//====< binarySearch >==========================================================
-/*template <class C>
-typename C::iterator	binarySearch(C & c, int start, int end, int target)
-{
-	int		middle;
-
-	middle = (start + end) / 2;
-	if (start <= end && target > *getIterator(c, middle))
-		return (binarySearch(c, ++middle, end, target));
-	if (start <= end && target < *getIterator(c, middle))
-		return (binarySearch(c, start, --middle, target));
-	return (getIterator(c, start));
-}*/
 
 //====< binarySearch >==========================================================
 template <class C>
