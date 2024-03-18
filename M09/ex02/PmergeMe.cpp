@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/18 18:31:07 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/18 18:31:07 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/18 21:50:10 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/18 21:50:30 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -37,15 +37,13 @@ void	PmergeMe::merge(vvp & v, int level, int len)
 		s1 = m - level + 1;
 		s2 = m + 1;
 		e = (m + level < len) ? m + level: len - 1; 
-		while (s1 <= m || s2 <= e)
+		while (s1 <= m && s2 <= e)
 		{
-			if (s1 > m || s2 > e)
-				tmp.push_back(*getIterator(v, (s1 > m) ? s2++ : s1++));
-			else if (getPair(v, s1).second < getPair(v, s2).second)
-				tmp.push_back(*getIterator(v, s1++));
-			else if (getPair(v, s2).second < getPair(v, s1).second)
-				tmp.push_back(*getIterator(v, s2++));
+			int	res = getPair(v, s1).second - getPair(v, s2).second;
+			tmp.push_back(*getIterator(v, (res < 0) ? s1++ : s2++));
 		}
+		while (s1 <= m || s2 <= e)
+			tmp.push_back(*getIterator(v, (s1 > m) ? s2++ : s1++));
 	}
 	for (unsigned int i = 0; i < tmp.size(); ++i)
 		std::swap(*getIterator(v, i), *getIterator(tmp, i));

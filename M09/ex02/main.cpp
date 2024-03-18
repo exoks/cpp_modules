@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/18 18:05:47 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/18 18:05:47 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/18 21:50:46 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/18 21:50:46 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -48,8 +48,8 @@ int	main(int ac, char **av)
 
 		v = PmergeMe::mergeInsertion(container, 1, vpSize);
 
-//		for (int i = 0; i < (int) v.size(); ++i)
-//			std::cout << " => " << v[i] << std::endl;
+		for (int i = 0; i < (int) v.size(); ++i)
+			std::cout << " => " << v[i] << std::endl;
 		
 		std::cout << "|isSorted~~~>> " << std::is_sorted(v.begin(), v.end()) << std::endl;
 	} catch(Exception & e){
