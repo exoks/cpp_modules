@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/17 21:32:57 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/17 21:33:00 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/18 18:33:42 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/18 18:34:07 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -52,24 +52,46 @@ typename Container::iterator	getIterator(Container & c, int index)
 	return (iter);
 }
 
-//====< binarySearch >==========================================================
-template <class C>
-typename C::iterator	binarySearch(C & c, int target)
+//====< getPair >===============================================================
+template<class Container>
+std::pair<int, int>	getPair(Container & c, int index)
 {
-	int	start, middle, end;
+	if (index < 0 && index >= static_cast<int>(c.size()))
+		throw (Exception("Invalid index"));
+	return (*getIterator(c, index)->begin());
+}
 
-	start = 0;
-	end = static_cast<int>(c.size()) - 1;
-	while (start <= end)
-	{
-		std::cout << "+1" << std::endl;
-		middle = (start + end) / 2;
-		if (target < *getIterator(c, middle))
-			end = middle - 1;
-		if (target > *getIterator(c, middle))
-			start = middle + 1;
-	}
-	return (getIterator(c, start));
+//====< updateMainChaine >======================================================
+template<class Container, class Unit>
+void	pushToMainChain(Container & c, Unit & unit, int index)
+{
+	if (index == 0)
+		unit.push_back(getPair(c, index).first);
+	if (getPair(c, index).second > -1)
+		unit.push_back(getPair(c, index).second);
+}
+
+bool	cmp(int a, int b);
+//====< insertToMainChain >=====================================================
+template<class Unit>
+void	insertToMainChain(Unit & unit, int range, int target)
+{
+	typename Unit::iterator	end;
+
+	end = getIterator(unit, range);	
+	unit.insert(std::lower_bound(unit.begin(), end, target, cmp), target);
+}
+
+//====< getNextJacobsthalNbr > =================================================
+template<class Container>
+int	getNextJacobsthalNbr(Container & c, int prev, int curr)
+{
+	int		nextNbr;
+
+	nextNbr = (2 * prev) + curr;
+	if (nextNbr > static_cast<int>(c.size()))
+		return (static_cast<int>(c.size()));
+	return (nextNbr);
 }
 
 # endif /*__UTILS_HPP__*/

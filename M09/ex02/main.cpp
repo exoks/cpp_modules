@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/17 21:43:26 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/17 21:43:26 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/18 18:05:47 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/18 18:05:47 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -22,6 +22,14 @@
 # include "PmergeMe.hpp"
 
 void	display(vvp & container);
+
+//==========================
+bool	cmp(int a, int b)
+{
+	std::cout << "+1" << std::endl;
+	return (a < b);
+}
+
 
 //====< main >==================================================================
 int	main(int ac, char **av)
@@ -43,7 +51,7 @@ int	main(int ac, char **av)
 //		for (int i = 0; i < (int) v.size(); ++i)
 //			std::cout << " => " << v[i] << std::endl;
 		
-//		std::cout << "|isSorted~~~>> " << std::is_sorted(v.begin(), v.end()) << std::endl;
+		std::cout << "|isSorted~~~>> " << std::is_sorted(v.begin(), v.end()) << std::endl;
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
 		return (EXIT_FAILURE);
