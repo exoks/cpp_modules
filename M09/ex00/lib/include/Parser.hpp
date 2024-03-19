@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/28 16:49:57 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/28 16:49:57 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/19 22:18:29 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/19 22:19:53 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -29,11 +29,12 @@
 # include <map>
 # include "Date.hpp"
 # include "FSM.hpp"
+# include "Exception.hpp"
 
 namespace	prs
 {
 
-	template <class p1, class p2, char sep = '|'>
+	template <class p1, class p2, int T1, int T2, char sep = '|'>
 	class	KeyValueParser
 	{
 		private:
@@ -49,12 +50,17 @@ namespace	prs
 			std::map<p1, p2>	parseFile(void);
 			std::pair<p1, p2>	parseNextLine(void);
 			bool				eof(void);
+	
+
 	};
 
-	Date		parseDate(std::string date);
-	bool		isValidDate(std::string date);
+	Date				parseDate(std::string date);
+	bool				isValidDate(std::string date);
 
-	std::string	trim(std::string str);
+	std::string			trim(std::string str);
+
+//	bool				isValidParse(double value, std::string sValue);
+//	bool				isValidParse(int value, std::string sValue);
 
 # include "KeyValueParser.tpp"
 

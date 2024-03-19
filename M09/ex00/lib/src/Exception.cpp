@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+#####< BitcoinExchange.hpp >                        
+//       ######-..        .+########   < Exception.cpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/19 17:47:16 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/19 17:48:20 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/25 19:46:38 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:46:38 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,28 +19,21 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __BITCOINEXCHANGE_HPP__
-# define __BITCOINEXCHANGE_HPP__
+# include "Exception.hpp"
 
-# define VALID_ARGS		2
-
-# include <iostream>
-# include "Parser.hpp"
-
-class	BitcoinExchange
+//====< Constructor >===========================================================
+Exception::Exception(std::string msg)
 {
-	private:
-		std::string				fileName;
+	this->msg = msg;
+}
 
-	public:
-		BitcoinExchange(void);
-		BitcoinExchange(std::string fileName);
-		BitcoinExchange(const BitcoinExchange & be);
-		~BitcoinExchange(void);
+//====< Destructor >===========================================================
+Exception::~Exception() throw()
+{
+}
 
-		BitcoinExchange &	operator=(const BitcoinExchange & be);
-
-		void				exchange(void);
-};
-
-#endif /*__BITCOINEXCHANGE_HPP__*/
+//====< what >==================================================================
+const char	*Exception::what() const throw()
+{
+	return (msg.c_str());
+}

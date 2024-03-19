@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2023/12/18 22:48:45 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 22:28:20 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2024/03/19 17:19:49 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/19 17:19:49 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -77,7 +77,7 @@ fclean: clean
 re: fclean all
 
 run:
-	@./$(NAME)
+	@./$(NAME) test.csv
 
 .SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run
