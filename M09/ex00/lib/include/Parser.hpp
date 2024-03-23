@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/19 22:18:29 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/19 22:19:53 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/23 18:02:04 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/23 18:06:16 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -39,19 +39,17 @@ namespace	prs
 	{
 		private:
 			std::string		fileName;
-			std::fstream	fs;
+			std::fstream	fileStream;
 
 		public:
 			KeyValueParser(void);
-			KeyValueParser(std::fstream fs);
+			KeyValueParser(std::fstream fileStream);
 			KeyValueParser(std::string fileName);
 			~KeyValueParser(void);
 
 			std::map<p1, p2>	parseFile(void);
 			std::pair<p1, p2>	parseNextLine(void);
 			bool				eof(void);
-	
-
 	};
 
 	Date				parseDate(std::string date);
@@ -59,8 +57,9 @@ namespace	prs
 
 	std::string			trim(std::string str);
 
-//	bool				isValidParse(double value, std::string sValue);
-//	bool				isValidParse(int value, std::string sValue);
+	int					parse(int value, std::string sValue);
+	double				parse(double value, std::string sValue);
+	std::string			parse(std::string value, std::string sValue);
 
 # include "KeyValueParser.tpp"
 

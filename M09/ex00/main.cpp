@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/19 17:45:23 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/19 17:45:23 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/20 22:32:13 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/20 22:32:13 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,7 +19,6 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-# include "Parser.hpp"
 # include "BitcoinExchange.hpp"
 
 int	main(int ac, char **av)

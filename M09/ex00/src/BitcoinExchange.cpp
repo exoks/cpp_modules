@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/19 21:29:27 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/19 21:59:09 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/23 18:33:29 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/23 18:33:29 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -53,10 +53,10 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & be)
 //====< exchange >==============================================================
 void	BitcoinExchange::exchange(void)
 {
-	prs::KeyValueParser<std::string, float, STRING, DOUBLE, ','>	data("data/data.csv");
-	prs::KeyValueParser<std::string, float, STRING, DOUBLE>		input(fileName);
-	std::map<std::string, float>									dataBase;
-	std::pair<std::string, float>									kv;
+	prs::KeyValueParser<std::string, double, STRING, DOUBLE, ','>	data("data/data.csv");
+	prs::KeyValueParser<std::string, double, STRING, DOUBLE>		input(fileName);
+	std::map<std::string, double>									dataBase;
+	std::pair<std::string, double>									kv;
 
 	dataBase = data.parseFile();
 	while (true)

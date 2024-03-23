@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 20:10:41 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 20:10:41 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/23 21:42:32 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/23 21:42:32 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -60,4 +60,39 @@ std::string 	prs::trim(std::string str)
 	while (end >= 0 && str[end] == ' ')
 	  	end--;
 	return (str.substr(start, end - start + 1));
+}
+
+//====< parse >=================================================================
+int	prs::parse(int value, std::string sValue)
+{
+	std::stringstream	ss(sValue);
+
+	if (FSM::detectType(sValue) != INT)
+		throw (Exception("Parse Error: Not an Integer Value => " + sValue));
+	if ((ss >> value) == NULL)
+		throw (Exception("Parse Error: Too large number for Integer"));
+	return (value);
+}
+
+//====< parse >=================================================================
+double	prs::parse(double value, std::string sValue)
+{
+	std::stringstream	ss(sValue);
+
+//	std::cout << "str : " << sValue << "$" << std::endl;
+//	std::cout << "Type : " << FSM::detectType(sValue) << std::endl;
+	if (FSM::detectType(sValue) != INT && FSM::detectType(sValue) != DOUBLE)
+		throw (Exception("Parse Error: Not a double Value => " + sValue));
+	if ((ss >> value) == NULL)
+		throw (Exception("Error: Too large number for Double"));
+	return (value);
+}
+
+//====< parse >=================================================================
+std::string	prs::parse(std::string value, std::string sValue)
+{
+	value = sValue;
+//	if (value.empty() == true)
+//		throw (Exception("Parse Error: Empty string"));
+	return (value);
 }
