@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/23 18:02:04 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/23 18:06:16 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/26 00:28:54 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/26 00:28:54 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -34,7 +34,7 @@
 namespace	prs
 {
 
-	template <class p1, class p2, int T1, int T2, char sep = '|'>
+	template <class p1, class p2, char sep = '|'>
 	class	KeyValueParser
 	{
 		private:

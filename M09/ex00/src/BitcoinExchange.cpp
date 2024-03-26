@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/23 18:33:29 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/23 18:33:29 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/26 00:54:53 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/26 00:54:53 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -53,12 +53,13 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & be)
 //====< exchange >==============================================================
 void	BitcoinExchange::exchange(void)
 {
-	prs::KeyValueParser<std::string, double, STRING, DOUBLE, ','>	data("data/data.csv");
-	prs::KeyValueParser<std::string, double, STRING, DOUBLE>		input(fileName);
-	std::map<std::string, double>									dataBase;
-	std::pair<std::string, double>									kv;
+	prs::KeyValueParser<std::string, double, ','>		data("data/data.csv");
+	prs::KeyValueParser<std::string, double>			input(fileName);
+	std::map<std::string, double>						dataBase;
+	std::pair<std::string, double>						kv;
 
 	dataBase = data.parseFile();
+	std::cout << "==================== after ======================" << std::endl;
 	while (true)
 	{
 		kv = input.parseNextLine();
@@ -66,12 +67,8 @@ void	BitcoinExchange::exchange(void)
 			break ;
 		else if (prs::isValidDate(kv.first) == false)
 			std::cout << "Error: bad input " + kv.first	<< std::endl;
-		else if (kv.second < 0)
+		else if (kv.second < 0 || kv.second > 1000)
 			std::cout << "Error: not a positive number" << std::endl;
-//		else if (kv.second > INT_MAX)
-//			std::cout << "Error: too large a number."	<< std::endl;
-//		else if (kv.second != INT)
-//			std::cout << "Error: invalid number."		<< std::endl;
 		else
 			std::cout	<< kv.first	<< " => " << kv.second << " = " 
 						<< dataBase.lower_bound(kv.first)->second * kv.second

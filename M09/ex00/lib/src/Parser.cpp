@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/23 21:42:32 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/23 21:42:32 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/26 00:37:55 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/26 00:48:54 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -25,18 +25,14 @@
 Date	prs::parseDate(std::string strDate)
 {
 	std::stringstream	ss(strDate);
-	int					ymd[3];
 	std::string			buff;
+	int					ymd[3];
 
-	try {
-		for (int i = 0; i < 4 && getline(ss, buff, '-'); i++)
-		{
-			if (i > 2 || buff.length() < 2)
-				throw (std::out_of_range("Error: invalid format"));
-			std::stringstream(buff) >> ymd[i];
-		}
-	} catch (std::exception & e){
-		std::cout << e.what() << " => " << strDate << std::endl;
+	for (int index = 0; index < 4 && getline(ss, buff, '-'); index++)
+	{
+		if (index > 2 || FSM::detectType(buff) != INT)
+			throw (Exception("Parse Error: Invalid format > " + strDate));
+		std::stringstream(buff) >> ymd[index];
 	}
 	return (Date(ymd[0], ymd[1], ymd[2]));
 }
@@ -66,11 +62,15 @@ std::string 	prs::trim(std::string str)
 int	prs::parse(int value, std::string sValue)
 {
 	std::stringstream	ss(sValue);
+	int					type;
 
-	if (FSM::detectType(sValue) != INT)
-		throw (Exception("Parse Error: Not an Integer Value => " + sValue));
+	type = FSM::detectType(sValue);
+	if (type == START)
+		throw (Exception("Parse Error: Empty value > " + sValue));
+	if (type != INT && type != DOUBLE)
+		throw (Exception("Parse Error: Not a Integer value > " + sValue));
 	if ((ss >> value) == NULL)
-		throw (Exception("Parse Error: Too large number for Integer"));
+		throw (Exception("Error: Too large number for Double"));
 	return (value);
 }
 
@@ -78,11 +78,13 @@ int	prs::parse(int value, std::string sValue)
 double	prs::parse(double value, std::string sValue)
 {
 	std::stringstream	ss(sValue);
+	int					type;
 
-//	std::cout << "str : " << sValue << "$" << std::endl;
-//	std::cout << "Type : " << FSM::detectType(sValue) << std::endl;
-	if (FSM::detectType(sValue) != INT && FSM::detectType(sValue) != DOUBLE)
-		throw (Exception("Parse Error: Not a double Value => " + sValue));
+	type = FSM::detectType(sValue);
+	if (type == START)
+		throw (Exception("Parse Error: Empty value > " + sValue));
+	if (type != INT && type != DOUBLE)
+		throw (Exception("Parse Error: Not a double value > " + sValue));
 	if ((ss >> value) == NULL)
 		throw (Exception("Error: Too large number for Double"));
 	return (value);
@@ -92,7 +94,7 @@ double	prs::parse(double value, std::string sValue)
 std::string	prs::parse(std::string value, std::string sValue)
 {
 	value = sValue;
-//	if (value.empty() == true)
-//		throw (Exception("Parse Error: Empty string"));
+	if (value.empty() == true)
+		throw (Exception("Parse Error: Empty string"));
 	return (value);
 }

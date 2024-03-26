@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 12:18:09 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 12:18:09 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/26 00:35:07 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/26 00:48:11 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -50,7 +50,7 @@ int	FSM::detectType(std::string str)
 //====< getNextState >========================================================
 int	FSM::getNextState(int prv, char input)
 {
-	if (prv == START && input == ' ')
+	if (prv == START && strchr(" \t\r", input))
 		return (START);
 	if (prv == START && !isdigit(input))
 		return (strchr("+-/*", input)? OPERATOR: CHAR);
