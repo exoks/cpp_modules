@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/26 00:54:53 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/26 00:54:53 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/27 19:44:52 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/27 19:56:21 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -67,8 +67,8 @@ void	BitcoinExchange::exchange(void)
 			break ;
 		else if (prs::isValidDate(kv.first) == false)
 			std::cout << "Error: bad input " + kv.first	<< std::endl;
-		else if (kv.second < 0 || kv.second > 1000)
-			std::cout << "Error: not a positive number" << std::endl;
+//		else if (kv.second < 0 || kv.second > 1000)
+//			std::cout << "Error: not a positive number" << std::endl;
 		else
 			std::cout	<< kv.first	<< " => " << kv.second << " = " 
 						<< dataBase.lower_bound(kv.first)->second * kv.second

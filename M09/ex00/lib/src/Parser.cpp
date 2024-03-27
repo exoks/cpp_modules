@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/26 00:37:55 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/26 00:48:54 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/27 19:42:22 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/27 19:42:22 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -24,13 +24,17 @@
 //====< parseDate >=============================================================
 Date	prs::parseDate(std::string strDate)
 {
-	std::stringstream	ss(strDate);
+	std::stringstream	ss(prs::trim(strDate));
 	std::string			buff;
 	int					ymd[3];
+	unsigned int		maxSize;
 
-	for (int index = 0; index < 4 && getline(ss, buff, '-'); index++)
+	std::cout << "check <<<<< " << std::endl;	
+	for (int index = 0; index < 4 && ss.eof() == false; index++)
 	{
-		if (index > 2 || FSM::detectType(buff) != INT)
+		getline(ss, buff, '-');
+		maxSize = 2 * (2 - !!index);
+		if (FSM::detectType(buff) != INT || index > 2 || buff.size() > maxSize)
 			throw (Exception("Parse Error: Invalid format > " + strDate));
 		std::stringstream(buff) >> ymd[index];
 	}
