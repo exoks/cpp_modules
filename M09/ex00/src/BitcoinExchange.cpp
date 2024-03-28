@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/27 19:44:52 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/27 19:56:21 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/28 01:53:56 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 01:53:56 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -27,7 +27,7 @@ BitcoinExchange::BitcoinExchange(void)
 }
 
 //====< constructor >===========================================================
-BitcoinExchange::BitcoinExchange(std::string fileName)
+/*BitcoinExchange::BitcoinExchange(std::string fileName)
 {
 	this->fileName = fileName;
 }
@@ -48,10 +48,37 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & be)
 {
 	this->fileName = be.fileName;
 	return (*this);
+}*/
+
+//====< isValidExchangeDate >===================================================
+bool	BitcoinExchange::isValidExchangeDate(std::string sDate)
+{
+	Date	date;
+
+	try
+	{
+		date = prs::parseDate(sDate);
+		if (!prs::isValidDate(date) || !prs::compareToCurrentDate(date))
+			throw (Exception("Error: Invalid Date " + sDate));
+	} catch(Exception & e){
+		std::cout << e.what() << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
+//====< isValidExchangeValue >==================================================
+bool	BitcoinExchange::isValidExchangeValue(double value)
+{
+	if (value < 0)
+		return (std::cout << "Error: not a positive number" << std::endl, false);
+	if (value > 1000)
+		return (std::cout << "Error: too large number" << std::endl, false);
+	return (true);
 }
 
 //====< exchange >==============================================================
-void	BitcoinExchange::exchange(void)
+void	BitcoinExchange::exchange(std::string fileName)
 {
 	prs::KeyValueParser<std::string, double, ','>		data("data/data.csv");
 	prs::KeyValueParser<std::string, double>			input(fileName);
@@ -59,76 +86,16 @@ void	BitcoinExchange::exchange(void)
 	std::pair<std::string, double>						kv;
 
 	dataBase = data.parseFile();
-	std::cout << "==================== after ======================" << std::endl;
 	while (true)
 	{
 		kv = input.parseNextLine();
 		if (input.eof() == true)
 			break ;
-		else if (prs::isValidDate(kv.first) == false)
-			std::cout << "Error: bad input " + kv.first	<< std::endl;
-//		else if (kv.second < 0 || kv.second > 1000)
-//			std::cout << "Error: not a positive number" << std::endl;
-		else
-			std::cout	<< kv.first	<< " => " << kv.second << " = " 
-						<< dataBase.lower_bound(kv.first)->second * kv.second
-						<< std::endl;
+		if (isValidExchangeDate(kv.first) && isValidExchangeValue(kv.second))
+		{
+			std::cout << prs::trim(kv.first) << " | " << kv.second << " = ";
+			std::cout << dataBase.lower_bound(prs::trim(kv.first))->second * kv.second;
+			std::cout << std::endl;	
+		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-//====< constructor >===========================================================
-BitcoinExchange::BitcoinExchange(std::string fileName)
-{
-	this->fileName = fileName;
-}
-
-//====< setFileName >===========================================================
-void		BitcoinExchange::setFileName(std::string fileName)
-{
-	this->fileName = fileName;
-}
-
-//====< getFileName >===========================================================
-std::string	BitcoinExchange::getFileName(void) const
-{
-	return (fileName);
-}
-*/

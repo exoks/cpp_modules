@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/27 19:42:22 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/27 19:42:22 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/28 00:19:04 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 00:19:04 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -29,7 +29,6 @@ Date	prs::parseDate(std::string strDate)
 	int					ymd[3];
 	unsigned int		maxSize;
 
-	std::cout << "check <<<<< " << std::endl;	
 	for (int index = 0; index < 4 && ss.eof() == false; index++)
 	{
 		getline(ss, buff, '-');

@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/26 00:44:12 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/26 00:44:19 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/28 01:45:50 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 01:46:35 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -63,14 +63,16 @@ Date	prs::getCurrentDate(void)
 //====< compareToCurrentTime >==================================================
 bool		prs::compareToCurrentDate(Date date)
 {
-	Date	dat;
+	Date	cur;
 
-	dat = getCurrentDate();
-	if (date.year < dat.year)
+	cur = getCurrentDate();
+	if (date.year < cur.year)
 		return (true);
-	if (date.year == dat.year && date.month < dat.month)
+	if (date.year == cur.year && date.month < cur.month)
 		return (true);	
-	if (date.year == dat.year && date.month == dat.month && date.day <= dat.day)
+	if (date.year == cur.year && date.month == cur.month && date.day <= cur.day)
 		return (true);
 	return (false);
 }
+
+//====< compareDates >==========================================================

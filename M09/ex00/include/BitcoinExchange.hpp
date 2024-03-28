@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/19 17:47:16 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/23 17:04:19 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/28 01:53:18 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 01:53:18 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -30,17 +30,20 @@
 class	BitcoinExchange
 {
 	private:
-		std::string				fileName;
+		BitcoinExchange(void);
+//		std::string				fileName;
 
 	public:
-		BitcoinExchange(void);
-		BitcoinExchange(std::string fileName);
-		BitcoinExchange(const BitcoinExchange & be);
-		~BitcoinExchange(void);
+//		BitcoinExchange(std::string fileName);
+//		BitcoinExchange(const BitcoinExchange & be);
+//		~BitcoinExchange(void);
 
-		BitcoinExchange &	operator=(const BitcoinExchange & be);
+//		BitcoinExchange &	operator=(const BitcoinExchange & be);
 
-		void				exchange(void);
+		static void				exchange(std::string name);
+
+		static bool				isValidExchangeDate(std::string exchangeDate);
+		static bool				isValidExchangeValue(double exchangeValue);
 };
 
 #endif /*__BITCOINEXCHANGE_HPP__*/

@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/27 19:40:25 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/27 19:41:46 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/28 01:49:40 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 01:49:40 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -55,7 +55,7 @@ template <class p1, class p2, char sep>
 std::pair<p1, p2>	KeyValueParser<p1, p2, sep>::parseNextLine(void)
 {
 	std::stringstream	ssk(""), ssv("");
-	std::string			sKey, sValue, line;
+	std::string			line, sKey, sValue;
 	p1					key;
 	p2					value;
 	
@@ -66,9 +66,9 @@ std::pair<p1, p2>	KeyValueParser<p1, p2, sep>::parseNextLine(void)
 		getline(fileStream, line, '\n');
 		if (line.empty() || fileStream.eof())
 			continue ;
-		std::stringstream	sl(line);
-		getline(sl, sKey, sep);
-		getline(sl, sValue, '\n');
+		std::stringstream	sline(line);
+		getline(sline, sKey, sep);
+		getline(sline, sValue, '\n');
 		key = prs::parse(key, sKey);
 		value = prs::parse(value, sValue);
 		return (std::pair<p1, p2>(key, value));
