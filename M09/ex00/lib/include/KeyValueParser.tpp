@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/28 23:11:44 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 23:13:06 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/29 20:56:36 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:56:36 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -48,6 +48,13 @@ template <class p1, class p2, char sep>
 KeyValueParser<p1, p2, sep>::~KeyValueParser(void)
 {
 	fileStream.close();
+}
+
+//====< getFileStream >=========================================================
+template <class p1, class p2, char sep>
+std::fstream & KeyValueParser<p1, p2, sep>::getFileStream(void) const
+{
+	return (fileStream);
 }
 
 //====< parseNextLine >=========================================================
