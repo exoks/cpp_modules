@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/28 01:53:18 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 01:53:18 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/29 20:47:13 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:47:13 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,21 +26,15 @@
 
 # include <iostream>
 # include "Parser.hpp"
+# include <fstream>
 
 class	BitcoinExchange
 {
 	private:
 		BitcoinExchange(void);
-//		std::string				fileName;
 
 	public:
-//		BitcoinExchange(std::string fileName);
-//		BitcoinExchange(const BitcoinExchange & be);
-//		~BitcoinExchange(void);
-
-//		BitcoinExchange &	operator=(const BitcoinExchange & be);
-
-		static void				exchange(std::string name);
+		static void				exchange(std::string fileName);
 
 		static bool				isValidExchangeDate(std::string exchangeDate);
 		static bool				isValidExchangeValue(double exchangeValue);

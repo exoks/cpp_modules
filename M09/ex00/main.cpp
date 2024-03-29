@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/28 01:53:06 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 01:53:06 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/29 20:49:58 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:50:10 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -23,15 +23,12 @@
 
 int	main(int ac, char **av)
 {
-//	BitcoinExchange	bitcoin;
-
 	if (ac != VALID_ARGS)
-	   return (EXIT_FAILURE);	
+	   return (EXIT_FAILURE);
 	try
 	{
-//		bitcoin = BitcoinExchange(*++av);
 		BitcoinExchange::exchange(*++av);
-	} catch(Exception & e){
+	} catch (std::exception & e){
 		std::cout << e.what() << std::endl; 
 		return (EXIT_FAILURE);
 	}

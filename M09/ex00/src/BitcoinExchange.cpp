@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/28 01:53:56 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/28 01:53:56 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/29 20:47:50 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:49:17 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -25,30 +25,6 @@
 BitcoinExchange::BitcoinExchange(void)
 {
 }
-
-//====< constructor >===========================================================
-/*BitcoinExchange::BitcoinExchange(std::string fileName)
-{
-	this->fileName = fileName;
-}
-
-//====< copy constructor >======================================================
-BitcoinExchange::BitcoinExchange(const BitcoinExchange & be)
-{
-	*this = be;
-}
-
-//====< Destructor >============================================================
-BitcoinExchange::~BitcoinExchange(void)
-{
-}
-
-//====< operator= >=============================================================
-BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & be)
-{
-	this->fileName = be.fileName;
-	return (*this);
-}*/
 
 //====< isValidExchangeDate >===================================================
 bool	BitcoinExchange::isValidExchangeDate(std::string sDate)
@@ -80,21 +56,21 @@ bool	BitcoinExchange::isValidExchangeValue(double value)
 //====< exchange >==============================================================
 void	BitcoinExchange::exchange(std::string fileName)
 {
-	prs::KeyValueParser<std::string, double, ','>		data("data/data.csv");
-	prs::KeyValueParser<std::string, double>			input(fileName);
-	std::map<std::string, double>						dataBase;
-	std::pair<std::string, double>						kv;
+	prs::KeyValueParser<std::string, double, ','>	data("data/data.csv");
+	prs::KeyValueParser<std::string, double>		input(fileName);
+	std::map<std::string, double>					dataBase;
+	std::pair<std::string, double>					keyValue;
 
 	dataBase = data.parseFile();
 	while (true)
 	{
-		kv = input.parseNextLine();
+		keyValue = input.parseNextLine();
 		if (input.eof() == true)
 			break ;
-		if (isValidExchangeDate(kv.first) && isValidExchangeValue(kv.second))
+		if (isValidExchangeDate(keyValue.first) && isValidExchangeValue(keyValue.second))
 		{
-			std::cout << prs::trim(kv.first) << " | " << kv.second << " = ";
-			std::cout << dataBase.lower_bound(prs::trim(kv.first))->second * kv.second;
+			std::cout << prs::trim(keyValue.first) << " | " << keyValue.second << " = ";
+			std::cout << dataBase.lower_bound(prs::trim(keyValue.first))->second * keyValue.second;
 			std::cout << std::endl;	
 		}
 	}
