@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/29 20:54:12 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:54:12 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/30 23:30:24 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/30 23:30:24 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,6 +19,7 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
+//====< KeyValueParser Class >==================================================
 #ifndef __PARSER_HPP__
 # define __PARSER_HPP__
 
@@ -39,29 +40,31 @@ namespace	prs
 	{
 		private:
 			std::string		fileName;
-			std::fstream	fileStream;
 
 		public:
+			std::fstream	fileStream;
+
 			KeyValueParser(void);
 			KeyValueParser(std::fstream fileStream);
 			KeyValueParser(std::string fileName);
 			~KeyValueParser(void);
 
-			std::fstream & getFileStream(void) const;
-
 			std::map<p1, p2>	parseFile(void);
 			std::pair<p1, p2>	parseNextLine(void);
+			std::string			skipLine(void);
 			bool				eof(void);
 	};
 
-	Date				parseDate(std::string date);
-	bool				isValidDate(std::string date);
+	Date			parseDate(std::string date);
+	bool			isValidDate(std::string date);
 
-	std::string			trim(std::string str);
+	std::string		trim(std::string str);
 
-	int					parse(int value, std::string sValue);
-	double				parse(double value, std::string sValue);
-	std::string			parse(std::string value, std::string sValue);
+	std::string		parse(std::string value, std::string sValue);
+	int				parse(int value, std::string sValue);
+	double			parse(double value, std::string sValue);
+
+	std::string		getNextLine(std::istream & stream);
 
 # include "KeyValueParser.tpp"
 

@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/29 20:47:50 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:59:41 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/30 23:32:23 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 00:18:56 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,31 +26,44 @@ BitcoinExchange::BitcoinExchange(void)
 {
 }
 
-//====< isValidExchangeDate >===================================================
-bool	BitcoinExchange::isValidExchangeDate(std::string sDate)
+//====< checkHeader >===========================================================
+bool	BitcoinExchange::checkHeader(std::string fileName)
+{
+	std::fstream	fs(fileName);
+
+	return (prs::getNextLine(fs) == HEADER);
+}
+
+//====< checkDate >=============================================================
+bool	BitcoinExchange::checkDate(std::string sDate)
 {
 	Date	date;
 
-	try
-	{
-		date = prs::parseDate(sDate);
-		if (!prs::isValidDate(date) || !prs::compareToCurrentDate(date))
-			throw (Exception("Error: Invalid Date " + sDate));
-	} catch(Exception & e){
-		std::cout << e.what() << std::endl;
-		return (false);
-	}
+	date = prs::parseDate(sDate);
+	if (!prs::isValidDate(date) || !prs::compareToCurrentDate(date))
+		throw (Exception("Error: Invalid Date " + sDate));
 	return (true);
 }
 
-//====< isValidExchangeValue >==================================================
-bool	BitcoinExchange::isValidExchangeValue(double value)
+//====< checkValue >============================================================
+bool	BitcoinExchange::checkValue(double value)
 {
-	if (value < 0)
-		return (std::cout << "Error: not a positive number" << std::endl, false);
-	if (value > 1000)
-		return (std::cout << "Error: too large number" << std::endl, false);
+	std::string	msg[2] = {"Not a positive number", "Too large number"};
+
+	if (value < 0 || value > 1000)
+		throw (Exception("Error: " + msg[value > 1000]));
 	return (true);
+}
+
+//====< calculBalance >=========================================================
+void	BitcoinExchange::calculBalance(DataBase db, DateValue dv)
+{
+	double	balance;
+
+	balance = db.lower_bound(prs::trim(dv.first))->second * dv.second;
+	std::cout << prs::trim(dv.first)	<< " | "
+			  << dv.second				<< " = "
+			  << balance				<< std::endl;;
 }
 
 //====< exchange >==============================================================
@@ -59,19 +72,22 @@ void	BitcoinExchange::exchange(std::string fileName)
 	prs::KeyValueParser<std::string, double, ','>	data("data/data.csv");
 	prs::KeyValueParser<std::string, double>		input(fileName);
 	std::map<std::string, double>					dataBase;
-	std::pair<std::string, double>					keyValue;
+	std::pair<std::string, double>					dateValue;
 
 	dataBase = data.parseFile();
+	if (checkHeader(fileName) == true)
+		input.skipLine();
 	while (true)
 	{
-		keyValue = input.parseNextLine();
-		if (input.eof() == true)
-			break ;
-		if (isValidExchangeDate(keyValue.first) && isValidExchangeValue(keyValue.second))
+		try
 		{
-			std::cout << prs::trim(keyValue.first) << " | " << keyValue.second << " = ";
-			std::cout << dataBase.lower_bound(prs::trim(keyValue.first))->second * keyValue.second;
-			std::cout << std::endl;	
+			dateValue = input.parseNextLine();
+			if (input.eof() == true)
+				break ;
+			if (checkDate(dateValue.first) && checkValue(dateValue.second))
+				calculBalance(dataBase, dateValue);
+		} catch(Exception & e){
+			std::cout << e.what() << std::endl;
 		}
 	}
 }

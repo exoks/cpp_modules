@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/29 20:56:36 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:56:36 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/30 23:33:03 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/30 23:33:03 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -30,7 +30,7 @@ template <class p1, class p2, char sep>
 KeyValueParser<p1, p2, sep>::KeyValueParser(std::fstream fileStream)
 {
 	if (fileStream == NULL)
-		throw (Exception("Stream Error: could not open file."));
+		throw (Exception("Stream Error: Could not open file."));
 	this->fileStream = fileStream;
 }
 
@@ -40,7 +40,7 @@ KeyValueParser<p1, p2, sep>::KeyValueParser(std::string fileName)
 {
 	fileStream.open(fileName, std::ios::in);
 	if (fileStream == NULL)
-		throw (Exception("Stream Error: could not open file."));
+		throw (Exception("Stream Error: Could not open file."));
 }
 
 //====< destructor >============================================================
@@ -48,13 +48,6 @@ template <class p1, class p2, char sep>
 KeyValueParser<p1, p2, sep>::~KeyValueParser(void)
 {
 	fileStream.close();
-}
-
-//====< getFileStream >=========================================================
-template <class p1, class p2, char sep>
-std::fstream & KeyValueParser<p1, p2, sep>::getFileStream(void) const
-{
-	return (fileStream);
 }
 
 //====< parseNextLine >=========================================================
@@ -70,7 +63,7 @@ std::pair<p1, p2>	KeyValueParser<p1, p2, sep>::parseNextLine(void)
 	ssv >> value;
 	while (fileStream.eof() == false)
 	{
-		getline(fileStream, line, '\n');
+		line = getNextLine(fileStream);
 		if (line.empty() || fileStream.eof())
 			continue ;
 		std::stringstream	sline(line);
@@ -98,6 +91,13 @@ std::map<p1, p2>	KeyValueParser<p1, p2, sep>::parseFile(void)
 		map.insert(pair);
 	}
 	return (map);
+}
+
+//====< skipLine >==============================================================
+template <class p1, class p2, char sep>
+std::string	KeyValueParser<p1, p2, sep>::skipLine(void)
+{
+	return (getNextLine(fileStream));
 }
 
 //====< eof >===================================================================

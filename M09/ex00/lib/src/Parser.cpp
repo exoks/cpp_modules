@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/28 00:19:04 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:35:56 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/30 23:15:54 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/30 23:15:54 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -41,13 +41,13 @@ Date	prs::parseDate(std::string strDate)
 }
 
 //====< isValidDate >===========================================================
-bool		prs::isValidDate(std::string strDate)
+bool	prs::isValidDate(std::string strDate)
 {
 	return (isValidDate(parseDate(strDate)));
 }
 
 //====< trim >==================================================================
-std::string 	prs::trim(std::string str)
+std::string prs::trim(std::string str)
 {
 	int		start;
 	int		end;
@@ -100,4 +100,15 @@ std::string	prs::parse(std::string value, std::string sValue)
 	if (value.empty() == true)
 		throw (Exception("Parse Error: Empty string"));
 	return (value);
+}
+
+//====< getNextLine >===========================================================
+std::string	prs::getNextLine(std::istream & stream)
+{
+	std::string	line;
+
+	if (stream == NULL)
+		throw (Exception("Stream Error: Invalid Stream."));
+	getline(stream, line, '\n');
+	return (line);
 }

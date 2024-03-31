@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/29 20:49:58 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/29 20:50:10 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/30 18:17:05 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 00:12:09 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -21,16 +21,11 @@
 
 # include "BitcoinExchange.hpp"
 
+//====< main >==================================================================
 int	main(int ac, char **av)
 {
 	if (ac != VALID_ARGS)
 	   return (EXIT_FAILURE);
-	try
-	{
-		BitcoinExchange::exchange(*++av);
-	} catch (std::exception & e){
-		std::cout << e.what() << std::endl; 
-		return (EXIT_FAILURE);
-	}
+	BitcoinExchange::exchange(*++av);
 	return (EXIT_SUCCESS);
 }
