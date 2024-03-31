@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/30 23:32:23 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 00:18:56 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/31 01:46:10 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 01:46:10 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -40,7 +40,7 @@ bool	BitcoinExchange::checkDate(std::string sDate)
 	Date	date;
 
 	date = prs::parseDate(sDate);
-	if (!prs::isValidDate(date) || !prs::compareToCurrentDate(date))
+	if (!prs::isValidDate(date) || prs::dateCmp(date, Date(2009, 1, 6)) == LESS)
 		throw (Exception("Error: Invalid Date " + sDate));
 	return (true);
 }

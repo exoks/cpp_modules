@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/30 23:15:54 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/30 23:15:54 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/31 00:51:08 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 00:51:08 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -20,31 +20,6 @@
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
 # include "Parser.hpp"
-
-//====< parseDate >=============================================================
-Date	prs::parseDate(std::string strDate)
-{
-	std::stringstream	ss(prs::trim(strDate));
-	std::string			buff;
-	int					ymd[3];
-	unsigned int		maxSize;
-
-	for (int index = 0; index < 4 && ss.eof() == false; index++)
-	{
-		getline(ss, buff, '-');
-		maxSize = 2 * (2 - !!index);
-		if (FSM::detectType(buff) != INT || index > 2 || buff.size() > maxSize)
-			throw (Exception("Parse Error: Invalid format > " + strDate));
-		std::stringstream(buff) >> ymd[index];
-	}
-	return (Date(ymd[0], ymd[1], ymd[2]));
-}
-
-//====< isValidDate >===========================================================
-bool	prs::isValidDate(std::string strDate)
-{
-	return (isValidDate(parseDate(strDate)));
-}
 
 //====< trim >==================================================================
 std::string prs::trim(std::string str)
