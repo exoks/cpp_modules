@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########         < FSM.cpp >                        
+//       ######-..        .+########         < RPN.cpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 12:18:09 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 12:18:09 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/31 20:55:35 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 20:55:35 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,50 +19,51 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-# include "FSM.hpp"
+# include "RPN.hpp"
 
 //====< constructor >===========================================================
-FSM::FSM(void)
+RPN::RPN(void)
 {
 }
 
-//====< detectType >============================================================
-int	FSM::detectType(std::string str)
+//====< calculator >============================================================
+int	RPN::calculator(std::string expression)
 {
-	int	prev_state;
-	int	curr_state;
-	int	state;
-	int	index;
+	std::stringstream	ss(expression);
+	std::stack<int>		stack;
+	std::string			buff;
+	double				val;
 
-	index = -1;
-	state = START;
-	prev_state = state;
-	while (str[++index] && prev_state != STRING)
+	while (getline(ss, buff, ' '))
 	{
-		curr_state = getNextState(prev_state, str[index]);
-		if (curr_state == END && state == START)
-			state = prev_state;
-		prev_state = curr_state;
+		if (FSM::detectType(buff) == OPERATOR && stack.size() >= 2)
+			makeOperation(stack, buff);
+		else if (FSM::detectType(buff) == INT && std::stringstream(buff) >> val)
+			stack.push(val);
+		else
+			throw (Exception("Error: invalid Expression"));
 	}
-	return ((state != START && prev_state == END)? state: prev_state);
+	return (stack.top());
 }
 
-//====< getNextState >========================================================
-int	FSM::getNextState(int prv, char input)
+//====< makeOperation >=========================================================
+void	RPN::makeOperation(Stack & stack, std::string opr)
 {
-	if (prv == START && input == ' ')
-		return (START);
-	if (prv == START && !isdigit(input))
-		return (strchr("+-/*", input)? OPERATOR: CHAR);
-	if ((prv == START || prv == OPERATOR || prv == INT) && isdigit(input))
-		return (INT);
-	if (prv == INT && input == '.')
-		return (FUTURE_DOUBLE);
-	if ((prv == FUTURE_DOUBLE || prv == DOUBLE) && isdigit(input))
-		return (DOUBLE);
-	if ((prv == INT || prv == DOUBLE) && input == 'f')
-		return (FLOAT);
-	if (prv != START && input == ' ')
-		return (END);
-	return (STRING);
+	int	val[2];
+
+	for (int index = 0; index < 2; index++)
+	{
+		val[index] = stack.top();
+		stack.pop();
+	}
+	if (opr == "+")
+		stack.push(val[1] + val[0]);	
+	if (opr == "-")
+		stack.push(val[1] - val[0]);	
+	if (opr == "*")
+		stack.push(val[1] * val[0]);
+	if (opr == "/" && val[0] != 0)
+		stack.push(val[1] / val[0]);
+	if (opr == "/" && val[0] == 0)
+		throw (Exception("Error: division by zero: ∞"));
 }

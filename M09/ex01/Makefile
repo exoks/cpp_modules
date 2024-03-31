@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2023/12/19 11:30:12 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 11:30:18 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2024/03/31 20:12:22 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 20:12:48 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -22,10 +22,12 @@
 #====< Variables >==============================================================
 NAME		:= RPN
 CC			:= c++
-CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror #-Wuninitialized
+CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
-SRC			:= $(wildcard *.cpp)
-OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(basename $(SRC))))
+SRC_DIR		:= src
+INCLUDE		:= -Iinclude -Ilib/include
+SRC			:= $(wildcard *.cpp) $(wildcard */*.cpp) $(wildcard */*/*.cpp)
+OBJ			:= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(notdir $(basename $(SRC)))))
 RM			:= rm -rf
 
 #====< Colors >=================================================================
@@ -42,16 +44,23 @@ $(NAME): $(OBJ)
 	@$(CC) $(CPPFLAGS) $^ -o $@
 	@test | awk '						\
 	BEGIN{								\
-		printf("$(RED)[$(END)");		\
 		for (i=0; i < 50; i++){			\
-			printf("$(GREEN)#$(END)");	\
+			printf("$(GREEN)▇$(END)");	\
 			system("sleep 0.01");		\
 		}								\
-		print("$(RED)]$(END)");			\
+		print("");						\
 	}'									
 
+$(OBJ_DIR)/%.o: lib/src/%.cpp | $(OBJ_DIR)
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
+	@printf "✅	Compiling... %5s\n" $<
+
+$(OBJ_DIR)/%.o: src/%.cpp | $(OBJ_DIR)
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
+	@printf "✅	Compiling... %5s\n" $<
+
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
 	@printf "✅	Compiling... %5s\n" $<
 
 $(OBJ_DIR):
@@ -68,7 +77,7 @@ fclean: clean
 re: fclean all
 
 run:
-	@./$(NAME) "1 2 +"
+	@./$(NAME) "2 3 +"
 
 .SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run

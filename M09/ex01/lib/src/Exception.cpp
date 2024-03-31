@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########        < main.cpp >                        
+//       ######-..        .+########   < Exception.cpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/31 20:26:23 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 20:26:23 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/25 19:46:38 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:46:38 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,19 +19,21 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-# include "RPN.hpp"
+# include "Exception.hpp"
 
-//====< main >==================================================================
-int	main(int ac, char **av)
+//====< Constructor >===========================================================
+Exception::Exception(std::string msg)
 {
-	try
-	{
-		if (ac != VALID_ARGS)
-			throw (Exception("Error: ./RPN [EXPRESSION]"));
-		std::cout << RPN::calculator(*++av) << std::endl;
-	} catch(Exception & e){
-		std::cout << e.what() << std::endl;
-		return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
+	this->msg = msg;
+}
+
+//====< Destructor >===========================================================
+Exception::~Exception() throw()
+{
+}
+
+//====< what >==================================================================
+const char	*Exception::what() const throw()
+{
+	return (msg.c_str());
 }

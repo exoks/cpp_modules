@@ -2,13 +2,13 @@
 //          ####################                                                
 //        ########################                                              
 //       #############+########### #                                            
-//       ######-..        .+########         < RPN.hpp >                        
+//       ######-..        .+########   < Exception.hpp >                        
 //       ####-..            ..+####                                             
 //       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
+//       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 12:12:17 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 12:12:17 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/02/25 19:46:50 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/25 19:46:51 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -19,24 +19,22 @@
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
-#ifndef __RPN_HPP__
-# define __RPN_HPP__
+#ifndef __EXCEPTION_HPP__
+# define __EXCEPTION_HPP__
 
-# define VALID_ARGS	2
-
+# include <exception>
 # include <iostream>
-# include <sstream>
-# include <stack>
-# include "FSM.hpp"
 
-class	RPN
+class	Exception : public std::exception
 {
-	private:
-		RPN(void);
+	protected:
+		std::string	msg;
 
 	public:
-		static void	makeOperation(std::stack<int> & stack, std::string optr);
-		static int	calculator(std::string exp);
+		Exception(std::string msg);
+		virtual ~Exception() throw();
+
+		virtual const char	*what() const throw();
 };
 
-#endif /*__RPN_HPP__*/
+#endif /*__EXCEPTION_HPP__*/
