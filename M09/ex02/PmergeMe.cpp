@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/18 21:50:10 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 20:57:04 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/01 21:26:31 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/01 21:26:31 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -76,3 +76,7 @@ std::vector<int>	PmergeMe::mergeInsertion(vvp & v, int level, int len)
 	merge(v, level, len);
 	return (mergeInsertion(v, level << 1, len));
 }
+
+// print the data as requested
+// use another container
+// clean l code

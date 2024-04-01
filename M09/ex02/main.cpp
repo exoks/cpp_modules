@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/18 21:50:46 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/18 21:50:46 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/01 21:45:44 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/01 21:45:44 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -41,16 +41,25 @@ int	main(int ac, char **av)
 
 	try
 	{
+		//=============================================
+		std::cout << "Before : ";
+		for (int index = 1; av[index] != NULL; index++)
+			std::cout << av[index] << " ";
+		std::cout << std::endl;
+
+		// start calculating
 		container = parser.parseArgs();
 		vpSize = --ac / 2;
 
-//		display(container);
-
 		v = PmergeMe::mergeInsertion(container, 1, vpSize);
+		// end calculating
 
-		for (int i = 0; i < (int) v.size(); ++i)
-			std::cout << " => " << v[i] << std::endl;
-		
+		//=============================================
+		std::cout << "After : ";
+		for (std::vector<int>::iterator i = v.begin(); i != v.end(); ++i)
+			std::cout << *i << " ";
+		std::cout << std::endl;
+	
 		std::cout << "|isSorted~~~>> " << std::is_sorted(v.begin(), v.end()) << std::endl;
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
