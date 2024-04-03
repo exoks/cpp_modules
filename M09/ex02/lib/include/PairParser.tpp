@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/04/02 23:11:17 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/02 23:11:27 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/03 22:01:39 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 22:44:18 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -58,6 +58,9 @@ Container	PairParser<Container, Unit, type, sortPair>::parseArgs(void)
 				throw (Exception("Error: negative argument"));
 			if (sortPair == true && j == 1 && tmp[0] > tmp[1])
 				std::swap(tmp[0], tmp[1]);
+		
+			///if (sortPair == true && j == 1)
+			//	std::cout << "+0" << std::endl;
 		}
 		unit.push_back(std::pair<int, int>(tmp[0], tmp[1]));
 		container.push_back(unit);

@@ -7,8 +7,8 @@
 #        ###-...             .-####                                             
 #        ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 #         #-.++###.      -###+..##                                              
-#         #....  ...   .-.  ....##       Created: 2024/04/01 21:29:44 by oezzaou
-#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/01 21:30:02 by oezzaou
+#         #....  ...   .-.  ....##       Created: 2024/04/03 19:54:59 by oezzaou
+#      --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 19:54:59 by oezzaou
 #       ---....... ..  ........... -                                            
 #       -+#..     ..   .       .+-.                                             
 #        .--.     .     .     ..+.                                              
@@ -20,7 +20,7 @@
 #   ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
 
 #====< Variables >==============================================================
-NAME		:= mergeInsertion
+NAME		:= PmergeMe
 CC			:= c++
 CPPFLAGS	:= -std=c++98 -Wall -Wextra -Werror
 OBJ_DIR		:= objs
@@ -77,8 +77,8 @@ fclean: clean
 re: fclean all
 
 run:
-#	@./$(NAME) $(jot -r 3000 1 10000)
-	@./run.sh 0 100 21 #| awk '/^[|]/ END{print "=> "NR}'
+	@./$(NAME) `jot -r 21 1 10000`
+#	@./run.sh 0 100 21 #| awk '/^[|]/ END{print "=> "NR}'
 
 .SUFFIXES: .o .cpp .tpp
 .PHONY: all clean fclean re run

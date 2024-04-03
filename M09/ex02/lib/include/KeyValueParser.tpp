@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/30 23:33:03 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/30 23:33:03 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/03 16:52:20 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 16:52:42 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -69,8 +69,8 @@ std::pair<p1, p2>	KeyValueParser<p1, p2, sep>::parseNextLine(void)
 		std::stringstream	sline(line);
 		getline(sline, sKey, sep);
 		getline(sline, sValue, '\n');
-		key = prs::parse(key, sKey);
-		value = prs::parse(value, sValue);
+		key = parse(key, sKey);
+		value = parse(value, sValue);
 		return (std::pair<p1, p2>(key, value));
 	}
 	return (std::pair<p1, p2>(key, value));

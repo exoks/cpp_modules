@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/31 01:26:25 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 01:26:26 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/03 17:30:49 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 17:30:49 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -27,6 +27,9 @@
 # include <sstream>
 # include "FSM.hpp"
 # include "Exception.hpp"
+# include <sys/time.h>
+
+typedef long double t_ld;
 
 typedef enum	cmp
 {
@@ -59,6 +62,10 @@ namespace prs
 	Date		getCurrentDate(void);
 	
 	int			dateCmp(Date d1, Date d2);
+
+	t_ld		getTimeReference(void);
+
+	t_ld		getTimeToReference(t_ld reference);
 };
 
 #endif /*__DATE_HPP__*/

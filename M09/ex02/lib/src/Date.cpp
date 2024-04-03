@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/31 01:31:06 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 01:31:06 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/03 17:30:16 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 17:30:33 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -95,4 +95,20 @@ int		prs::dateCmp(Date d1, Date d2)
 	if (d1.year == d2.year && d1.month == d2.month && d1.day <= d2.day)
 		return (LESS);
 	return (GREATER);
+}
+
+//====< getTimeReference >======================================================
+t_ld	prs::getTimeReference(void)
+{
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == 0)
+		return ((time.tv_sec * 1000.0) + (time.tv_usec / 1000.0));
+	return (0);
+}
+
+//====< getTimeToReference >====================================================
+t_ld	prs::getTimeToReference(t_ld reference)
+{
+	return (getTimeReference() - reference);
 }

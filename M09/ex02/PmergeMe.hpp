@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/31 21:01:56 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 21:01:56 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/03 18:45:20 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 18:45:20 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -18,6 +18,7 @@
 //          #---..----+--.---+##                                                
 //        ###-+--.... ....--+#####                                              
 //  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
+//====< PmergeMe class >========================================================
 
 #ifndef __PMERGEME_HPP__
 # define __PMERGEME_HPP__
@@ -38,6 +39,11 @@ class	PmergeMe
 		static std::vector<int>	insertion(vvp & v);
 
 		static std::vector<int>	mergeInsertion(vvp & v, int level, int size);
+
+		static std::list<int>	mergeInsertion(llp & l, int level, int size);
+		
+		static std::list<int>	insertion(llp & l);
+		static void				merge(llp & l, int level, int len);
 };
 
 #endif /*__PMERGEME_HPP__*/
