@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/03/17 21:09:57 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/17 21:09:57 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/02 23:11:17 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/02 23:11:27 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -42,7 +42,7 @@ Container	PairParser<Container, Unit, type, sortPair>::parseArgs(void)
 	int					*tmp;
 
 	if (ac == 1)
-		throw (Exception("mergeInsertion: No arguments provided"));	
+		throw (Exception("Error: No arguments provided"));	
 	for (int i = 1; i < ac; i += 2)
 	{
 		unit = Unit();
@@ -51,11 +51,11 @@ Container	PairParser<Container, Unit, type, sortPair>::parseArgs(void)
 		for (int j = 0; j < 2 && av[i + j] != NULL; j++)
 		{
 			if (FSM::detectType(av[i + j]) != INT)
-				throw (Exception("mergeInsertion: invalid argument"));
+				throw (Exception("Error: invalid argument"));
 			if (!(std::stringstream(av[i + j]) >> tmp[j]))
-				throw (Exception("mergeInsertion: too large number"));
+				throw (Exception("Error: too large number"));
 			if (type == POSITIVE && tmp[j] < 0)
-				throw (Exception("mergeInsertion: negative argument"));
+				throw (Exception("Error: negative argument"));
 			if (sortPair == true && j == 1 && tmp[0] > tmp[1])
 				std::swap(tmp[0], tmp[1]);
 		}

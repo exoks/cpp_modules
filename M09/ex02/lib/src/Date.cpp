@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 22:41:17 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2023/12/19 22:44:39 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/31 01:31:06 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/31 01:31:06 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -31,12 +31,31 @@ Date::Date(int y, int m, int d) : year(y), month(m), day(d)
 {
 }
 
+//====< parseDate >=============================================================
+Date	prs::parseDate(std::string strDate)
+{
+	std::stringstream	ss(prs::trim(strDate));
+	std::string			buff;
+	int					ymd[3];
+	unsigned int		maxSize;
+
+	for (int index = 0; index < 4 && ss.eof() == false; index++)
+	{
+		getline(ss, buff, '-');
+		maxSize = 2 * (2 - !!index);
+		if (FSM::detectType(buff) != INT || index > 2 || buff.size() > maxSize)
+			throw (Exception("Parse Error: Invalid format > " + strDate));
+		std::stringstream(buff) >> ymd[index];
+	}
+	return (Date(ymd[0], ymd[1], ymd[2]));
+}
+
 //====< isValidDate >===========================================================
 bool		prs::isValidDate(Date date)
 {
 	if (date.year < 1 || date.month < 1 || date.month > 12 || date.day < 1)
 		return (false);
-	if (compareToCurrentDate(date) == false)
+	if (dateCmp(date, getCurrentDate()) == GREATER)
 		return (false);
 	if (date.month <= 7 && date.day > 30 + date.month % 2)
 		return (false);
@@ -45,6 +64,12 @@ bool		prs::isValidDate(Date date)
 	if (date.month == 2 && date.day > 28 + !(date.month % 4))
 		return (false);
 	return (true);
+}
+
+//====< isValidDate >===========================================================
+bool	prs::isValidDate(std::string strDate)
+{
+	return (isValidDate(parseDate(strDate)));
 }
 
 //====< getCurrentDate >========================================================
@@ -61,16 +86,13 @@ Date	prs::getCurrentDate(void)
 }
 
 //====< compareToCurrentTime >==================================================
-bool		prs::compareToCurrentDate(Date date)
+int		prs::dateCmp(Date d1, Date d2)
 {
-	Date	dat;
-
-	dat = getCurrentDate();
-	if (date.year < dat.year)
-		return (true);
-	if (date.year == dat.year && date.month < dat.month)
-		return (true);	
-	if (date.year == dat.year && date.month == dat.month && date.day <= dat.day)
-		return (true);
-	return (false);
+	if (d1.year < d2.year)
+		return (LESS);
+	if (d1.year == d2.year && d1.month < d2.month)
+		return (LESS);	
+	if (d1.year == d2.year && d1.month == d2.month && d1.day <= d2.day)
+		return (LESS);
+	return (GREATER);
 }

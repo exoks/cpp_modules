@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/19 20:10:41 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/26 14:15:39 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/31 00:51:08 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/02 23:12:59 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -21,34 +21,8 @@
 
 # include "Parser.hpp"
 
-//====< parseDate >=============================================================
-Date	prs::parseDate(std::string strDate)
-{
-	std::stringstream	ss(strDate);
-	int					ymd[3];
-	std::string			buff;
-
-	try {
-		for (int i = 0; i < 4 && getline(ss, buff, '-'); i++)
-		{
-			if (i > 2 || buff.length() < 2)
-				throw (std::out_of_range("Error: invalid format"));
-			std::stringstream(buff) >> ymd[i];
-		}
-	} catch (std::exception & e){
-		std::cout << e.what() << " => " << strDate << std::endl;
-	}
-	return (Date(ymd[0], ymd[1], ymd[2]));
-}
-
-//====< isValidDate >===========================================================
-bool		prs::isValidDate(std::string strDate)
-{
-	return (isValidDate(parseDate(strDate)));
-}
-
 //====< trim >==================================================================
-std::string 	prs::trim(std::string str)
+std::string prs::trim(std::string str)
 {
 	int		start;
 	int		end;
@@ -60,4 +34,56 @@ std::string 	prs::trim(std::string str)
 	while (end >= 0 && str[end] == ' ')
 	  	end--;
 	return (str.substr(start, end - start + 1));
+}
+
+//====< parse >=================================================================
+int	prs::parse(int value, std::string sValue)
+{
+	std::stringstream	ss(sValue);
+	int					type;
+
+	type = FSM::detectType(sValue);
+	if (type == START)
+		throw (Exception("Parse Error: Empty value > " + sValue));
+	if (type != INT && type != DOUBLE)
+		throw (Exception("Parse Error: Not a Integer value > " + sValue));
+	if ((ss >> value) == NULL)
+		throw (Exception("Error: Too large number for Double"));
+	return (value);
+}
+
+//====< parse >=================================================================
+double	prs::parse(double value, std::string sValue)
+{
+	std::stringstream	ss(sValue);
+	int					type;
+
+	type = FSM::detectType(sValue);
+	if (type == START)
+		throw (Exception("Parse Error: Empty value > " + sValue));
+	if (type != INT && type != DOUBLE)
+		throw (Exception("Parse Error: Not a double value > " + sValue));
+	if ((ss >> value) == NULL)
+		throw (Exception("Error: Too large number for Double"));
+	return (value);
+}
+
+//====< parse >=================================================================
+std::string	prs::parse(std::string value, std::string sValue)
+{
+	value = sValue;
+	if (value.empty() == true)
+		throw (Exception("Parse Error: Empty string"));
+	return (value);
+}
+
+//====< getNextLine >===========================================================
+std::string	prs::getNextLine(std::istream & stream)
+{
+	std::string	line;
+
+	if (stream == NULL)
+		throw (Exception("Stream Error: Invalid Stream."));
+	getline(stream, line, '\n');
+	return (line);
 }

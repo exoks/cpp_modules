@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/04/01 21:26:31 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/01 21:26:31 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/02 22:36:45 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/02 22:36:45 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -29,8 +29,8 @@ PmergeMe::PmergeMe(void)
 //====< merge >=================================================================
 void	PmergeMe::merge(vvp & v, int level, int len)
 {
-	int	s1,	s2, e;
-	vvp			tmp;
+	int		s1,	s2, e;
+	vvp		tmp;
 
 	for (int m = level - 1; m < len - 1; m += (level << 1))
 	{

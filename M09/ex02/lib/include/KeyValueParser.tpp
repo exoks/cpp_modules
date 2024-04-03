@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oussama <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2023/12/28 16:51:48 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/02/03 19:46:30 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/03/30 23:33:03 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/03/30 23:33:03 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -27,79 +27,82 @@ KeyValueParser<p1, p2, sep>::KeyValueParser(void)
 
 //====< constructor >===========================================================
 template <class p1, class p2, char sep>
-KeyValueParser<p1, p2, sep>::KeyValueParser(std::fstream fs)
+KeyValueParser<p1, p2, sep>::KeyValueParser(std::fstream fileStream)
 {
-	try
-	{
-		if (fs == NULL)
-			throw (std::out_of_range("Error: could not open file."));
-		this->fs = fs;
-	} catch (std::exception & e){
-		std::cout << e.what() << std::endl;
-	}
+	if (fileStream == NULL)
+		throw (Exception("Stream Error: Could not open file."));
+	this->fileStream = fileStream;
 }
 
 //====< constructor >===========================================================
 template <class p1, class p2, char sep>
 KeyValueParser<p1, p2, sep>::KeyValueParser(std::string fileName)
 {
-	try
-	{
-		fs.open(fileName, std::ios::in);
-		if (fs == NULL)
-			throw (std::out_of_range("Error: could not open file."));
-	} catch (std::exception & e){
-		std::cout << e.what() << std::endl;
-	}
+	fileStream.open(fileName, std::ios::in);
+	if (fileStream == NULL)
+		throw (Exception("Stream Error: Could not open file."));
 }
 
 //====< destructor >============================================================
 template <class p1, class p2, char sep>
 KeyValueParser<p1, p2, sep>::~KeyValueParser(void)
 {
-	fs.close();
+	fileStream.close();
 }
 
 //====< parseNextLine >=========================================================
 template <class p1, class p2, char sep>
 std::pair<p1, p2>	KeyValueParser<p1, p2, sep>::parseNextLine(void)
 {
-	std::string	first;
-	std::string	second;
-	p1			key;
-	p2			value;
-
-	getline(fs, first, sep);
-	getline(fs, second, '\n');
-	std::stringstream	kss(first);
-	std::stringstream	vss(second);
-	// solve the problem using overloading functions
-	// check(T value, int type);
-	kss >> key;
-	vss >> value;
+	std::stringstream	ssk(""), ssv("");
+	std::string			line, sKey, sValue;
+	p1					key;
+	p2					value;
+	
+	ssk >> key;
+	ssv >> value;
+	while (fileStream.eof() == false)
+	{
+		line = getNextLine(fileStream);
+		if (line.empty() || fileStream.eof())
+			continue ;
+		std::stringstream	sline(line);
+		getline(sline, sKey, sep);
+		getline(sline, sValue, '\n');
+		key = prs::parse(key, sKey);
+		value = prs::parse(value, sValue);
+		return (std::pair<p1, p2>(key, value));
+	}
 	return (std::pair<p1, p2>(key, value));
 }
 
 //====< parseFile >=============================================================
-template<class p1, class p2, char sep>
+template <class p1, class p2, char sep>
 std::map<p1, p2>	KeyValueParser<p1, p2, sep>::parseFile(void)
 {
 	std::map<p1, p2>	map;
 	std::pair<p1, p2>	pair;
 
-	while (fs)
+	while (fileStream)
 	{
 		pair = parseNextLine();
-		if (fs.eof() == true)
+		if (fileStream.eof() == true)
 			break ;
 		map.insert(pair);
 	}
 	return (map);
 }
 
+//====< skipLine >==============================================================
+template <class p1, class p2, char sep>
+std::string	KeyValueParser<p1, p2, sep>::skipLine(void)
+{
+	return (getNextLine(fileStream));
+}
+
 //====< eof >===================================================================
-template<class p1, class p2, char sep>
+template <class p1, class p2, char sep>
 bool	KeyValueParser<p1, p2, sep>::eof(void)
 {
-	return (fs.eof());
+	return (fileStream.eof());
 }
