@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/04/03 22:54:33 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 22:54:33 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/05 02:55:17 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/05 02:55:17 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,7 +26,7 @@ void	display(vvp & c1);
 //==========================
 bool	cmp(int a, int b)
 {
-	std::cout << "+1" << std::endl;
+//	std::cout << "+1" << std::endl;
 	return (a < b);
 }
 
@@ -53,7 +53,8 @@ int	main(int ac, char **av)
 		//====< vector >=======================================================
 		reference1 = prs::getTimeReference();
 		c1 = vParser.parseArgs();
-
+		
+//		display(c1);
 		v = PmergeMe::mergeInsertion(c1, 1, --ac / 2);
 		reference1 = prs::getTimeToReference(reference1);
 
@@ -71,7 +72,7 @@ int	main(int ac, char **av)
 //		std::cout << std::endl;
 
 //		std::cout << std::endl;
-		displayInfo(v.size(), "std::vector", reference1);	
+//		displayInfo(v.size(), "std::vector", reference1);	
 //		displayInfo(l.size(), "std::list", reference2);
 
 //		std::cout << "|isSorted~~~>> " << std::is_sorted(v.begin(), v.end()) << std::endl;
@@ -94,7 +95,7 @@ void	displayInfo(int size, std::string msg, t_ld time)
 				<< time				<< std::endl;
 }
 
-/*void	display(vvp & c1)
+void	display(vvp & c1)
 {
 	std::cout << "==================== c1 ================" << std::endl;
 	for (vvp::iterator i = c1.begin(); i != c1.end(); ++i)
@@ -103,7 +104,7 @@ void	displayInfo(int size, std::string msg, t_ld time)
 					<< i->begin()->second
 					<< ")"	<< std::endl;
 	std::cout << "===============================================" << std::endl;
-}*/
+}
 
 
 

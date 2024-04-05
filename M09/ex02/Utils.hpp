@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/04/03 17:43:39 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 21:08:49 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/05 02:53:39 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/05 02:53:43 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -28,19 +28,21 @@
 # include "Exception.hpp"
 
 //====< typedef >===============================================================
-typedef std::vector<int>								v;
-typedef std::vector<int>::iterator						vi;
-typedef std::vector<std::pair<int, int > >				vp;
-typedef std::vector<std::vector<std::pair<int, int> > >	vvp;
+typedef std::vector<int>											v;
+typedef std::vector<int>::iterator									vi;
+typedef std::vector<std::pair<int, int > >							vp;
+typedef std::vector<std::vector<std::pair<int, int> > >				vvp;
+typedef std::vector<std::vector<std::pair<int, int> > >::iterator	vvpi;
 
-typedef std::vector<int>								l;
-typedef std::vector<int>::iterator						li;
-typedef std::list<std::pair<int, int > >				lp;
-typedef std::list<std::list<std::pair<int, int> > >		llp;
+typedef std::vector<int>											l;
+typedef std::vector<int>::iterator									li;
+typedef std::list<std::pair<int, int > >							lp;
+typedef std::list<std::list<std::pair<int, int> > >					llp;
+typedef std::list<std::list<std::pair<int, int> > >::iterator		llpi;
 
-//====< getIterator >===========================================================
+//====< toIter >================================================================
 template<class Container>
-typename Container::iterator	getIterator(Container & c, int index)
+typename Container::iterator	toIter(Container & c, int index)
 {
 	typename Container::iterator	iter;
 
@@ -58,7 +60,7 @@ std::pair<int, int>	getPair(Container & c, int index)
 {
 	if (index < 0 && index >= static_cast<int>(c.size()))
 		throw (Exception("Invalid index"));
-	return (*getIterator(c, index)->begin());
+	return (*toIter(c, index)->begin());
 }
 
 //====< updateMainChaine >======================================================
@@ -78,7 +80,7 @@ void	insertToMainChain(Unit & unit, int range, int target)
 {
 	typename Unit::iterator	end;
 
-	end = getIterator(unit, range);	
+	end = toIter(unit, range);	
 	unit.insert(std::lower_bound(unit.begin(), end, target, cmp), target);
 }
 
@@ -92,6 +94,23 @@ int	getNextJacobsthalNbr(Container & c, int prev, int curr)
 	if (nextNbr > static_cast<int>(c.size()))
 		return (static_cast<int>(c.size()));
 	return (nextNbr);
+}
+
+bool	test(vp a, vp b);
+//====< cut >===================================================================
+template<class Container>
+bool	insert(Container & c, int range, int target)
+{
+	typename Container::iterator	position;
+
+	(void) range;
+//	std::cout << "target : " << target << std::endl;
+	position = lower_bound(c.begin(), toIter(c, range), *toIter(c, target), test);
+//	std::cout << "position : " << position->begin()->second << std::endl;
+	c.insert(position, *toIter(c, target));
+	c.erase(toIter(c, target + 1));
+//	std::cout << ":>> " << getPair(c, target).second << std::endl;
+	return (true);
 }
 
 # endif /*__UTILS_HPP__*/

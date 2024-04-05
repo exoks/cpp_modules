@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/04/03 22:55:31 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/03 23:42:25 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/05 02:55:27 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/05 02:55:27 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -26,27 +26,41 @@ PmergeMe::PmergeMe(void)
 {
 }
 
+void	display(vvp & v);
+bool	test(vp a, vp b)
+{
+	std::cout << "+insert" << std::endl;
+	return (a.begin()->second < b.begin()->second);
+}
+
 //====< merge >=================================================================
 void	PmergeMe::merge(vvp & v, int level, int len)
 {
 	int		s1,	s2, e;
 	vvp		tmp;
 
+//	std::cout << "================== " << level << " ==================" << std::endl;
 	for (int m = level - 1; m < len - 1; m += (level << 1))
 	{
 		s1 = m - level + 1;
 		s2 = m + 1;
 		e = (m + level < len) ? m + level: len - 1; 
+//		std::cout << "=============( " << level << " )=================" << std::endl;
 		while (s1 <= m && s2 <= e)
 		{
+			if (e < m + level && insert(v, level + (e - s2), s2) == true && s2++)
+				continue ;
+			std::cout << "+1" << std::endl;
 			int	res = getPair(v, s1).second - getPair(v, s2).second;
-			tmp.push_back(*getIterator(v, (res < 0) ? s1++ : s2++));
+			tmp.push_back(*toIter(v, (res <= 0) ? s1++: s2++));
+			//	display(tmp);
 		}
 		while (s1 <= m || s2 <= e)
-			tmp.push_back(*getIterator(v, (s1 > m) ? s2++ : s1++));
+			tmp.push_back(*toIter(v, (s1 > m) ? s2++ : s1++));
 	}
-	for (unsigned int i = 0; i < tmp.size(); ++i)
-		std::swap(*getIterator(v, i), *getIterator(tmp, i));
+	for (unsigned int index = 0; index < tmp.size(); ++index)
+		std::swap(*toIter(v, index), *toIter(tmp, index));
+
 }
 
 //====< insertion >=============================================================
