@@ -6,27 +6,27 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 19:56:37 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/08/29 19:30:13 by oezzaou          ###   ########.fr       */
+/*   Updated: 2025/02/24 16:57:09 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include <iostream>
 # include <iomanip>
 # include "Account.hpp"
 
-//==== init Static Variable ====================================================
+//====<[ init Static Variable: ]>===============================================
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
-//==== Account Default Constructor =============================================
+//====<[ Account Default Constructor: ]>========================================
 Account::Account() : _amount(0), _nbDeposits(0), _nbWithdrawals(0)
 {
 	_accountIndex = _nbAccounts;
 	_nbAccounts++;
 }
 
-//==== Account Constructor =====================================================
+//====<[ Account Constructor: ]>================================================
 Account::Account(int initial_deposit) : _nbWithdrawals(0)
 {
 	_accountIndex = _nbAccounts;
@@ -39,7 +39,7 @@ Account::Account(int initial_deposit) : _nbWithdrawals(0)
 	_nbAccounts++;
 }
 
-//==== Account Destructor ======================================================
+//====<[ Account Destructor: ]>=================================================
 Account::~Account()
 {
 	_displayTimestamp();
@@ -48,31 +48,31 @@ Account::~Account()
 				<< "closed"		<< std::endl;
 }
 
-//==== getNbAccounts ===========================================================
+//====<[ getNbAccounts: ]>======================================================
 int	Account::getNbAccounts(void)
 {
 	return (_nbAccounts);
 }
 
-//==== getTotalAmount ==========================================================
+//====<[ getTotalAmount: ]>=====================================================
 int	Account::getTotalAmount(void)
 {
 	return (_totalAmount);
 }
 
-//==== getNbDeposits ===========================================================
+//====<[ getNbDeposits: ]>======================================================
 int	Account::getNbDeposits(void)
 {
 	return (_totalNbDeposits);
 }
 
-//==== getNbWithdrawals ========================================================
+//====<[ getNbWithdrawals: ]>===================================================
 int	Account::getNbWithdrawals(void)
 {
 	return (_totalNbWithdrawals);
 }
 
-//==== displayAccountsInfos ====================================================
+//====<[ displayAccountsInfos: ]>===============================================
 void	Account::displayAccountsInfos(void)
 {
 	_displayTimestamp();
@@ -82,7 +82,7 @@ void	Account::displayAccountsInfos(void)
 				<< "withdrawals:"	<< _totalNbWithdrawals	<< std::endl;
 }
 
-//==== makeDeposit =============================================================
+//====<[ makeDeposit: ]>========================================================
 void	Account::makeDeposit(int deposit)
 {
 	_nbDeposits++;
@@ -97,7 +97,7 @@ void	Account::makeDeposit(int deposit)
 	_totalAmount += deposit;
 }
 
-//==== makeWithdrawal ==========================================================
+//====<[ makeWithdrawal: ]>=====================================================
 bool	Account::makeWithdrawal(int withdrawal)
 {
 	_displayTimestamp();
@@ -118,23 +118,23 @@ bool	Account::makeWithdrawal(int withdrawal)
 	return (true);
 }
 
-//==== checkAmount =============================================================
+//====<[ checkAmount: ]>========================================================
 int	Account::checkAmount(void) const
 {
 	return (_amount);
 }
 
-//==== displayStatus ===========================================================
+//====<[ displayStatus: ]>======================================================
 void	Account::displayStatus(void) const
 {
 	_displayTimestamp();
 	std::cout	<< "index:"			<< _accountIndex	<< ";" 
-				<< "amount:"		<< checkAmount()	<< ";"
-				<< "deposits:"		<< _nbDeposits		<< ";"
-				<< "withdrawals:"	<< _nbWithdrawals	<< std::endl;
+						<< "amount:"		<< checkAmount()	<< ";"
+						<< "deposits:"		<< _nbDeposits		<< ";"
+						<< "withdrawals:"	<< _nbWithdrawals	<< std::endl;
 }
 
-//==== _displayTimestamp ========================================================
+//====<[ _displayTimestamp ]>===================================================
 void	Account::_displayTimestamp(void)
 {
 	std::time_t	timestamp;
