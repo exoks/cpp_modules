@@ -6,14 +6,17 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 18:45:44 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/08/30 14:57:18 by oezzaou          ###   ########.fr       */
+/*   Updated: 2025/02/25 12:14:47 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+//====<[ Includes guards: ]>====================================================
+#ifndef	__HARL_HPP__
+# define __HARL_HPP__
+
 # include <iostream>
 
+//====<[ Class: ]>==============================================================
 class	Harl
 {
 	private:
@@ -26,4 +29,5 @@ class	Harl
 		void	complain(std::string level);
 };
 
-#endif
+#endif /*__HARL_HPP__*/
+//==============================================================================
