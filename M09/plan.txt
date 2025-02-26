@@ -1,6 +1,0 @@
-- change the code that i'm working on. (done)
-	- work with vectors of vectors instead
-
-- go to gym (x)
-- read enlish from watching one ep from an anime.
-
