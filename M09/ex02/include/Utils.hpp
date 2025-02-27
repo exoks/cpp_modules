@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/04/05 22:17:42 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/27 16:38:29 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/27 16:46:04 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -22,17 +22,17 @@
 # include "Exception.hpp"
 
 //====<[ typedef: ]>============================================================
-typedef std::vector<int>																					v;
-typedef std::vector<int>::iterator																vi;
-typedef std::vector<std::pair<int, int > >												vp;
-typedef std::vector<std::vector<std::pair<int, int> > >						vvp;
-typedef std::vector<std::vector<std::pair<int, int> > >::iterator	vvpi;
+typedef std::vector<int> v;
+typedef std::vector<int>::iterator vi;
+typedef std::vector<std::pair<int, int > > vp;
+typedef std::vector<std::vector<std::pair<int, int> > > vvp;
+typedef std::vector<std::vector<std::pair<int, int> > >::iterator vvpi;
 
-typedef std::vector<int>																					l;
-typedef std::vector<int>::iterator																li;
-typedef std::list<std::pair<int, int > >													lp;
-typedef std::list<std::list<std::pair<int, int> > >								llp;
-typedef std::list<std::list<std::pair<int, int> > >::iterator			llpi;
+typedef std::vector<int> l;
+typedef std::vector<int>::iterator li;
+typedef std::list<std::pair<int, int > > lp;
+typedef std::list<std::list<std::pair<int, int> > > llp;
+typedef std::list<std::list<std::pair<int, int> > >::iterator llpi;
 
 //====<[ toIter: ]>=============================================================
 template<class Container>
