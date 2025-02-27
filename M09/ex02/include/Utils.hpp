@@ -1,24 +1,18 @@
-//            ################                                                  
-//          ####################                                                
-//        ########################                                              
-//       #############+########### #                                            
-//       ######-..        .+########       < Utils.cpp >                        
-//       ####-..            ..+####                                             
-//       ###-...             .-####                                             
-//       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
-//        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/04/05 22:17:42 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/05 22:30:23 by oezzaou
-//      ---....... ..  ........... -                                            
-//      -+#..     ..   .       .+-.                                             
-//       .--.     .     .     ..+.                                              
-//         -..    .+--.-.     ...                                               
-//         +.... .-+#.#+.    ..-                                                
-//          +...#####-++###-..-                                                 
-//          #---..----+--.---+##                                                
-//        ###-+--.... ....--+#####                                              
-//  ##########--#-.......-#-###########      Made By Oussama Ezzaou <OEZZAOU> :)
+//  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣦⣴⣶⣾⣿⣶⣶⣶⣶⣦⣤⣄⠀⠀⠀⠀⠀⠀⠀                                              
+//  ⠀⠀⠀⠀⠀⠀⠀⢠⡶⠻⠛⠟⠋⠉⠀⠈⠤⠴⠶⠶⢾⣿⣿⣿⣷⣦⠄⠀⠀⠀               𓐓  Utils.hpp 𓐔           
+//  ⠀⠀⠀⠀⠀⢀⠔⠋⠀⠀⠤⠒⠒⢲⠀⠀⠀⢀⣠⣤⣤⣬⣽⣿⣿⣿⣷⣄⠀⠀                                              
+//  ⠀⠀⠀⣀⣎⢤⣶⣾⠅⠀⠀⢀⡤⠏⠀⠀⠀⠠⣄⣈⡙⠻⢿⣿⣿⣿⣿⣿⣦⠀      Dev: oezzaou <oussama.ezzaou@gmail.com> 
+//  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
+//  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
+//  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/04/05 22:17:42 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/27 16:38:29 by oezzaou
+//  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
+//  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
+//  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
+//  ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠘⢧⡀⠀⠀⠸⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠐⠋⠀⠀⠀                     𓄂 oussama ezzaou𓆃  
+//  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              
 
+//====<[ Utils: ]>==============================================================
 #ifndef __UTILS_HPP__
 # define __UTILS_HPP__
 
@@ -27,20 +21,20 @@
 # include "FSM.hpp"
 # include "Exception.hpp"
 
-//====< typedef >===============================================================
-typedef std::vector<int>											v;
-typedef std::vector<int>::iterator									vi;
-typedef std::vector<std::pair<int, int > >							vp;
-typedef std::vector<std::vector<std::pair<int, int> > >				vvp;
+//====<[ typedef: ]>============================================================
+typedef std::vector<int>																					v;
+typedef std::vector<int>::iterator																vi;
+typedef std::vector<std::pair<int, int > >												vp;
+typedef std::vector<std::vector<std::pair<int, int> > >						vvp;
 typedef std::vector<std::vector<std::pair<int, int> > >::iterator	vvpi;
 
-typedef std::vector<int>											l;
-typedef std::vector<int>::iterator									li;
-typedef std::list<std::pair<int, int > >							lp;
-typedef std::list<std::list<std::pair<int, int> > >					llp;
-typedef std::list<std::list<std::pair<int, int> > >::iterator		llpi;
+typedef std::vector<int>																					l;
+typedef std::vector<int>::iterator																li;
+typedef std::list<std::pair<int, int > >													lp;
+typedef std::list<std::list<std::pair<int, int> > >								llp;
+typedef std::list<std::list<std::pair<int, int> > >::iterator			llpi;
 
-//====< toIter >================================================================
+//====<[ toIter: ]>=============================================================
 template<class Container>
 typename Container::iterator	toIter(Container & c, int index)
 {
@@ -54,7 +48,7 @@ typename Container::iterator	toIter(Container & c, int index)
 	return (iter);
 }
 
-//====< getPair >===============================================================
+//====<[ getPair: ]>============================================================
 template<class Container>
 std::pair<int, int>	getPair(Container & c, int index)
 {
@@ -63,7 +57,7 @@ std::pair<int, int>	getPair(Container & c, int index)
 	return (*toIter(c, index)->begin());
 }
 
-//====< updateMainChaine >======================================================
+//====<[ updateMainChaine: ]>===================================================
 template<class Container, class Unit>
 void	pushToMainChain(Container & c, Unit & unit, int index)
 {
@@ -73,7 +67,7 @@ void	pushToMainChain(Container & c, Unit & unit, int index)
 		unit.push_back(getPair(c, index).second);
 }
 
-//====< insertToMainChain >=====================================================
+//====<[ insertToMainChain: ]>==================================================
 template<class Unit>
 void	insertToMainChain(Unit & unit, int range, int target)
 {
@@ -83,7 +77,7 @@ void	insertToMainChain(Unit & unit, int range, int target)
 	unit.insert(std::lower_bound(unit.begin(), end, target), target);
 }
 
-//====< getNextJacobsthalNbr > =================================================
+//====<[ getNextJacobsthalNbr: ]>===============================================
 template<class Container>
 int	getNextJacobsthalNbr(Container & c, int prev, int curr)
 {
@@ -96,3 +90,4 @@ int	getNextJacobsthalNbr(Container & c, int prev, int curr)
 }
 
 # endif /*__UTILS_HPP__*/
+//==============================================================================
