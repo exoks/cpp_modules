@@ -7,8 +7,8 @@
 //       ###-...             .-####                                             
 //       ###...              ..+##    Student: oezzaou <oezzaou@student.1337.ma>
 //        #-.++###.      -###+..##                                              
-//        #....  ...   .-.  ....##       Created: 2024/04/05 02:53:39 by oezzaou
-//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/05 02:53:43 by oezzaou
+//        #....  ...   .-.  ....##       Created: 2024/04/05 22:17:42 by oezzaou
+//     --.#.-#+## -..  -+ ##-#-.-...     Updated: 2024/04/05 22:30:23 by oezzaou
 //      ---....... ..  ........... -                                            
 //      -+#..     ..   .       .+-.                                             
 //       .--.     .     .     ..+.                                              
@@ -68,12 +68,11 @@ template<class Container, class Unit>
 void	pushToMainChain(Container & c, Unit & unit, int index)
 {
 	if (index == 0)
-		unit.push_back(getPair(c, index).first);
+		unit.push_back(getPair(c, 0).first);
 	if (getPair(c, index).second > -1)
 		unit.push_back(getPair(c, index).second);
 }
 
-bool	cmp(int a, int b);
 //====< insertToMainChain >=====================================================
 template<class Unit>
 void	insertToMainChain(Unit & unit, int range, int target)
@@ -81,7 +80,7 @@ void	insertToMainChain(Unit & unit, int range, int target)
 	typename Unit::iterator	end;
 
 	end = toIter(unit, range);	
-	unit.insert(std::lower_bound(unit.begin(), end, target, cmp), target);
+	unit.insert(std::lower_bound(unit.begin(), end, target), target);
 }
 
 //====< getNextJacobsthalNbr > =================================================
@@ -94,23 +93,6 @@ int	getNextJacobsthalNbr(Container & c, int prev, int curr)
 	if (nextNbr > static_cast<int>(c.size()))
 		return (static_cast<int>(c.size()));
 	return (nextNbr);
-}
-
-bool	test(vp a, vp b);
-//====< cut >===================================================================
-template<class Container>
-bool	insert(Container & c, int range, int target)
-{
-	typename Container::iterator	position;
-
-	(void) range;
-//	std::cout << "target : " << target << std::endl;
-	position = lower_bound(c.begin(), toIter(c, range), *toIter(c, target), test);
-//	std::cout << "position : " << position->begin()->second << std::endl;
-	c.insert(position, *toIter(c, target));
-	c.erase(toIter(c, target + 1));
-//	std::cout << ":>> " << getPair(c, target).second << std::endl;
-	return (true);
 }
 
 # endif /*__UTILS_HPP__*/
