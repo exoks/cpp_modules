@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2023/12/22 17:08:36 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/26 11:24:46 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/01 19:11:56 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -54,9 +54,9 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& inst)
 std::ostream& operator<<(std::ostream& stream, Bureaucrat& inst)
 {
 	stream	<< inst.getName()
-			<< " bureaucrat grade "
-			<< inst.getGrade()
-			<< std::endl;
+			    << " bureaucrat grade "
+			    << inst.getGrade()
+			    << std::endl;
 	return (stream);
 }
 
@@ -109,10 +109,10 @@ void	Bureaucrat::signForm(AForm & form)
 		std::cout << name << " signed " << form.getName() << std::endl;
 	} catch(Exception & e){
 		std::cout	<< this->name
-					<< " couldn't sign form "
-					<< form.getName()
+					    << " couldn't sign form "
+					    << form.getName()
 			       	<< " because "
-					<< e.what() << std::endl;
+					    << e.what() << std::endl;
 	}
 }
 
@@ -125,9 +125,9 @@ void	Bureaucrat::executeForm(AForm & form)
 		std::cout << name << " execute " << form.getName() << std::endl;
 	} catch(Exception & e){
 		std::cout	<< this->name
-					<< " couldn't execute form "
-					<< form.getName()
+					    << " couldn't execute form "
+					    << form.getName()
 			       	<< " because "
-					<< e.what() << std::endl;
+					    << e.what() << std::endl;
 	}
 }
