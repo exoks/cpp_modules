@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2023/12/22 17:40:56 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/26 10:40:17 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/01 18:51:51 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -25,9 +25,9 @@ class	AForm
 {
 	private:
 		const std::string	name;
-		bool				isSigned;
-		const int			signGrade;
-		const int			execGrade;
+		bool				      isSigned;
+		const int			    signGrade;
+		const int			    execGrade;
 
 	public:
 		AForm(void);
@@ -35,12 +35,12 @@ class	AForm
 		AForm(const AForm & form);
 		virtual ~AForm(void);
 
-		AForm&				operator=(const AForm & form);
+		AForm&				  operator=(const AForm & form);
 		std::string			getName(void) const;
-		bool				getIsSigned(void) const;
-		void				setIsSigned(bool isSigned);
-		int					getSignGrade(void) const;
-		int					getExecGrade(void) const;
+		bool				    getIsSigned(void) const;
+		void				    setIsSigned(bool isSigned);
+		int					    getSignGrade(void) const;
+		int					    getExecGrade(void) const;
 
 		virtual void		beSigned(const Bureaucrat & bureaucrat) = 0;
 		virtual void		execute(Bureaucrat const & executor) const = 0;
