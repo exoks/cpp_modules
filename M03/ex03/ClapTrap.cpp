@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2023/08/21 18:55:59 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/25 17:01:24 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/01 18:10:18 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -104,9 +104,9 @@ void	ClapTrap::attack(const std::string& target)
 	if (hitPts > 0 && energyPts > 0)
 	{
 		std::cout	<< "ClapTrap "
-					<< name			<< " attacks "
-					<< target		<< " causing "
-					<< damagePts	<< std::endl;
+					    << name			  << " attacks "
+					    << target		  << " causing "
+					    << damagePts	<< std::endl;
 		energyPts--;
 	}
 }
@@ -117,8 +117,8 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	if (hitPts > 0)
 	{
 		std::cout	<< name		<< " taking "
-					<< amount	<< " points of damage"
-					<< std::endl;
+					    << amount	<< " points of damage"
+					    << std::endl;
 		hitPts -= amount;
 	}
 }
@@ -129,8 +129,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (hitPts > 0 && energyPts > 0)
 	{
 		std::cout	<< name		<< " gets "
-					<< amount	<< " hit points back"
-					<< std::endl;
+					    << amount	<< " hit points back"
+					    << std::endl;
 		hitPts += amount;
 		energyPts--;
 	}
