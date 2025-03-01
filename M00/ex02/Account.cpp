@@ -1,14 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Account.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 19:56:37 by oezzaou           #+#    #+#             */
-/*   Updated: 2025/02/24 16:57:09 by oezzaou          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣦⣴⣶⣾⣿⣶⣶⣶⣶⣦⣤⣄⠀⠀⠀⠀⠀⠀⠀                                              
+//  ⠀⠀⠀⠀⠀⠀⠀⢠⡶⠻⠛⠟⠋⠉⠀⠈⠤⠴⠶⠶⢾⣿⣿⣿⣷⣦⠄⠀⠀⠀             𓐓  Account.cpp 𓐔           
+//  ⠀⠀⠀⠀⠀⢀⠔⠋⠀⠀⠤⠒⠒⢲⠀⠀⠀⢀⣠⣤⣤⣬⣽⣿⣿⣿⣷⣄⠀⠀                                              
+//  ⠀⠀⠀⣀⣎⢤⣶⣾⠅⠀⠀⢀⡤⠏⠀⠀⠀⠠⣄⣈⡙⠻⢿⣿⣿⣿⣿⣿⣦⠀      Dev: oezzaou <oussama.ezzaou@gmail.com> 
+//  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
+//  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
+//  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2023/08/24 19:56:37 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/01 17:50:11 by oezzaou
+//  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
+//  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
+//  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
+//  ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠘⢧⡀⠀⠀⠸⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠐⠋⠀⠀⠀                     𓄂 oussama ezzaou𓆃  
+//  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              
+
 # include <iostream>
 # include <iomanip>
 # include "Account.hpp"
@@ -32,9 +35,9 @@ Account::Account(int initial_deposit) : _nbWithdrawals(0)
 	_accountIndex = _nbAccounts;
 	_amount = initial_deposit;
 	_displayTimestamp();
-	std::cout	<< "index:"		<< _accountIndex	<< ";"
-				<< "amount:"	<< _amount			<< ";"
-				<< "created"	<< std::endl;
+	std::cout << "index:"		<< _accountIndex  << ";"
+				    << "amount:"	<< _amount			  << ";"
+				    << "created"	<< std::endl;
 	_totalAmount += _amount;
 	_nbAccounts++;
 }
@@ -43,9 +46,9 @@ Account::Account(int initial_deposit) : _nbWithdrawals(0)
 Account::~Account()
 {
 	_displayTimestamp();
-	std::cout 	<< "index:"		<< _accountIndex	<< ";"
-				<< "amount:"	<< _amount			<< ";"
-				<< "closed"		<< std::endl;
+	std::cout << "index:"		<< _accountIndex  << ";"
+				    << "amount:"	<< _amount			  << ";"
+				    << "closed"		<< std::endl;
 }
 
 //====<[ getNbAccounts: ]>======================================================
@@ -76,10 +79,10 @@ int	Account::getNbWithdrawals(void)
 void	Account::displayAccountsInfos(void)
 {
 	_displayTimestamp();
-	std::cout	<< "accounts:"		<< _nbAccounts			<< ";"
-				<< "total:"			<< _totalAmount			<< ";"
-				<< "deposits:"		<< _totalNbDeposits		<< ";"
-				<< "withdrawals:"	<< _totalNbWithdrawals	<< std::endl;
+	std::cout << "accounts:"		<< _nbAccounts			    << ";"
+				    << "total:"			  << _totalAmount			    << ";"
+				    << "deposits:"		<< _totalNbDeposits		  << ";"
+				    << "withdrawals:"	<< _totalNbWithdrawals  << std::endl;
 }
 
 //====<[ makeDeposit: ]>========================================================
@@ -88,11 +91,11 @@ void	Account::makeDeposit(int deposit)
 	_nbDeposits++;
 	_totalNbDeposits++;
 	_displayTimestamp();
-	std::cout	<< "index:"			<< _accountIndex		<< ";"
-				<< "p_amount:"		<< checkAmount()		<< ";"
-				<< "deposit:"		<< deposit				<< ";"
-				<< "amount:"		<< _amount + deposit	<< ";"
-				<< "nb_deposits:"	<< _nbDeposits			<< std::endl;
+	std::cout << "index:"			  << _accountIndex		  << ";"
+				    << "p_amount:"		<< checkAmount()		  << ";"
+				    << "deposit:"		  << deposit				    << ";"
+				    << "amount:"		  << _amount + deposit	<< ";"
+				    << "nb_deposits:"	<< _nbDeposits			  << std::endl;
 	_amount += deposit;
 	_totalAmount += deposit;
 }
@@ -101,15 +104,15 @@ void	Account::makeDeposit(int deposit)
 bool	Account::makeWithdrawal(int withdrawal)
 {
 	_displayTimestamp();
-	std::cout	<< "index:"		<< _accountIndex	<< ";"
-				<< "p_amount:"	<< checkAmount()	<< ";";
+	std::cout << "index:"     << _accountIndex	<< ";"
+				    << "p_amount:"  << checkAmount()	<< ";";
 	if (_amount >= withdrawal)
 	{
 		_nbWithdrawals++;
 		_totalNbWithdrawals++;
-		std::cout	<< "withdrawal:"	<< withdrawal			<< ";"
-					<< "amount:"		<< _amount - withdrawal	<< ";"
-					<< "nb_withdrawals:"<< _nbWithdrawals		<< std::endl;
+		std::cout << "withdrawal:"	    << withdrawal			      << ";"
+					    << "amount:"		      << _amount - withdrawal	<< ";"
+					    << "nb_withdrawals:"  << _nbWithdrawals		    << std::endl;
 		_amount -= withdrawal;
 		_totalAmount -= withdrawal;
 	}
@@ -128,8 +131,8 @@ int	Account::checkAmount(void) const
 void	Account::displayStatus(void) const
 {
 	_displayTimestamp();
-	std::cout	<< "index:"			<< _accountIndex	<< ";" 
-						<< "amount:"		<< checkAmount()	<< ";"
+	std::cout	<< "index:"			  << _accountIndex	<< ";" 
+						<< "amount:"		  << checkAmount()	<< ";"
 						<< "deposits:"		<< _nbDeposits		<< ";"
 						<< "withdrawals:"	<< _nbWithdrawals	<< std::endl;
 }
