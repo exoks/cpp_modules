@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2023/12/22 17:32:05 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/26 09:27:59 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/01 18:45:13 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -53,10 +53,10 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat & inst)
 //====< Insertion Overloading Operator >========================================
 std::ostream& operator<<(std::ostream & stream, Bureaucrat & inst)
 {
-	stream	<< inst.getName()
-			<< " bureaucrat grade "
-			<< inst.getGrade()
-			<< std::endl;
+	stream  << inst.getName()
+			    << " bureaucrat grade "
+			    << inst.getGrade()
+			    << std::endl;
 	return (stream);
 }
 
@@ -109,9 +109,9 @@ void	Bureaucrat::signForm(Form & form)
 		std::cout << name << " signed " << form.getName() << std::endl;
 	} catch(Exception & e){
 		std::cout	<< this->name
-					<< " couldn't sign form "
-					<< form.getName()
-			    << " because "
-					<< e.what() << std::endl;
+					    << " couldn't sign form "
+					    << form.getName()
+			        << " because "
+					    << e.what() << std::endl;
 	}
 }
