@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2023/12/28 16:01:08 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/26 14:57:03 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/02 08:26:49 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -27,8 +27,8 @@ int	main(void)
 	s0.addNumber(9);
 	s0.addNumber(11);
 
-	std::cout << "longestSpan: "  << s0.longestSpan()	<< std::endl;
-	std::cout << "shortestSpan: " << s0.shortestSpan()	<< std::endl;
+	std::cout << "longestSpan: "  << s0.longestSpan()   << std::endl;
+	std::cout << "shortestSpan: " << s0.shortestSpan()  << std::endl;
 	try
 	{
 		s2.longestSpan();
@@ -46,8 +46,8 @@ int	main(void)
 	try
 	{
 		s1.addNumbers(10000);
-		std::cout << "longestSpan: "  << s1.longestSpan()	<< std::endl;
-		std::cout << "shortestSpan: " << s1.shortestSpan()	<< std::endl;
+		std::cout << "longestSpan: "  << s1.longestSpan()   << std::endl;
+		std::cout << "shortestSpan: " << s1.shortestSpan()  << std::endl;
 	} catch (std::exception & e){
 		std::cout << e.what() << std::endl;
 	}
