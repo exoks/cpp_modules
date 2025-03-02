@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/04/05 22:35:40 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/27 16:45:04 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/02 09:59:55 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -20,14 +20,14 @@ void	displayInfo(int size, std::string msg, t_ld reference1);
 //====< main >==================================================================
 int	main(int ac, char **av)
 {
-	t_ld reference1, reference2;
-	prs::PairParser<vvp, vp, POSITIVE, true> vParser(ac, av);
-	prs::PairParser<llp, lp, POSITIVE, true> lParser(ac, av);
-	vvp c1;
-	llp	c2;
-	std::vector<int> v;
-	std::list<int> l;
-	std::string msg[2] = {"false", "true"};
+	t_ld                                      reference1, reference2;
+	prs::PairParser<vvp, vp, POSITIVE, true>  vParser(ac, av);
+	prs::PairParser<llp, lp, POSITIVE, true>  lParser(ac, av);
+	vvp                                       c1;
+	llp                                       c2;
+	std::vector<int>                          v;
+	std::list<int>                            l;
+	std::string                               msg[2] = {"false", "true"};
 
 	try
 	{
@@ -62,9 +62,9 @@ int	main(int ac, char **av)
 		displayInfo(l.size(), "std::list", reference2);
 
 		std::cout	<< "std::vector| Sorted : "
-					<< msg[std::is_sorted(v.begin(), v.end())] << std::endl;
+					    << msg[std::is_sorted(v.begin(), v.end())] << std::endl;
 		std::cout	<< "std::list  | Sorted : "
-					<< msg[std::is_sorted(l.begin(), l.end())] << std::endl;
+					    << msg[std::is_sorted(l.begin(), l.end())] << std::endl;
 	} catch(Exception & e){
 		std::cout << e.what() << std::endl;
 		return (EXIT_FAILURE);
@@ -77,8 +77,8 @@ int	main(int ac, char **av)
 void	displayInfo(int size, std::string msg, t_ld time)
 {
 	std::cout	<< "> Time to process a range of "
-		<< size << " with "
-		<< std::setw(11) << msg << " : "
-		<< std::fixed << std::setprecision(5)
-		<< time	<< std::endl;
+		        << size             << " with "
+		        << std::setw(11)    << msg << " : "
+		        << std::fixed       << std::setprecision(5)
+		        << time             << std::endl;
 }
