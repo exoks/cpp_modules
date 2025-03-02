@@ -5,7 +5,7 @@
 #  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 #  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 #  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/03/19 17:19:49 by oezzaou
-#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/27 15:07:02 by oezzaou
+#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/02 09:37:08 by oezzaou
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 #  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 #  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -13,23 +13,24 @@
 #  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              
 
 #====<[ CC compiler: ]>=========================================================
-CC					:= c++
-CPPFLAGS		:= -Wall -Wextra -Werror -std=c++98
-RM					:= rm -rf
+CC					  := c++
+CPPFLAGS		  := -Wall -Wextra -Werror -std=c++98
+RM					  := rm -rf
 
 #====< Sources >================================================================
-PROJECT			:= M09/ex00
-NAME				:= btc
+PROJECT			  := M09/ex00
+NAME				  := btc
 
-OBJ_DIR			:= obj
-SRC_DIR			:= src
-PARSER_LIB	:= parserLib
-INCLUDE			:= -Iinclude -I$(PARSER_LIB)/include
+OBJ_DIR			  := obj
+SRC_DIR			  := src
+PARSER_LIB	  := libprs
+INCLUDE			  := -Iinclude -I$(PARSER_LIB)/include
 
-SRC					:= $(wildcard *.cpp)\
-							 $(wildcard */*.cpp)\
+SRC					  := $(wildcard *.cpp)\
+                 $(wildcard */*.cpp)\
 
-OBJ					:= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(notdir $(SRC)))
+OBJ					  := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(notdir $(SRC)))
+FILE          := ./test.csv
 
 #====<[ Colors: ]>==============================================================
 GREEN					= \033[1;32m
@@ -70,7 +71,7 @@ $(NAME): $(OBJ)
 	@echo "${GREEN}[OK] ${CYAN}$@ ✔️${RESET}"
 
 $(PARSER_LIB):
-	@make -s -C $@ static 
+	@make -s -C $@ static
 
 $(OBJ_DIR)/%.o: %.cpp | .create_dir
 	@$(CC) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
@@ -83,7 +84,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | .create_dir
 $(OBJ_DIR):
 	@mkdir -p $@
 
-# Run it with the following cmd: make run FILE=<file>
+# Usage: [ make run FILE=<file> ]
+# 1|=> make run FILE=<custom_value_file>
+# 2|=> make run [ It will use the defautl value FILE=./test.csv ]
 run:
 	@./$(NAME) $(FILE)
 

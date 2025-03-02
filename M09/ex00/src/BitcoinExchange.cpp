@@ -5,7 +5,7 @@
 //  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 //  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 //  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/03/31 01:52:14 by oezzaou
-//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/27 15:26:17 by oezzaou
+//  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/02 09:18:16 by oezzaou
 //  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 //  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 //  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -54,18 +54,18 @@ void	BitcoinExchange::calculBalance(DataBase db, DateValue dv)
 	double	balance;
 
 	balance = db.lower_bound(prs::trim(dv.first))->second * dv.second;
-	std::cout << prs::trim(dv.first)	<< " | "
-			  << dv.second				<< " = "
-			  << balance				<< std::endl;;
+	std::cout << prs::trim(dv.first)  << " | "
+			      << dv.second				    << " = "
+			      << balance				      << std::endl;;
 }
 
 //====< exchange >==============================================================
 void	BitcoinExchange::exchange(std::string fileName)
 {
-	prs::KeyValueParser<std::string, double, ','>	data("data/data.csv");
-	prs::KeyValueParser<std::string, double>		input(fileName);
-	std::map<std::string, double>					dataBase;
-	std::pair<std::string, double>					dateValue;
+	prs::KeyValueParser<std::string, double, ','> data("data/data.csv");
+	prs::KeyValueParser<std::string, double>      input(fileName);
+	std::map<std::string, double>					        dataBase;
+	std::pair<std::string, double>					      dateValue;
 
 	dataBase = data.parseFile();
 	if (checkHeader(fileName) == true)
